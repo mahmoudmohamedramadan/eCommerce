@@ -102,16 +102,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="form-actions">
-                                                    <button type="button" class="btn btn-warning mr-1"
-                                                        onclick="history.back();">
-                                                        <i class="ft-x"></i> @lang('translate.cancel')
-                                                    </button>
-                                                    <button type="submit" class="btn btn-primary">
-                                                        <i class="la la-check-square-o"></i> @lang('translate.save')
-                                                    </button>
-                                                </div>
+                                            <div class="form-actions">
+                                                <button type="button" class="btn btn-warning mr-1"
+                                                    onclick="history.back();">
+                                                    <i class="ft-x"></i> @lang('translate.cancel')
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="la la-check-square-o"></i> @lang('translate.save')
+                                                </button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
