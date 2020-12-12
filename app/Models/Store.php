@@ -20,4 +20,9 @@ class Store extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function workers()
+    {
+        return $this->hasMany(Worker::class);
+    }
 }
