@@ -21,10 +21,25 @@
                 </ul>
             </li>
 
+            <li class="nav-item"><a href=""><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.workers')</span>
+                    <span
+                        class="badge badge badge-warning badge-pill float-right mr-2">{{ \App\Models\Worker::count() }}</span>
+                </a>
+                <ul class="menu-content">
+                    <li><a class="menu-item" href="{{ route('workers.create') }}" data-i18n="nav.dash.crypto"><i
+                                class="la la-pencil"></i> @lang('translate.create_worker')</a>
+                    </li>
+                    <li class="inactive"><a class="menu-item" href="{{ route('workers.index') }}"
+                            data-i18n="nav.dash.ecommerce"><i class="la la-table"></i> @lang('translate.show_all')</a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="nav-item"><a href=""><i class="la la-building"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.companies')</span>
                     <span
-                        class="badge badge badge-warning badge-pill float-right mr-2">{{ \App\Models\Company::count() }}</span>
+                        class="badge badge badge-success badge-pill float-right mr-2">{{ \App\Models\Company::count() }}</span>
                 </a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('companies.create') }}" data-i18n="nav.dash.crypto"><i
@@ -39,7 +54,7 @@
             <li class="nav-item"><a href=""><i class="la la-cart-plus"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.products')</span>
                     <span
-                        class="badge badge badge-success badge-pill float-right mr-2">{{ \App\Models\Product::count() }}</span>
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{ \App\Models\Product::count() }}</span>
                 </a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('products.create') }}" data-i18n="nav.dash.crypto"><i
@@ -54,7 +69,7 @@
             <li class="nav-item"><a href=""><i class="la la-dollar"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.sales')</span>
                     <span
-                        class="badge badge badge-danger badge-pill float-right mr-2">{{ \App\Models\Sale::count() }}</span>
+                        class="badge badge badge-warning badge-pill float-right mr-2">{{ \App\Models\Sale::count() }}</span>
                 </a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('sales.create') }}" data-i18n="nav.dash.crypto"><i
