@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\WorkerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ProductController;
@@ -23,6 +24,8 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //category routes
     Route::resource('admin', AdminController::class)->except(['index', 'create', 'store', 'show', 'destroy']);
+    //worker routes
+    Route::resource('workers', WorkerController::class)->except('show');
     //category routes
     Route::resource('categories', CategoryController::class)->except('show');
     //company routes
