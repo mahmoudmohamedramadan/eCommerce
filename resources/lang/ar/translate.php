@@ -2,6 +2,24 @@
 
 return [
 
+    #=================================== start worker ===================================
+    'workers' => 'العاملين',
+    'worker_data' => 'بيانات العامل',
+    'create_worker' => 'اضافة عامل',
+    'edit_worker' => 'تعديل عامل',
+    'worker_name' => 'اسم العامل',
+    'worker_name_placeholder' => 'ادخل اسم العامل',
+    'worker_age' => 'سن العامل',
+    'worker_age_placeholder' => 'ادخل سن العامل',
+    'worker_address' => 'عنوان العامل',
+    'worker_address_placeholder' => 'ادخل عنوان العامل',
+    'worker_phone' => 'هاتف العامل',
+    'worker_phone_placeholder' => 'ادخل هاتف العامل',
+    'worker_salary' => 'مرتب العامل',
+    'worker_salary_placeholder' => 'ادخل مرتب العامل',
+    'worker_per' => 'الفترة',
+    #=================================== end worker ===================================
+
     #=================================== start store ===================================
     'stores' => 'المخازن',
     'store_data' => 'بيانات المخزن',
@@ -127,6 +145,14 @@ return [
 
     'email field is required' => 'حقل البريد الالكتروني مطلوب',
     'email field should be correct email' => 'حقل البريد الالكتروني يجب ان يكون بريدا صحيحا',
+
+    'age field is required' => 'حقل السن مطلوب',
+    'age may not be greater than 2 characters' => 'يجب الا يزيد حقل السن عن رقمين',
+
+    'salary field is required' => 'حقل المرتب مطلوب',
+    'salary may not be greater than 5 characters' => 'يجب الا يزيد حقل المرتب عن 5 ارقام',
+
+    'per field is required' => 'حقل الفترة مطلوب',
     #=================================== end validation ===================================
 
     #=================================== start general ===================================

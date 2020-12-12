@@ -2,6 +2,24 @@
 
 return [
 
+    #=================================== start worker ===================================
+    'workers' => 'Workers',
+    'worker_data' => 'Worker Data',
+    'create_worker' => 'Create Worker',
+    'edit_worker' => 'Edit Worker',
+    'worker_name' => 'Worker Name',
+    'worker_name_placeholder' => 'Enter Worker Name',
+    'worker_age' => 'Worker Age',
+    'worker_age_placeholder' => 'Enter Worker Age',
+    'worker_address' => 'Worker Address',
+    'worker_address_placeholder' => 'Enter Worker Address',
+    'worker_phone' => 'Worker Phone',
+    'worker_phone_placeholder' => 'Enter Worker Phone',
+    'worker_salary' => 'Worker Salary',
+    'worker_salary_placeholder' => 'Enter Worker Salary',
+    'worker_per' => 'Per',
+    #=================================== end worker ===================================
+
     #=================================== start store ===================================
     'stores' => 'Stores',
     'store_data' => 'Store Data',
@@ -128,6 +146,14 @@ return [
 
     'email field is required' => 'The email field is required',
     'email field should be correct email' => 'The email field should be correct email',
+
+    'age field is required' => 'The age field is required',
+    'age may not be greater than 2 characters' => 'The age may not be greater than 2 characters',
+
+    'salary field is required' => 'The salary field is required',
+    'salary may not be greater than 5 characters' => 'The salary may not be greater than 5 characters',
+
+    'per field is required' => 'The per field is required',
     #=================================== end validation ===================================
 
     #=================================== start general ===================================
