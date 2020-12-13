@@ -60,6 +60,7 @@
                                                     <th>@lang('translate.worker_salary')</th>
                                                     <th>@lang('translate.worker_per')</th>
                                                     <th>@lang('translate.store_name')</th>
+                                                    <th>@lang('translate.worker_photo')</th>
                                                     <th>@lang('translate.measures')</th>
                                                 </tr>
                                             </thead>
@@ -78,6 +79,11 @@
                                                             @else
                                                                 {{ $worker->store->name }}
                                                             @endif
+                                                        </td>
+                                                        <td>
+                                                            <img src="{{ asset('assets/images/worker/' . $worker->photo) }} ?? http://www.placehold.it/100/100"
+                                                                alt="@lang('translate.worker_photo')" width="90"
+                                                                height="90">
                                                         </td>
                                                         <td>
                                                             @include('admin.includes.formMeasures', ['editRouting' =>
