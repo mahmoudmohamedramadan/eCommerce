@@ -1,6 +1,27 @@
 @extends('layouts.admin')
 <title>@lang('translate.edit_worker') | eCommerce</title>
 
+@push('script')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#photo').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function() {
+            readURL(this);
+        });
+
+    </script>
+@endpush
+
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
@@ -41,7 +62,8 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form action="{{ route('workers.update', $worker->id) }}" method="POST">
+                                        <form action="{{ route('workers.update', $worker->id) }}" method="POST"
+                                            enctype="multipart/form-data">
                                             @csrf
                                             @method('patch')
 
@@ -142,7 +164,7 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>@lang('translate.store_name')</label>
                                                             <select class="form-control" name="store_id">
@@ -161,6 +183,24 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>@lang('translate.worker_photo')</label>
+                                                            <label id="projectinput7" class="file center-block">
+                                                                <input type="file" id="imgInp" name="photo">
+                                                                <span class="file-custom"></span>
+                                                            </label>
+                                                            @error('photo')
+                                                                <div class="text-danger">@lang('translate.'.$message)</div>
+                                                            @enderror
+                                                            <div class="row-12 mt-2">
+                                                                <img src="{{ asset('assets/images/worker/' . $worker->photo) }} ?? http://www.placehold.it/100/100"
+                                                                    alt="@lang('translate.worker_photo')" id="photo"
+                                                                    width="100" height="100">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                                 <div class="form-actions">
@@ -169,7 +209,7 @@
                                                         <i class="ft-x"></i> @lang('translate.cancel')
                                                     </button>
                                                     <button type="submit" class="btn btn-primary">
-                                                        <i class="la la-check-square-o"></i> @lang('translate.save')
+                                                        <i class="la la-check-square-o"></i> @lang('translate.edit')
                                                     </button>
                                                 </div>
                                         </form>
