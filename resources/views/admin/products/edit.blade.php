@@ -235,15 +235,9 @@
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
                                                             <div class="row-12 mt-2">
-                                                                @if ($product->photo)
-                                                                    <img src="{{ asset('assets/images/product/' . $product->photo) }}"
-                                                                        alt="@lang('translate.product_photo')" id="photo"
-                                                                        width="100" height="100">
-                                                                @else
-                                                                    <img src="http://www.placehold.it/100/100"
-                                                                        alt="@lang('translate.product_photo')" id="photo"
-                                                                        width="100" height="100">
-                                                                @endif
+                                                                <img src="{{ asset('assets/images/product/' . $product->photo) }} ?? http://www.placehold.it/100/100"
+                                                                    alt="@lang('translate.product_photo')" id="photo"
+                                                                    width="100" height="100">
                                                             </div>
                                                         </div>
                                                     </div>
