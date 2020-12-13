@@ -31,6 +31,7 @@ class WorkerRequest extends FormRequest
             'salary' => 'required|max:5',
             'per' => 'required',
             'store_id' => 'required',
+            'photo' => 'image|max:2500',
         ];
     }
 
@@ -61,6 +62,9 @@ class WorkerRequest extends FormRequest
             'per.required' => 'per field is required',
 
             'store_id.required' => 'store name field is required',
+
+            'photo.image' => 'photo must be an image',
+            'photo.max' => 'photo may not be greater than 2.5 mb',
         ];
     }
 }
