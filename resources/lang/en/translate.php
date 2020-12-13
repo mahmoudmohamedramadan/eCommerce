@@ -2,6 +2,21 @@
 
 return [
 
+    #=================================== start store ===================================
+    'stores' => 'Stores',
+    'store_data' => 'Store Data',
+    'create_store' => 'Create Store',
+    'edit_store' => 'Edit Store',
+    'store_name' => 'Store Name',
+    'store_name_placeholder' => 'Enter Store Name',
+    'store_phone' => 'Store Phone',
+    'store_phone_placeholder' => 'Enter Store Phone',
+    'store_address' => 'Store Address',
+    'store_address_placeholder' => 'Enter Store Address',
+    'store_manager' => 'Store Manager',
+    'store_manager_placeholder' => 'Enter Name Of Store Manager',
+    #=================================== end store ===================================
+
     #=================================== start worker ===================================
     'workers' => 'Workers',
     'worker_data' => 'Worker Data',
@@ -18,22 +33,8 @@ return [
     'worker_salary' => 'Worker Salary',
     'worker_salary_placeholder' => 'Enter Worker Salary',
     'worker_per' => 'Per',
+    'worker_photo' => 'Worker Photo',
     #=================================== end worker ===================================
-
-    #=================================== start store ===================================
-    'stores' => 'Stores',
-    'store_data' => 'Store Data',
-    'create_store' => 'Create Store',
-    'edit_store' => 'Edit Store',
-    'store_name' => 'Store Name',
-    'store_name_placeholder' => 'Enter Store Name',
-    'store_phone' => 'Store Phone',
-    'store_phone_placeholder' => 'Enter Store Phone',
-    'store_address' => 'Store Address',
-    'store_address_placeholder' => 'Enter Store Address',
-    'store_manager' => 'Store Manager',
-    'store_manager_placeholder' => 'Enter Name Of Store Manager',
-    #=================================== end store ===================================
 
     #=================================== start company ===================================
     'companies' => 'Companies',
