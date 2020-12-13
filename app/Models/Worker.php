@@ -17,6 +17,7 @@ class Worker extends Model
         'salary',
         'per',
         'store_id',
+        'photo',
     ];
 
     public function store()
