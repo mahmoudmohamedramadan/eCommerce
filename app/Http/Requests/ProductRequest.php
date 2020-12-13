@@ -30,7 +30,7 @@ class ProductRequest extends FormRequest
             'total_quantity' => 'required|numeric',
             'used_quantity' => 'required|numeric',
             'stored_quantity' => 'required|numeric',
-            'photo' => 'image|mimes:png,jpg|max:2500',
+            'photo' => 'image|max:2500',
         ];
     }
 
@@ -56,9 +56,12 @@ class ProductRequest extends FormRequest
 
             'used_quantity.required' => 'used quantity field is required',
             'used_quantity.numeric' => 'product used quantity must be a number',
-            
+
             'stored_quantity.required' => 'stored quantity field is required',
             'stored_quantity.numeric' => 'stored quantity must be a number',
+
+            'photo.image' => 'photo must be an image',
+            'photo.max' => 'photo may not be greater than 2.5 mb',
         ];
     }
 }
