@@ -22,6 +22,7 @@ class CreateWorkersTable extends Migration
             $table->unsignedSmallInteger('salary');
             $table->string('per');
             $table->unsignedSmallInteger('store_id');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
