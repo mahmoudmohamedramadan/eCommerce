@@ -44,6 +44,7 @@ class WorkerController extends Controller
     {
         try {
             DB::beginTransaction();
+            $photoName = savePhoto('photo', $request->photo, 'assets/images/worker');
             Worker::create([
                 'name' => $request->name,
                 'age' => $request->age,
@@ -52,6 +53,7 @@ class WorkerController extends Controller
                 'salary' => $request->salary,
                 'per' => $request->per,
                 'store_id' => $request->store_id,
+                'photo' => $photoName
             ]);
             DB::commit();
 
@@ -88,6 +90,15 @@ class WorkerController extends Controller
     {
         try {
             DB::beginTransaction();
+            if (deletePhoto('photo', $worker, 'assets/images/worker/') or $request->photo) {
+                //save photo after delete old one
+                $photoName = savePhoto('photo', $request->photo, 'assets/images/worker');
+                //update photo name in DB
+                $worker->update([
+                    'photo' => $photoName
+                ]);
+            }
+
             $worker->update([
                 'name' => $request->name,
                 'age' => $request->age,
@@ -118,6 +129,7 @@ class WorkerController extends Controller
     {
         try {
             DB::beginTransaction();
+            deletePhoto('photo', $worker, 'assets/images/worker/');
             $worker->delete();
             DB::commit();
 
