@@ -53,6 +53,8 @@
                                                 <tr>
                                                     <th>@lang('translate.debt_title')</th>
                                                     <th>@lang('translate.debt_details')</th>
+                                                    <th>@lang('translate.pay_date')</th>
+                                                    <th>@lang('translate.remember_date')</th>
                                                     <th>@lang('translate.measures')</th>
                                                 </tr>
                                             </thead>
@@ -61,6 +63,8 @@
                                                     <tr>
                                                         <td>{{ $debt->title }}</td>
                                                         <td>{{ $debt->details }}</td>
+                                                        <td>{{ $debt->pay_date }}</td>
+                                                        <td>{{ $debt->remember_date }}</td>
                                                         <td>
                                                             @include('admin.includes.formMeasures', ['editRouting' =>
                                                             'debts.edit', 'destroyRouting' => 'debts.destroy',
