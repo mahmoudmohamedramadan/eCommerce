@@ -110,6 +110,8 @@ return [
     'debt_title_placeholder' => 'ادخل عنوان الدين',
     'debt_details' => 'تفاصيل الدين',
     'debt_details_placeholder' => 'ادخل تفاصيل الدين',
+    'pay_date' => 'تاريخ السداد',
+    'remember_date' => 'تاريخ التذكير',
     #=================================== end debt ===================================
 
     #=================================== end validation ===================================
@@ -171,6 +173,12 @@ return [
 
     'details field is required' => 'حقل التفاصيل مطلوب',
     'details may not be greater than 255 characters' => 'يجب الا يزيد حقل التفاصيل عن 255 حرفا',
+
+    'pay date field is required' => 'حقل تاريخ السداد مطلوب',
+    'pay date must be a correct date' => 'حقل تاريخ السداد يجب ان تاريج صحيحا',
+
+    'remember date field is required' => 'حقل تاريخ التذكير مطلوب',
+    'remember date must be a correct date' => 'حقل تاريخ التذكير يجب ان يكون تاريخ صحيحا',
     #=================================== end validation ===================================
 
     #=================================== start general ===================================

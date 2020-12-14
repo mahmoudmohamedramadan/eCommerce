@@ -109,6 +109,8 @@ return [
     'debt_title_placeholder' => 'Enter Debt Title',
     'debt_details' => 'Debt Details',
     'debt_details_placeholder' => 'Enter Details Body',
+    'pay_date' => 'Pay Date',
+    'remember_date' => 'Remember Date',
     #=================================== end debt ===================================
 
     #=================================== start validation ===================================
@@ -171,6 +173,12 @@ return [
 
     'details field is required' => 'The details field is required',
     'details may not be greater than 255 characters' => 'The details may not be greater than 255 characters',
+
+    'pay date field is required' => 'The pay date field is required',
+    'pay date must be a correct date' => 'The pay date must be a correct date',
+
+    'remember date field is required' => 'The remember date field is required',
+    'remember date must be a correct date' => 'The remember date must be a correct date',
     #=================================== end validation ===================================
 
     #=================================== start general ===================================
