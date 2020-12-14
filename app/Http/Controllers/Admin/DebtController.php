@@ -44,6 +44,8 @@ class DebtController extends Controller
             Debt::create([
                 'title' => $request->title,
                 'details' => $request->details,
+                'pay_date' => $request->pay_date,
+                'remember_date' => $request->remember_date,
             ]);
             DB::commit();
 
@@ -81,6 +83,8 @@ class DebtController extends Controller
             $debt->update([
                 'title' => $request->title,
                 'details' => $request->details,
+                'pay_date' => $request->pay_date,
+                'remember_date' => $request->remember_date,
             ]);
             DB::commit();
 
