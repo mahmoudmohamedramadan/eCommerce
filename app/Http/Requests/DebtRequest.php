@@ -25,7 +25,9 @@ class DebtRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:debts,title,' . $this->id,
-            'details' => 'required|max:255'
+            'details' => 'required|max:255',
+            'pay_date' => 'required|date',
+            'remember_date' => 'required|date'
         ];
     }
 
@@ -42,6 +44,12 @@ class DebtRequest extends FormRequest
 
             'details.required' => 'details field is required',
             'details.max' => 'details may not be greater than 255 characters',
+
+            'pay_date.required' => 'pay date field is required',
+            'pay_date.date' => 'pay date must be a correct date',
+
+            'remember_date.required' => 'remember date field is required',
+            'remember_date.date' => 'remember date must be a correct date',
         ];
     }
 }
