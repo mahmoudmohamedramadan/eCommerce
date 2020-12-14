@@ -2,6 +2,15 @@
 
 return [
 
+
+    #=================================== start profile ===================================
+    'user_name' => 'Username',
+    'user_name_placeholder' => 'Enter Username',
+    'email' => 'Email',
+    'email_placeholder' => 'Enter Email',
+    'change_password' => 'Change Password',
+    #=================================== end profile ===================================
+
     #=================================== start store ===================================
     'stores' => 'Stores',
     'store_data' => 'Store Data',
@@ -91,15 +100,16 @@ return [
     'total_price_error' => 'invalid total price',
     #=================================== end sale ===================================
 
-    #=================================== start profile ===================================
-    'user_name' => 'Username',
-    'user_name_placeholder' => 'Enter Username',
-
-    'email' => 'Email',
-    'email_placeholder' => 'Enter Email',
-
-    'change_password' => 'Change Password',
-    #=================================== end profile ===================================
+    #=================================== start debt ===================================
+    'debts' => 'Debts',
+    'debt_data' => 'Debt Data',
+    'create_debt' => 'Create Debt',
+    'edit_debt' => 'Edit Debt',
+    'debt_title' => 'Debt Title',
+    'debt_title_placeholder' => 'Enter Debt Title',
+    'debt_details' => 'Debt Details',
+    'debt_details_placeholder' => 'Enter Details Body',
+    #=================================== end debt ===================================
 
     #=================================== start validation ===================================
     'name field is required' => 'The name field is required',
@@ -155,6 +165,12 @@ return [
     'salary may not be greater than 5 characters' => 'The salary may not be greater than 5 characters',
 
     'per field is required' => 'The per field is required',
+
+    'title field is required' => 'The title field is required',
+    'title field should be unique' => 'The title field should be unique',
+
+    'details field is required' => 'The details field is required',
+    'details may not be greater than 255 characters' => 'The details may not be greater than 255 characters',
     #=================================== end validation ===================================
 
     #=================================== start general ===================================
