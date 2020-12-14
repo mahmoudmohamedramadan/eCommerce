@@ -17,6 +17,8 @@ class CreateDebtsTable extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->text('details');
+            $table->string('pay_date');
+            $table->string('remember_date');
             $table->timestamps();
         });
     }
