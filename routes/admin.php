@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DebtController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'guest:admin'], function () {
@@ -42,4 +43,6 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     Route::get('sales/create/product_field', [SaleController::class, 'getSalesField'])->name('getSalesField');
     //print last sale data
     Route::get('sales/create/print', [SaleController::class, 'printLastSale'])->name('printLastSale');
+    //debt routes
+    Route::resource('debts', DebtController::class)->except('show');
 });
