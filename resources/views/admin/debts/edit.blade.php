@@ -70,8 +70,32 @@
                                                             <textarea value="{{ old('details') }}" class="form-control"
                                                                 placeholder="@lang('translate.debt_details_placeholder')"
                                                                 name="details" maxlength="255"
-                                                                style="height: 100px;max-height: 200">{{ $debt->details }}</textarea>
+                                                                style="height: 100px;min-height: 100;max-height: 150">{{ $debt->details }}</textarea>
                                                             @error('details')
+                                                                <span class="text-danger">@lang('translate.'.$message)</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>@lang('translate.pay_date')</label>
+                                                            <input type="date" value="{{ $debt->pay_date ?? old('pay_date') }}"
+                                                                class="form-control" name="pay_date">
+                                                            @error('pay_date')
+                                                                <span class="text-danger">@lang('translate.'.$message)</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>@lang('translate.remember_date')</label>
+                                                            <input type="date" value="{{ $debt->remember_date ?? old('remember_date') }}"
+                                                                class="form-control" name="remember_date">
+                                                            @error('remember_date')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
                                                         </div>
