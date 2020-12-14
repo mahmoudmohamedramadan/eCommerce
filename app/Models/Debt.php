@@ -12,5 +12,7 @@ class Debt extends Model
     protected $fillable = [
         'title',
         'details',
+        'pay_date',
+        'remember_date',
     ];
 }
