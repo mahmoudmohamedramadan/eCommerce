@@ -45,4 +45,6 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     Route::get('sales/create/print', [SaleController::class, 'printLastSale'])->name('printLastSale');
     //debt routes
     Route::resource('debts', DebtController::class)->except('show');
+    //debt notifications
+    Route::get('debts/getNotifications', [DebtController::class, 'pushNotifications'])->name('pushNotifications');
 });
