@@ -15,4 +15,9 @@ class Debt extends Model
         'pay_date',
         'remember_date',
     ];
+
+    public function scopeNotification($query)
+    {
+        return $query->where('remember_date', date('Y-m-d'))->select('id', 'title', 'details', 'pay_date');
+    }
 }
