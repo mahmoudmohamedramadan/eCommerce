@@ -9,7 +9,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{ route('dashboard') }}">
                         <img class="brand-logo" alt="modern admin logo"
                             src="{{ asset('assets/admin/images/logo/logo.png') }}">
                         <h3 class="brand-text">@lang('translate.admin_panel')</h3>
