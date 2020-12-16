@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DebtRequest;
+use App\Models\Admin;
 use Illuminate\Support\Facades\DB;
 use App\Models\Debt;
+use App\Notifications\DebtNotification;
 
 class DebtController extends Controller
 {
@@ -117,5 +119,43 @@ class DebtController extends Controller
             session()->flash('error', __('translate.deleted_error'));
             return redirect()->route('debts.index');
         }
+    }
+
+    /**
+     *
+     * Push notification into database
+     * @return void
+     */
+    public function pushNotifications()
+    {
+        $rememberDebts = Debt::notification()->get();
+
+        if (isset($rememberDebts)) {
+            foreach ($rememberDebts as $rememberDebt) {
+                $notificatedDebt = DB::table('notifications')->select('*')
+                    ->where('data', '{"id":' . $rememberDebt->id . ',"title":"' . $rememberDebt->title . '","details":"' . $rememberDebt->details . '","pay_date":"' . $rememberDebt->pay_date . '"}')
+                    ->whereNotNull('read_at')
+                    ->get();
+
+                if (empty($notificatedDebt)) {
+                    Admin::first()->notify(new DebtNotification($rememberDebt));
+                }
+            }
+
+            $noificationView = view('admin.includes.notifications', ['notifications' => $rememberDebts])
+                ->render();
+
+            return response()->json([
+                'success' => true,
+                'notifications_count' => count($rememberDebts),
+                'notifications' => $noificationView
+            ]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'notifications_count' => 0,
+            'notifications' => null
+        ]);
     }
 }
