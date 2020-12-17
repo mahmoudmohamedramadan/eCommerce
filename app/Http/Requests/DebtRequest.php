@@ -24,10 +24,10 @@ class DebtRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:debts,title,' . $this->id,
+            'title' => 'required_without:id|unique:debts,title,' . $this->id,
             'details' => 'required|max:255',
             'pay_date' => 'required|date',
-            'remember_date' => 'required|date'
+            'remember_date' => 'required|date',
         ];
     }
 
@@ -39,7 +39,7 @@ class DebtRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'title field is required',
+            'title.required_without' => 'title field is required',
             'title.unique' => 'title field should be unique',
 
             'details.required' => 'details field is required',
