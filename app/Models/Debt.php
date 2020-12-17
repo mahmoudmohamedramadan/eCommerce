@@ -14,10 +14,13 @@ class Debt extends Model
         'details',
         'pay_date',
         'remember_date',
+        'notified',
     ];
 
-    public function scopeNotification($query)
+    public function scopeUnnotifiedDebts($query)
     {
-        return $query->where('remember_date', date('Y-m-d'))->select('id', 'title', 'details', 'pay_date');
+        return $query->where('remember_date', date('Y-m-d'))
+            ->where('notified', 0)
+            ->select('id', 'title', 'details', 'pay_date');
     }
 }
