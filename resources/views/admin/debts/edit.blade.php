@@ -50,6 +50,9 @@
                                                 </h4>
                                                 <div class="row">
                                                     <div class="col-md-12">
+                                                        <input type="hidden" name="id" value="{{ $debt->id }}">
+                                                    </div>
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>@lang('translate.debt_title')</label>
                                                             <input type="text" value="{{ $debt->title ?? old('title') }}"
@@ -82,7 +85,8 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>@lang('translate.pay_date')</label>
-                                                            <input type="date" value="{{ $debt->pay_date ?? old('pay_date') }}"
+                                                            <input type="date"
+                                                                value="{{ $debt->pay_date ?? old('pay_date') }}"
                                                                 class="form-control" name="pay_date">
                                                             @error('pay_date')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
@@ -93,7 +97,8 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>@lang('translate.remember_date')</label>
-                                                            <input type="date" value="{{ $debt->remember_date ?? old('remember_date') }}"
+                                                            <input type="date"
+                                                                value="{{ $debt->remember_date ?? old('remember_date') }}"
                                                                 class="form-control" name="remember_date">
                                                             @error('remember_date')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
