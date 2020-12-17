@@ -58,6 +58,23 @@
                     console.log(data);
                 }
             });
+
+            $('#read-all-notifications').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'get',
+                    url: $(this).attr('href'),
+                    dataType: 'json',
+                    success: function(data) {
+                        $('.scrollable-container').empty();
+                        $('#notifications_count').empty().html(0);
+                        $('#notifications_count_new').empty().html('0 New');
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            })
         });
 
     </script>
