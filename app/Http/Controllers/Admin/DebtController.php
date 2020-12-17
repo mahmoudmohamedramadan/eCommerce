@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DebtRequest;
-use App\Models\Admin;
-use Illuminate\Support\Facades\DB;
-use App\Models\Debt;
 use App\Notifications\DebtNotification;
+use Illuminate\Support\Facades\DB;
+use App\Models\Admin;
+use App\Models\Debt;
 
 class DebtController extends Controller
 {
@@ -58,6 +58,20 @@ class DebtController extends Controller
             session()->flash('error', __('translate.saved_error'));
             return redirect()->route('debts.create');
         }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Debt  $debt
+     * @param  string  $notification_id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Debt $debt, $notification_id)
+    {
+        Admin::first()->notifications->find($notification_id)->markAsRead();
+
+        return view('admin.debts.edit', compact('debt'));
     }
 
     /**
@@ -128,26 +142,27 @@ class DebtController extends Controller
      */
     public function pushNotifications()
     {
-        $rememberDebts = Debt::notification()->get();
+        $UnNotifiedDebts = Debt::unnotifiedDebts()->get();
 
-        if (isset($rememberDebts)) {
-            foreach ($rememberDebts as $rememberDebt) {
-                $notificatedDebt = DB::table('notifications')->select('*')
-                    ->where('data', '{"id":' . $rememberDebt->id . ',"title":"' . $rememberDebt->title . '","details":"' . $rememberDebt->details . '","pay_date":"' . $rememberDebt->pay_date . '"}')
-                    ->whereNotNull('read_at')
-                    ->get();
+        if (isset($UnNotifiedDebts)) {
+            foreach ($UnNotifiedDebts as $debt) {
+                Admin::first()->notify(new DebtNotification($debt));
 
-                if (empty($notificatedDebt)) {
-                    Admin::first()->notify(new DebtNotification($rememberDebt));
-                }
+                $debt->update([
+                    'notified' => true
+                ]);
             }
+        }
 
-            $noificationView = view('admin.includes.notifications', ['notifications' => $rememberDebts])
+        $notifications = Admin::first()->unreadNotifications;
+
+        if (isset($notifications)) {
+            $noificationView = view('admin.includes.notifications', ['notifications' => $notifications])
                 ->render();
 
             return response()->json([
                 'success' => true,
-                'notifications_count' => count($rememberDebts),
+                'notifications_count' => count($notifications),
                 'notifications' => $noificationView
             ]);
         }
@@ -156,6 +171,29 @@ class DebtController extends Controller
             'success' => true,
             'notifications_count' => 0,
             'notifications' => null
+        ]);
+    }
+
+    /**
+     *
+     * Read all debt notifications
+     */
+    public function readAllNotifications()
+    {
+        if (Admin::first()->unreadNotifications->count() > 0) {
+            Admin::first()->unreadNotifications->each(function ($notification) {
+                $notification->markAsRead();
+            });
+
+            return response()->json([
+                'success' => true,
+                'notifications_count' => 0,
+                'notifications' => null
+            ]);
+        }
+
+        return response()->json([
+            'success' => true
         ]);
     }
 }
