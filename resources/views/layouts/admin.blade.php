@@ -51,6 +51,8 @@
                 dataType: 'json',
                 success: function(data) {
                     $('.scrollable-container').empty().html(data.notifications);
+                    $('#notifications_count').empty().html(data.notifications_count);
+                    $('#notifications_count_new').empty().html(`${data.notifications_count} New`);
                 },
                 error: function(data) {
                     console.log(data);
