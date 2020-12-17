@@ -5,9 +5,10 @@
         </div>
 
         <div class="media-body">
-            <a href="{{ route('debts.edit', $notification->id) }}">
+            <a
+                href="{{ route('debts.show', ['debt' => $notification['data']['id'], 'notification_id' => $notification->id]) }}">
                 <h6 class="media-heading">
-                    @lang('translate.debt_title'): {{ $notification->title }}
+                    @lang('translate.debt_title'): {{ $notification['data']['title'] }}
                 </h6>
             </a>
         </div>
