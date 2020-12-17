@@ -67,7 +67,7 @@
 
                     <li class="dropdown dropdown-notification nav-item mr-5">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>
-                            <span class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow">
+                            <span class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow" id="notifications_count">
                                 {{ auth()->user()->unreadNotifications->count() }}
                             </span>
                         </a>
@@ -76,7 +76,7 @@
                                 <h6 class="dropdown-header m-0">
                                     <span class="grey darken-2">@lang('translate.notifications')</span>
                                 </h6>
-                                <span class="notification-tag badge badge-default badge-danger float-right m-0">
+                                <span class="notification-tag badge badge-default badge-danger float-right m-0" id="notifications_count_new">
                                     {{ auth()->user()->unreadNotifications->count() }} New</span>
                             </li>
 
