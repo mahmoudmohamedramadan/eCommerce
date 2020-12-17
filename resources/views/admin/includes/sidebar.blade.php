@@ -16,12 +16,12 @@
                                 class="la la-pencil"></i> @lang('translate.create_store')</a>
                     </li>
                     <li class="inactive"><a class="menu-item" href="{{ route('stores.index') }}"
-                            data-i18n="nav.dash.ecommerce"><i class="la la-table"></i> @lang('translate.show_all')</a>
+                            data-i18n="nav.dash.ecommerce"><i class="la la-reorder"></i> @lang('translate.show_all')</a>
                     </li>
                 </ul>
             </li>
 
-            <li class="nav-item"><a href=""><i class="la la-male"></i>
+            <li class="nav-item"><a href=""><i class="la la-user"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.workers')</span>
                     <span
                         class="badge badge badge-warning badge-pill float-right mr-2">{{ \App\Models\Worker::count() }}</span>
@@ -31,7 +31,7 @@
                                 class="la la-pencil"></i> @lang('translate.create_worker')</a>
                     </li>
                     <li class="inactive"><a class="menu-item" href="{{ route('workers.index') }}"
-                            data-i18n="nav.dash.ecommerce"><i class="la la-table"></i> @lang('translate.show_all')</a>
+                            data-i18n="nav.dash.ecommerce"><i class="la la-reorder"></i> @lang('translate.show_all')</a>
                     </li>
                 </ul>
             </li>
@@ -46,7 +46,7 @@
                                 class="la la-pencil"></i> @lang('translate.create_company')</a>
                     </li>
                     <li class="inactive"><a class="menu-item" href="{{ route('companies.index') }}"
-                            data-i18n="nav.dash.ecommerce"><i class="la la-table"></i> @lang('translate.show_all')</a>
+                            data-i18n="nav.dash.ecommerce"><i class="la la-reorder"></i> @lang('translate.show_all')</a>
                     </li>
                 </ul>
             </li>
@@ -61,12 +61,12 @@
                                 class="la la-pencil"></i> @lang('translate.create_product')</a>
                     </li>
                     <li class="inactive"><a class="menu-item" href="{{ route('products.index') }}"
-                            data-i18n="nav.dash.ecommerce"><i class="la la-table"></i> @lang('translate.show_all')</a>
+                            data-i18n="nav.dash.ecommerce"><i class="la la-reorder"></i> @lang('translate.show_all')</a>
                     </li>
                 </ul>
             </li>
 
-            <li class="nav-item"><a href=""><i class="la la-dollar"></i>
+            <li class="nav-item"><a href=""><i class="la la-truck"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.sales')</span>
                     <span
                         class="badge badge badge-warning badge-pill float-right mr-2">{{ \App\Models\Sale::count() }}</span>
@@ -76,12 +76,12 @@
                                 class="la la-pencil"></i> @lang('translate.create_sale')</a>
                     </li>
                     <li class="inactive"><a class="menu-item" href="{{ route('sales.index') }}"
-                            data-i18n="nav.dash.ecommerce"><i class="la la-table"></i> @lang('translate.show_all')</a>
+                            data-i18n="nav.dash.ecommerce"><i class="la la-reorder"></i> @lang('translate.show_all')</a>
                     </li>
                 </ul>
             </li>
 
-            <li class="nav-item"><a href=""><i class="la la-clipboard"></i>
+            <li class="nav-item"><a href=""><i class="la la-folder"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.debts')</span>
                     <span
                         class="badge badge badge-success badge-pill float-right mr-2">{{ \App\Models\Debt::count() }}</span>
@@ -91,7 +91,7 @@
                                 class="la la-pencil"></i> @lang('translate.create_debt')</a>
                     </li>
                     <li class="inactive"><a class="menu-item" href="{{ route('debts.index') }}"
-                            data-i18n="nav.dash.ecommerce"><i class="la la-table"></i> @lang('translate.show_all')</a>
+                            data-i18n="nav.dash.ecommerce"><i class="la la-reorder"></i> @lang('translate.show_all')</a>
                     </li>
                 </ul>
             </li>
