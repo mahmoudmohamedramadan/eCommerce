@@ -20,7 +20,7 @@
             <label>@lang('translate.quantity')</label>
             <input type="text" value="{{ old('quantity') }}" class="quantity-{{ $id }} form-control"
                 placeholder="@lang('translate.quantity_placeholder')" name="quantity[]" maxlength="4"
-                onkeyup="getTotalPrice({{ $id }})">
+                onkeyup="getTotalPrice()">
             <span class="quantity-error-{{ $id }} text-danger" hidden>@lang('translate.quantity_error')</span>
             @error('quantity')
                 <span class="text-danger">@lang('translate.'.$message)</span>
