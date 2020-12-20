@@ -5,25 +5,57 @@
      <script>
          function getTotalPrice() {
              var totalPriceValue = 0;
-             var divRowCount = document.getElementsByClassName('row');
+             var divRowCount = document.getElementsByClassName('sale-fields');
              for (var i = 0; i <= divRowCount.length - 1; i++) {
-                 //check if row has id attribute, then give me this attribute
-                 if (divRowCount[i].hasAttribute('id')) {
-                     //get id attribute value
-                     var currentRowId = divRowCount[i].getAttribute('id');
-                     var quantityValue = parseFloat($(`.quantity-${currentRowId}`).val());
-                     if (quantityValue > 0 && !isNaN(quantityValue)) {
-                         var oncePriceValue = parseFloat($(`.once-price-${currentRowId}`).val());
-                         totalPriceValue += quantityValue * oncePriceValue;
-                         $('input[name=total_price]').val(totalPriceValue);
-                         $('#submit').prop('disabled', false);
-                         $(`.quantity-error-${currentRowId}`).attr('hidden', true);
-                     } else {
-                         $('#submit').prop('disabled', true);
-                         $(`.quantity-error-${currentRowId}`).attr('hidden', false);
-                     }
+                 var currentRowId = divRowCount[i].getAttribute('id');
+                 var quantityValue = parseFloat($(`.quantity-${currentRowId}`).val());
+                 if (quantityValue > 0 && !isNaN(quantityValue)) {
+                     var oncePriceValue = parseFloat($(`.once-price-${currentRowId}`).val());
+                     totalPriceValue += quantityValue * oncePriceValue;
+                     $('input[name=total_price]').val(totalPriceValue);
+                     $('#submit').prop('disabled', false);
+                     $(`.quantity-error-${currentRowId}`).attr('hidden', true);
+                 } else {
+                     $('#submit').prop('disabled', true);
+                     $(`.quantity-error-${currentRowId}`).attr('hidden', false);
                  }
              }
+         }
+
+         function checkProductQuanity(Id) {
+             var totalQuantity = 0;
+             var divRowCount = document.getElementsByClassName('sale-fields');
+             for (var i = 1; i <= divRowCount.length; i++) {
+                 if ($(`.product-name-${i} option:selected`).val() == $(`.product-name-${Id} option:selected`)
+                     .val()) {
+                     totalQuantity += parseFloat($(`.quantity-${i}`).val());
+                 }
+             }
+
+             $.ajax({
+                 type: 'get',
+                 url: '{{ route("checkProductQuantity") }}',
+                 dataType: 'json',
+                 data: {
+                     'product_name': $(`.product-name-${Id} option:selected`).val(),
+                     'quantity': totalQuantity,
+                 },
+                 success: function(data) {
+                     if (!data.success) {
+                         $('.sale-field-error').attr('hidden', false);
+                         $('.sale-field-error').text(data.message);
+                         $('#submit').prop('disabled', true);
+                         setInterval(() => {
+                             $('.sale-field-error').attr('hidden', true);
+                         }, 10000);
+                     } else {
+                         $('#submit').prop('disabled', false);
+                     }
+                 },
+                 error: function(data) {
+                     console.log(data);
+                 }
+             });
          }
 
          function changeOncePrice(selectTag, rowCount) {
@@ -115,6 +147,11 @@
                                  </div>
                                  @include('admin.includes.alerts.success')
                                  @include('admin.includes.alerts.errors')
+                                 <div class="row mr-3 ml-3">
+                                     <div class="col-md-12">
+                                         <div class="sale-field-error alert alert-danger text-center mb-3" hidden></div>
+                                     </div>
+                                 </div>
                                  <div class="card-content collapse show">
                                      <div class="card-body">
                                          <form action="{{ route('sales.store') }}" method="POST">
