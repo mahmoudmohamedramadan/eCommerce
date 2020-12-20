@@ -41,6 +41,9 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     Route::resource('sales', SaleController::class)->except('show');
     //get sale's product values
     Route::get('sales/create/product_field', [SaleController::class, 'getSalesField'])->name('getSalesField');
+    //get sale's product values
+    Route::get('sales/create/check_product_quantity', [SaleController::class, 'checkProductQuantity'])
+        ->name('checkProductQuantity');
     //print last sale data
     Route::get('sales/create/print', [SaleController::class, 'printLastSale'])->name('printLastSale');
     //debt routes
