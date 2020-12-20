@@ -98,6 +98,8 @@ return [
     //sale error
     'quantity_error' => 'invalid quantity',
     'total_price_error' => 'invalid total price',
+    'maximum quantity of' => 'The maximum quantity of ',
+    'is' => ' is ',
     #=================================== end sale ===================================
 
     #=================================== start debt ===================================
