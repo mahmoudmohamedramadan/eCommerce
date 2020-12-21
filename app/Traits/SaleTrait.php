@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\Models\Product;
+
 trait SaleTrait
 {
 
@@ -19,6 +21,14 @@ trait SaleTrait
         $oncePrice = '';
 
         foreach ($request->input('product_name') as $index => $value) {
+            $product = Product::where('name', $value)->get();
+            if (isset($product)) {
+                $saleQuantity = $request->input('quantity')[$index];
+                Product::where('name', $value)->update([
+                    'total_quantity' => floatval($product[0]['total_quantity']) - floatval($saleQuantity)
+                ]);
+            }
+
             if (count($request->input('product_name')) - 1 != $index) $productName .=  $value . "\n";
             else $productName .=  $value;
         }
