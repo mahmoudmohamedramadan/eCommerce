@@ -21,6 +21,6 @@ class Debt extends Model
     {
         return $query->where('remember_date', date('Y-m-d'))
             ->where('notified', 0)
-            ->select('id', 'title', 'details', 'pay_date');
+            ->select('id', 'title');
     }
 }
