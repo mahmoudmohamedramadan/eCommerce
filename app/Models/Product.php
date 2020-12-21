@@ -19,6 +19,7 @@ class Product extends Model
         'stored_quantity',
         'minimum_quantity',
         'photo',
+        'notified',
     ];
 
     public function store()
@@ -29,5 +30,11 @@ class Product extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function scopeUnnotifiedProducts($query)
+    {
+        return $query->where('notified', 0)
+            ->select('id', 'name');
     }
 }
