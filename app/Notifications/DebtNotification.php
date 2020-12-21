@@ -56,10 +56,8 @@ class DebtNotification extends Notification
     public function toDatabase()
     {
         return [
-            'id' => $this->rememberDebt->id,
-            'title' => $this->rememberDebt->title,
-            'details' => $this->rememberDebt->details,
-            'pay_date' => $this->rememberDebt->pay_date,
+            'debt_id' => $this->rememberDebt->id,
+            'debt_title' => $this->rememberDebt->title,
         ];
     }
 }
