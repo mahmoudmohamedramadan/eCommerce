@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Models\Company;
+use App\Models\Admin;
 use Illuminate\Support\Facades\DB;
+use App\Models\Company;
 use App\Models\Product;
 use App\Models\Store;
 
@@ -67,6 +68,23 @@ class ProductController extends Controller
             session()->flash('error', __('translate.saved_error'));
             return redirect()->route('products.create');
         }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Debt  $debt
+     * @param  string  $notification_id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Product $product, $notification_id)
+    {
+        $stores = Store::get();
+        $companies = Company::get();
+
+        Admin::first()->notifications->find($notification_id)->markAsRead();
+
+        return view('admin.products.edit', compact('product', 'stores', 'companies'));
     }
 
     /**
@@ -132,7 +150,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-
         try {
             DB::beginTransaction();
             deletePhoto('photo', $product, 'assets/images/product/');
@@ -148,6 +165,11 @@ class ProductController extends Controller
         }
     }
 
+    /**
+     *
+     * Check values in the modal and return ajax respons
+     * @return \Illuminate\Http\Response
+     */
     public function getModalValue()
     {
         if (!request()->get('store_id')) {
