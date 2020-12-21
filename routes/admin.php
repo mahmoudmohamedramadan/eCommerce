@@ -25,6 +25,10 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //category routes
     Route::resource('admin', AdminController::class)->except(['index', 'create', 'store', 'show', 'destroy']);
+    //debt notifications
+    Route::get('admin/getNotifications', [AdminController::class, 'pushNotifications'])->name('pushNotifications');
+    //read all debt notifications
+    Route::get('admin/readAllNotifications', [DebtController::class, 'readAllNotifications'])->name('readAllNotifications');
     //worker routes
     Route::resource('workers', WorkerController::class)->except('show');
     //category routes
@@ -33,6 +37,8 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     Route::resource('companies', CompanyController::class)->except('show');
     //product routes
     Route::resource('products', ProductController::class)->except('show');
+    //product show function
+    Route::get('products/{product}/{notification_id}', [ProductController::class, 'show'])->name('products.show');
     //get modal validation
     Route::post('products/create/modal_value', [ProductController::class, 'getModalValue'])->name('getModalValue');
     //store routes
@@ -41,7 +47,7 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     Route::resource('sales', SaleController::class)->except('show');
     //get sale's product values
     Route::get('sales/create/product_field', [SaleController::class, 'getSalesField'])->name('getSalesField');
-    //get sale's product values
+    //check sale's product quantity
     Route::get('sales/create/check_product_quantity', [SaleController::class, 'checkProductQuantity'])
         ->name('checkProductQuantity');
     //print last sale data
@@ -50,8 +56,4 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     Route::resource('debts', DebtController::class)->except('show');
     //debt show function
     Route::get('debts/{debt}/{notification_id}', [DebtController::class, 'show'])->name('debts.show');
-    //debt notifications
-    Route::get('debts/getNotifications', [DebtController::class, 'pushNotifications'])->name('pushNotifications');
-    //read all debt notifications
-    Route::get('debts/readAllNotifications', [DebtController::class, 'readAllNotifications'])->name('readAllNotifications');
 });
