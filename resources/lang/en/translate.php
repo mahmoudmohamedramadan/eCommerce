@@ -82,6 +82,7 @@ return [
     'total_quantity_error' => 'invalid total quantity',
     'used_quantity_error' => 'invalid used quantity',
     'stored_quantity_error' => 'invalid stored quantity',
+    'has_reached_its_minimum' => ' has reached its minimum',
     #=================================== end product ===================================
 
     #=================================== start sale ===================================
@@ -98,7 +99,7 @@ return [
     //sale error
     'quantity_error' => 'invalid quantity',
     'total_price_error' => 'invalid total price',
-    'maximum quantity of' => 'The maximum quantity of ',
+    'maximum_quantity_of' => 'The maximum quantity of ',
     'is' => ' is ',
     #=================================== end sale ===================================
 
