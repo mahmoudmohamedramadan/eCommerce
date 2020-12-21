@@ -13,10 +13,12 @@
                 cache: false,
                 data: formDataValue,
                 success: function(data) {
-                    if (data.success == false) {
+                    if (!data.success) {
                         $('#error-store-msg').empty().html(data.error_store_msg);
                         $('#error-min-msg').empty().html(data.error_min_msg);
                     } else {
+                        $('#error-store-msg').empty();
+                        $('#error-min-msg').empty();
                         $('#storeModal').modal('toggle');
                     }
                 },
