@@ -60,13 +60,10 @@ class SaleController extends Controller
             Sale::create($saleData);
             DB::commit();
 
-            // $pdf = App::make('dompdf.wrapper');
-            // $pdf->loadView('admin.sales.pdf', ['saleData' => $saleData]);
             session()->flash('success', __('translate.saved_success'));
             return response()->json([
                 'success' => true
             ]);
-            // return $pdf->download('sale_' . $saleData['product_name'] . '.pdf');
         } catch (\Exception $ex) {
             DB::rollBack();
             session()->flash('error', __('translate.saved_error'));
@@ -186,7 +183,7 @@ class SaleController extends Controller
 
         return response()->json([
             'success' => false,
-            'message' => __('translate.maximum quantity of') . $productName . __('translate.is') . $productTotalQuantity[0]['total_quantity']
+            'message' => __('translate.maximum_quantity_of') . $productName . __('translate.is') . $productTotalQuantity[0]['total_quantity']
         ]);
     }
 }
