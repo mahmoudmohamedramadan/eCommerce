@@ -165,6 +165,12 @@
                                                      @if (count($products) > 0)
                                                          @include('admin.sales.getCreateSalesField',
                                                          ['products' => $products, 'id' => 1])
+                                                     @else
+                                                         <div class="row mr-3 ml-3">
+                                                             <div class="col-md-12">
+                                                                 <div class="alert alert-danger text-center">@lang('translate.add_product_first')</div>
+                                                             </div>
+                                                         </div>
                                                      @endif
                                                  </div>
 
@@ -185,7 +191,7 @@
                                                      <div class="col-md-4">
                                                          <button type="button" class="btn btn-secondary"
                                                              style="margin-top: 25px;width:310px" id="add-product"
-                                                             buttonRoute="{{ route('getSalesField') }}">
+                                                             buttonRoute="{{ route('getSalesField') }}" @if (count($products) < 1) disabled @endif>
                                                              <i class="la la-cart-plus"></i> @lang('translate.add_product')
                                                          </button>
                                                      </div>
@@ -196,7 +202,7 @@
                                                          onclick="history.back();">
                                                          <i class="ft-x"></i> @lang('translate.cancel')
                                                      </button>
-                                                     <button type="submit" class="btn btn-primary" id="submit">
+                                                     <button type="submit" class="btn btn-primary" id="submit" @if (count($products) < 1) disabled @endif>
                                                          <i class="la la-check-square-o"></i> @lang('translate.save')
                                                      </button>
                                                  </div>
