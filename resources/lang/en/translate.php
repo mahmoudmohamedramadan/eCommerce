@@ -83,6 +83,7 @@ return [
     'used_quantity_error' => 'invalid used quantity',
     'stored_quantity_error' => 'invalid stored quantity',
     'has_reached_its_minimum' => ' has reached its minimum',
+    'add_product_first' => 'add one product at the least first',
     #=================================== end product ===================================
 
     #=================================== start sale ===================================
