@@ -5,7 +5,7 @@
     <script>
         function getTotalPrice() {
             var totalPriceValue = 0;
-            var divRowCount = document.getElementsByClassName('row');
+            var divRowCount = document.getElementsByClassName('sale-fields');
             for (var i = 0; i <= divRowCount.length - 1; i++) {
                 //check if row has id attribute, then give me this attribute
                 if (divRowCount[i].hasAttribute('id')) {
@@ -28,6 +28,7 @@
 
         function changeOncePrice(selectTag, rowCount) {
             var product_price = $('option:selected', selectTag).attr('product-price');
+            console.log(product_price);
             $(`.once-price-${rowCount}`).val(product_price);
             getTotalPrice();
         }
