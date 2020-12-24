@@ -25,7 +25,8 @@ trait SaleTrait
             if (isset($product)) {
                 $saleQuantity = $request->input('quantity')[$index];
                 Product::where('name', $value)->update([
-                    'total_quantity' => floatval($product[0]['total_quantity']) - floatval($saleQuantity)
+                    'total_quantity' => floatval($product[0]['total_quantity']) - floatval($saleQuantity),
+                    'used_quantity' => floatval($product[0]['used_quantity']) - floatval($saleQuantity)
                 ]);
             }
 
