@@ -61,7 +61,7 @@ class AdminController extends Controller
         $UnNotifiedProducts = Product::unnotifiedProducts()->get();
 
         foreach ($UnNotifiedProducts as $product) {
-            if ($product->total_quantity == $product->minimum_quantity) {
+            if ($product->used_quantity == $product->minimum_quantity) {
                 Admin::first()->notify(new ProductNotification(($product)));
 
                 $product->update([
