@@ -37,11 +37,11 @@ class AdminRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'name field is required',
-            'name.max' => 'name may not be greater than 25 characters',
+            'name.required' => 'name_field_is_required',
+            'name.max' => 'name_may_not_be_greater_than_25_characters',
 
-            'email.required' => 'email field is required',
-            'email.email' => 'email field should be correct email',
+            'email.required' => 'email_field_is_required',
+            'email.email' => 'email_field_should_be_correct_email',
         ];
     }
 }
