@@ -31,7 +31,7 @@
                  $('#used-quantity-error').attr('hidden', true);
                  $('#storeModal').modal('toggle');
              } else if (storedValue == 0) {
-                  $('#stored-quantity-error').attr('hidden', true);
+                 $('#stored-quantity-error').attr('hidden', true);
                  $('#used-quantity-error').attr('hidden', true);
                  $('input[name=stored_quantity]').val(storedValue);
                  $('#store-field').empty();
@@ -195,7 +195,22 @@
                                                      </div>
 
                                                      <div class="col-md-6">
-                                                         <div class="form-group" id="company_field">
+                                                         <div class="form-group">
+                                                             <label>@lang('translate.minimum_used')</label>
+                                                             <input type="text" value="{{ old('minimum_used') }}"
+                                                                 class="form-control"
+                                                                 placeholder="@lang('translate.minimum_used_placeholder')"
+                                                                 name="minimum_used" maxlength="6">
+                                                             @error('minimum_used')
+                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
+                                                             @enderror
+                                                         </div>
+                                                     </div>
+                                                 </div>
+
+                                                 <div class="row">
+                                                     <div class="col-md-6">
+                                                         <div class="form-group">
                                                              <label for="Select2">@lang('translate.company_name')</label>
                                                              <select class="form-control" name="company_id">
                                                                  @foreach ($companies as $company)
@@ -209,10 +224,8 @@
                                                              @enderror
                                                          </div>
                                                      </div>
-                                                 </div>
 
-                                                 <div class="row">
-                                                     <div class="col-md-12">
+                                                     <div class="col-md-6">
                                                          <div class="form-group">
                                                              <label>@lang('translate.product_photo')</label>
                                                              <label id="projectinput7" class="file center-block">
