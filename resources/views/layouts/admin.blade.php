@@ -47,7 +47,7 @@
         $(document).ready(function() {
             $.ajax({
                 type: 'get',
-                url: '{{ route("pushNotifications") }}',
+                url: `{{ route('pushNotifications') }}`,
                 dataType: 'json',
                 success: function(data) {
                     $('.scrollable-container').empty().html(data.notifications);
