@@ -17,11 +17,13 @@ class CreateWorkersTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->unsignedSmallInteger('age');
-            $table->string('address');
+            $table->string('national_id')->unique();
             $table->string('phone')->unique();
+            $table->string('address');
             $table->unsignedSmallInteger('salary');
             $table->string('per');
-            $table->unsignedSmallInteger('store_id');
+            $table->unsignedSmallInteger('store_id')->default(0);
+            $table->boolean('store_permission')->comment('0:manager, 1:worker');
             $table->string('photo')->nullable();
             $table->timestamps();
         });
