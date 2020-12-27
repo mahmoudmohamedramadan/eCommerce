@@ -54,7 +54,6 @@
                                                     <th>@lang('translate.store_name')</th>
                                                     <th>@lang('translate.store_phone')</th>
                                                     <th>@lang('translate.store_address')</th>
-                                                    <th>@lang('translate.store_manager')</th>
                                                     <th>@lang('translate.measures')</th>
                                                 </tr>
                                             </thead>
@@ -64,7 +63,6 @@
                                                         <td>{{ $store->name }}</td>
                                                         <td>{{ $store->phone }}</td>
                                                         <td>{{ $store->address }}</td>
-                                                        <td>{{ $store->manager }}</td>
                                                         <td>
                                                             @include('admin.includes.formMeasures', ['editRouting' =>
                                                             'stores.edit', 'destroyRouting' => 'stores.destroy',
