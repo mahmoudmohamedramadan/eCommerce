@@ -39,17 +39,17 @@ class DebtRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required_without' => 'title field is required',
-            'title.unique' => 'title field should be unique',
+            'title.required_without' => 'title_field_is_required',
+            'title.unique' => 'title_field_should_be_unique',
 
-            'details.required' => 'details field is required',
-            'details.max' => 'details may not be greater than 255 characters',
+            'details.required' => 'details_field_is_required',
+            'details.max' => 'details_may_not_be_greater_than_255_characters',
 
-            'pay_date.required' => 'pay date field is required',
-            'pay_date.date' => 'pay date must be a correct date',
+            'pay_date.required' => 'pay_date_field_is_required',
+            'pay_date.date' => 'pay_date_must_be_a_correct_date',
 
-            'remember_date.required' => 'remember date field is required',
-            'remember_date.date' => 'remember date must be a correct date',
+            'remember_date.required' => 'remember_date_field_is_required',
+            'remember_date.date' => 'remember_date_must_be_a_correct_date',
         ];
     }
 }
