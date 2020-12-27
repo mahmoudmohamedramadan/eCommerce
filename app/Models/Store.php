@@ -11,9 +11,8 @@ class Store extends Model
 
     protected $fillable = [
         'name',
-        'address',
-        'manager',
         'phone',
+        'address',
     ];
 
     public function products()
