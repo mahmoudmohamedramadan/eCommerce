@@ -24,13 +24,15 @@ class WorkerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:25|unique:workers,name,' . $this->id,
-            'age' => 'required|max:2',
+            'name' => 'required|unique:workers,name,' . $this->id,
+            'age' => 'required|numeric',
+            'national_id' => 'required|numeric',
             'address' => 'required',
             'phone' => 'required_without:id|regex:/[0-9]{11}/|unique:workers,phone,' . $this->id,
-            'salary' => 'required|max:5',
+            'salary' => 'required|numeric',
             'per' => 'required',
             'store_id' => 'required',
+            'store_permission' => 'in:0,1',
             'photo' => 'image|max:2500',
         ];
     }
@@ -43,28 +45,30 @@ class WorkerRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'name field is required',
-            'name.max' => 'name may not be greater than 25 characters',
-            'name.unique' => 'name field should be unique',
+            'name.required' => 'name_field_is_required',
+            'name.unique' => 'name_field_should_be_unique',
 
-            'age.required' => 'age field is required',
-            'age.max' => 'age may not be greater than 2 characters',
+            'age.required' => 'age_field_is_required',
+            'age.numeric' => 'age_must_be_a_number',
 
-            'address.required' => 'address field is required',
+            'national_id.required' => 'national_id_field_is_required',
+            'national_id.numeric' => 'national_id_field_must_be_a_number',
 
-            'phone.required_without' => 'phone field is required',
-            'phone.regex' => 'phone format is invalid',
-            'phone.unique' => 'phone field should be unique',
+            'address.required' => 'address_field_is_required',
 
-            'salary.required' => 'salary field is required',
-            'salary.max' => 'salary may not be greater than 5 characters',
+            'phone.required_without' => 'phone_field_is_required',
+            'phone.regex' => 'phone_format_is_invalid',
+            'phone.unique' => 'phone_field_should_be_unique',
 
-            'per.required' => 'per field is required',
+            'salary.required' => 'salary_field_is_required',
+            'salary.numeric' => 'salary_field_must_be_a_number',
 
-            'store_id.required' => 'store name field is required',
+            'per.required' => 'per_field_is_required',
 
-            'photo.image' => 'photo must be an image',
-            'photo.max' => 'photo may not be greater than 2.5 mb',
+            'store_id.required' => 'store_name_field_is_required',
+
+            'photo.image' => 'photo_must_be_an_image',
+            'photo.max' => 'photo_may_not_be_greater_than_2.5_mb',
         ];
     }
 }
