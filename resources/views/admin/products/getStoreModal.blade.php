@@ -61,11 +61,11 @@
 
                     <div class="form-group">
                         <div class="form-group">
-                            <label>@lang('translate.minimum_quantity')</label>
+                            <label>@lang('translate.minimum_stored')</label>
                             <input type="text"
-                                value="{{ $product->minimum_quantity ?? session()->get('minimum_quantity') }}"
-                                class="form-control" placeholder="@lang('translate.minimum_quantity_placeholder')"
-                                name="minimum_quantity">
+                                value="{{ $product->minimum_stored ?? session()->get('minimum_stored') }}"
+                                class="form-control" placeholder="@lang('translate.minimum_stored_placeholder')"
+                                name="minimum_stored">
                             <span class="text-danger" id="error-min-msg"></span>
                         </div>
                     </div>
