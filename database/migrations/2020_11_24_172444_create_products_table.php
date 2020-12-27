@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->unsignedFloat('total_quantity');
             $table->unsignedFloat('used_quantity');
             $table->unsignedFloat('stored_quantity');
+            $table->unsignedFloat('minimum_used')->nullable();
             $table->unsignedFloat('minimum_quantity')->nullable();
             $table->string('photo')->nullable();
             $table->boolean('notified')->default(false);
