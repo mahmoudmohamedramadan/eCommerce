@@ -39,16 +39,16 @@ class CompanyRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required_without' => 'name field is required',
-            'name.max' => 'name may not be greater than 25 characters',
-            'name.unique' => 'name field should be unique',
+            'name.required_without' => 'name_field_is_required',
+            'name.max' => 'name_may_not_be_greater_than_25_characters',
+            'name.unique' => 'name_field_should_be_unique',
 
-            'phone.required_without' => 'phone field is required',
-            'phone.regex' => 'phone format is invalid',
-            'phone.unique' => 'phone field should be unique',
+            'phone.required_without' => 'phone_field_is_required',
+            'phone.regex' => 'phone_format_is_invalid',
+            'phone.unique' => 'phone_field_should_be_unique',
 
-            'address.required' => 'address field is required',
-            'manager.required' => 'manager field is required',
+            'address.required' => 'address_field_is_required',
+            'manager.required' => 'manager_field_is_required',
         ];
     }
 }
