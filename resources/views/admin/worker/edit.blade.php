@@ -149,11 +149,11 @@
                                                         <div class="form-group">
                                                             <label>@lang('translate.worker_per')</label>
                                                             <select class="form-control" name="per">
-                                                                <option value="week" @if ($worker->per == 'week') selected
+                                                                <option value="1" @if ($worker->per == 1) selected
                                                                     @endif>Week</option>
-                                                                <option value="month" @if ($worker->per == 'month') selected
+                                                                <option value="2" @if ($worker->per == 2) selected
                                                                     @endif>Month</option>
-                                                                <option value="year" @if ($worker->per == 'year') selected
+                                                                <option value="3" @if ($worker->per == 3) selected
                                                                     @endif>Year</option>
                                                             </select>
                                                             @error('per')
@@ -169,7 +169,7 @@
                                                             <label>@lang('translate.store_name')</label>
                                                             <select class="form-control" name="store_id">
                                                                 <option value="0" @if ($worker->store_id == 0) selected
-                                                                    @endif>none</option>
+                                                                    @endif></option>
                                                                 @foreach ($stores as $store)
                                                                     <option value="{{ $store->id }}" @if ($worker->store_id == $store->id)
                                                                         selected
@@ -185,6 +185,27 @@
                                                     </div>
 
                                                     <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>@lang('translate.worker_permission')</label><select
+                                                                class="form-control" name="worker_permission">
+                                                                <option value="0" @if ($worker->worker_permission == 0) selected
+                                                                    @endif></option>
+                                                                <option value="1" @if ($worker->worker_permission == 1) selected
+                                                                    @endif>@lang('translate.manager')
+                                                                </option>
+                                                                <option value="2" @if ($worker->worker_permission == 2) selected
+                                                                    @endif>@lang('translate.worker')
+                                                                </option>
+                                                            </select>
+                                                            @error('worker_permission')
+                                                                <span class="text-danger">@lang('translate.'.$message)</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>@lang('translate.worker_photo')</label>
                                                             <label id="projectinput7" class="file center-block">
