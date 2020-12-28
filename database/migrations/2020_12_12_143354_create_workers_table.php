@@ -21,9 +21,9 @@ class CreateWorkersTable extends Migration
             $table->string('phone')->unique();
             $table->string('address');
             $table->unsignedSmallInteger('salary');
-            $table->string('per');
-            $table->unsignedSmallInteger('store_id')->default(0);
-            $table->boolean('store_permission')->comment('0:manager, 1:worker');
+            $table->unsignedSmallInteger('per')->comment('1:week, 2:month, 3:year');
+            $table->unsignedSmallInteger('store_id')->comment('0:null');
+            $table->boolean('worker_permission')->comment('0:null, 1:manager, 2:worker');
             $table->string('photo')->nullable();
             $table->timestamps();
         });
