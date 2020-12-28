@@ -32,7 +32,7 @@ class WorkerRequest extends FormRequest
             'salary' => 'required|numeric',
             'per' => 'required',
             'store_id' => 'required',
-            'store_permission' => 'in:0,1',
+            'worker_permission' => 'required',
             'photo' => 'image|max:2500',
         ];
     }
@@ -66,6 +66,7 @@ class WorkerRequest extends FormRequest
             'per.required' => 'per_field_is_required',
 
             'store_id.required' => 'store_name_field_is_required',
+            'worker_permission.required' => 'worker_permission_field_is_required',
 
             'photo.image' => 'photo_must_be_an_image',
             'photo.max' => 'photo_may_not_be_greater_than_2.5_mb',
