@@ -12,11 +12,13 @@ class Worker extends Model
     protected $fillable = [
         'name',
         'age',
+        'national_id',
         'address',
         'phone',
         'salary',
         'per',
         'store_id',
+        'worker_permission',
         'photo',
     ];
 
