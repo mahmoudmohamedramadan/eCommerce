@@ -45,14 +45,17 @@ class WorkerController extends Controller
         try {
             DB::beginTransaction();
             $photoName = savePhoto('photo', $request->photo, 'assets/images/worker');
+
             Worker::create([
                 'name' => $request->name,
                 'age' => $request->age,
+                'national_id' => $request->national_id,
                 'address' => $request->address,
                 'phone' => $request->phone,
                 'salary' => $request->salary,
                 'per' => $request->per,
                 'store_id' => $request->store_id,
+                'worker_permission' => $request->worker_permission,
                 'photo' => $photoName
             ]);
             DB::commit();
@@ -60,6 +63,7 @@ class WorkerController extends Controller
             session()->flash('success', __('translate.saved_success'));
             return redirect()->route('workers.create');
         } catch (\Exception $ex) {
+            return $ex;
             DB::rollBack();
             session()->flash('error', __('translate.saved_error'));
             return redirect()->route('workers.create');
@@ -102,11 +106,13 @@ class WorkerController extends Controller
             $worker->update([
                 'name' => $request->name,
                 'age' => $request->age,
-                'address' => $request->address,
+                'national_id' => $request->national_id,
                 'phone' => $request->phone,
+                'address' => $request->address,
                 'salary' => $request->salary,
                 'per' => $request->per,
                 'store_id' => $request->store_id,
+                'worker_permission' => $request->worker_permission,
             ]);
             DB::commit();
 
