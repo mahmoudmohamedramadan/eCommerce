@@ -22,8 +22,6 @@ return [
     'store_phone_placeholder' => 'Enter Store Phone',
     'store_address' => 'Store Address',
     'store_address_placeholder' => 'Enter Store Address',
-    'store_manager' => 'Store Manager',
-    'store_manager_placeholder' => 'Enter Name Of Store Manager',
     #=================================== end store ===================================
 
     #=================================== start worker ===================================
@@ -35,6 +33,8 @@ return [
     'worker_name_placeholder' => 'Enter Worker Name',
     'worker_age' => 'Worker Age',
     'worker_age_placeholder' => 'Enter Worker Age',
+    'national_id' => 'National Id',
+    'national_id_placeholder' => 'Enter National Id',
     'worker_address' => 'Worker Address',
     'worker_address_placeholder' => 'Enter Worker Address',
     'worker_phone' => 'Worker Phone',
@@ -42,6 +42,9 @@ return [
     'worker_salary' => 'Worker Salary',
     'worker_salary_placeholder' => 'Enter Worker Salary',
     'worker_per' => 'Per',
+    'worker_permission' => 'Worker Permission',
+    'manager' => 'Manager',
+    'worker' => 'Worker',
     'worker_photo' => 'Worker Photo',
     #=================================== end worker ===================================
 
@@ -75,8 +78,10 @@ return [
     'used_quantity' => 'Used Quantity',
     'used_quantity_placeholder' => 'Enter Used Quantity',
     'stored_quantity' => 'Stored Quantity',
-    'minimum_quantity' => 'Minimun Quantity',
-    'minimum_quantity_placeholder' => 'Enter Minimun Quantity',
+    'minimum_used' => 'Minimum Used',
+    'minimum_stored' => 'Minimum Stored',
+    'minimum_used_placeholder' => 'Enter Minimun Used Quantity',
+    'minimum_stored_placeholder' => 'Enter Minimun Stored Quantity',
     'product_photo' => 'Product Photo',
     //stored quantity error
     'total_quantity_error' => 'invalid total quantity',
@@ -118,71 +123,81 @@ return [
     #=================================== end debt ===================================
 
     #=================================== start validation ===================================
-    'name field is required' => 'The name field is required',
-    'name may not be greater than 25 characters' => 'The name may not be greater than 25 characters',
-    'name field should be unique' => 'The name field should be unique',
+    'name_field_is_required' => 'The name field is required',
+    'name_field_should_be_unique' => 'The name field should be unique',
 
-    'phone field is required' => 'The phone field is required',
-    'phone format is invalid' => 'The phone format is invalid',
-    'phone field should be unique' => 'The phone field should be unique',
+    'phone_field_is_required' => 'The phone field is required',
+    'phone_format_is_invalid' => 'The phone format is invalid',
+    'phone_field_should_be_unique' => 'The phone field should be unique',
 
-    'address field is required' => 'The address field is required',
+    'address_field_is_required' => 'The address field is required',
 
-    'manager field is required' => 'The manager field is required',
+    'salary_field_is_required' => 'The salary field is required',
+    'salary_field_must_be_a_number' => 'The salary field must be a number',
 
-    'price field is required' => 'The price field is required',
-    'price must be a number' => 'The price must be a number',
+    'per_field_is_required' => 'The per field is required',
 
-    'total quantity field is required' => 'The total quantity field is required',
-    'total quantity must be a number'  => 'The total quantity must be a number',
+    'store_name_field_is_required' => 'The store name field is required',
 
-    'used quantity field is required' => 'The used quantity field is required',
-    'used quantity must be a number'  => 'The used quantity must be a number',
+    'worker_permission_field_is_required' => 'The worker permission field is required',
 
-    'stored quantity field is required' => 'The stored quantity field is required',
-    'stored quantity must be a number'  => 'The stored quantity must be a number',
+    'price_field_is_required' => 'The price field is required',
+    'price_must_be_a_number' => 'The price must be a number',
 
-    'store name field is required' => 'The store name field is required',
-    'company name field is required' => 'The company name field is required',
+    'total_quantity_field_is_required' => 'The total quantity field is required',
+    'total_quantity_must_be_a_number'  => 'The total quantity must be a number',
 
-    'minimum quantity field is required' => 'The minimum quantity field is required',
-    'minimum quantity must be a number' => 'The minimum quantity quantity must be a number',
-    'minimum quantity must not be greater than stored number' => 'The minimum quantity must not be greater than stored number',
+    'used_quantity_field_is_required' => 'The used quantity field is required',
+    'used_quantity_must_be_a_number'  => 'The used quantity must be a number',
 
-    'photo must be an image' => 'The photo must be an image',
-    'photo may not be greater than 2.5 mb' => 'The photo may not be greater than 2.5 mb',
+    'stored_quantity_field_is_required' => 'The stored quantity field is required',
+    'stored_quantity_must_be_a_number'  => 'The stored quantity must be a number',
 
-    'quantity field is required' => 'The quantity field is required',
-    'quantity field must be a number' => 'The quantity field must be a array',
+    'minimum_used_field_is_required' => 'The minimum used quantity field is required',
+    'minimum_used_must_be_a_number'  => 'The minimum used quantity must be a number',
 
-    'once price field is required' => 'The once price field is required',
-    'once price field must be a array' => 'The once price field must be a array',
+    'company_name_field_is_required' => 'The company name field is required',
 
-    'total price field is required' => 'The total price field is required',
-    'total price field must be a number' => 'The total price field must be a number',
+    'minimum_used_field_is_required' => 'The minimum used quantity field is required',
+    'minimum_used_must_be_a_number' => 'The minimum used quantity must be a number',
+    'minimum_used_must_not_be_greater_than_used_quantity' => 'The minimum used quantity must not be greater than used quantity',
 
-    'email field is required' => 'The email field is required',
-    'email field should be correct email' => 'The email field should be correct email',
+    'minimum_stored_field_is_required' => 'The minimum stored quantity field is required',
+    'minimum_stored_must_be_a_number' => 'The minimum stored quantity must be a number',
+    'minimum_stored_must_not_be_greater_than_stored_quantity' => 'The minimum stored quantity must not be greater than stored quantity',
 
-    'age field is required' => 'The age field is required',
-    'age may not be greater than 2 characters' => 'The age may not be greater than 2 characters',
+    'photo_must_be_an_image' => 'The photo must be an image',
+    'photo_may_not_be_greater_than_2.5_mb' => 'The photo may not be greater than 2.5 mb',
 
-    'salary field is required' => 'The salary field is required',
-    'salary may not be greater than 5 characters' => 'The salary may not be greater than 5 characters',
+    'quantity_field_is_required' => 'The quantity field is required',
+    'quantity_field_must_be_a_number' => 'The quantity field must be a array',
 
-    'per field is required' => 'The per field is required',
+    'once_price_field_is_required' => 'The once price field is required',
+    'once_price_field_must_be_a_array' => 'The once price field must be a array',
 
-    'title field is required' => 'The title field is required',
-    'title field should be unique' => 'The title field should be unique',
+    'total_price_field_is_required' => 'The total price field is required',
+    'total_price_field_must_be_a_number' => 'The total price field must be a number',
 
-    'details field is required' => 'The details field is required',
-    'details may not be greater than 255 characters' => 'The details may not be greater than 255 characters',
+    'email_field_is_required' => 'The email field is required',
+    'email_field_should_be_correct_email' => 'The email field should be correct email',
 
-    'pay date field is required' => 'The pay date field is required',
-    'pay date must be a correct date' => 'The pay date must be a correct date',
+    'age_field_is_required' => 'The age field is required',
+    'age_field_must_be_a_number' => 'The age price field must be a number',
 
-    'remember date field is required' => 'The remember date field is required',
-    'remember date must be a correct date' => 'The remember date must be a correct date',
+    'national_id_field_is_required' => 'The national id field is required',
+    'national_id_field_must_be_a_number' => 'The national id field must be a number',
+
+    'title_field_is_required' => 'The title field is required',
+    'title_field_should_be_unique' => 'The title field should be unique',
+
+    'details_field_is_required' => 'The details field is required',
+    'details_may_not_be_greater_than_255_characters' => 'The details may not be greater than 255 characters',
+
+    'pay_date_field_is_required' => 'The pay date field is required',
+    'pay_date_must_be_a_correct_date' => 'The pay date must be a correct date',
+
+    'remember_date_field_is_required' => 'The remember date field is required',
+    'remember_date_must_be_a_correct_date' => 'The remember date must be a correct date',
     #=================================== end validation ===================================
 
     #=================================== start general ===================================

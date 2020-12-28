@@ -5,10 +5,8 @@ return [
     #=================================== start profile ===================================
     'user_name' => 'اسم المستخدم',
     'user_name_placeholder' => 'ادخل اسم المستخدم',
-
     'email' => 'البريد الالكتروني',
     'email_placeholder' => 'ادخل البريد الالكتروني',
-
     'change_password' => 'تغير كلمة المرور',
     #=================================== end profile ===================================
 
@@ -22,9 +20,6 @@ return [
     'store_phone' => 'هاتف المخزن',
     'store_phone_placeholder' => 'ادخل هاتف المخزن',
     'store_address' => 'عنوان المخزن',
-    'store_address_placeholder' => 'ادخل عنوان المخزن',
-    'store_manager' => 'مدير المخزن',
-    'store_manager_placeholder' => 'ادخل اسم مدير المخزن',
     #=================================== end store ===================================
 
     #=================================== start worker ===================================
@@ -36,6 +31,8 @@ return [
     'worker_name_placeholder' => 'ادخل اسم العامل',
     'worker_age' => 'سن العامل',
     'worker_age_placeholder' => 'ادخل سن العامل',
+    'national_id' => 'الرقم القومي',
+    'national_id_placeholder' => 'ادخل الرقم القومي',
     'worker_address' => 'عنوان العامل',
     'worker_address_placeholder' => 'ادخل عنوان العامل',
     'worker_phone' => 'هاتف العامل',
@@ -43,6 +40,9 @@ return [
     'worker_salary' => 'مرتب العامل',
     'worker_salary_placeholder' => 'ادخل مرتب العامل',
     'worker_per' => 'الفترة',
+    'worker_permission' => 'صلاحيات العامل',
+    'manager' => 'مدير',
+    'worker' => 'عامل',
     'worker_photo' => 'صورة العامل',
     #=================================== end worker ===================================
 
@@ -76,8 +76,10 @@ return [
     'used_quantity' => 'الكمية المستخدمة',
     'used_quantity_placeholder' => 'ادخل الكمية المستخدمة',
     'stored_quantity' => 'الكمية المخزنة',
-    'minimum_quantity' => 'الحد الادني',
-    'minimum_quantity_placeholder' => 'ادخل كمية الحد الادني',
+    'minimum_used' => 'الحد الادني للاستخدام',
+    'minimum_stored' => 'الحد الادني للتخزين',
+    'minimum_used_placeholder' => 'ادخل كمية الحد الادني لاستخدام',
+    'minimum_stored_placeholder' => 'ادخل كمية الحد الادني للتخزين',
     'product_photo' => 'صورة المنتج',
     //stored quantity error
     'total_quantity_error' => 'الكمية الاجمالية غير صحيحة',
@@ -119,70 +121,81 @@ return [
     #=================================== end debt ===================================
 
     #=================================== end validation ===================================
-    'name field is required' => 'حقل الاسم مطلوب',
-    'name may not be greater than 25 characters' => 'يجب الا يزيد الاسم عن 25 حرفا',
-    'name field should be unique' => 'يجب ان يكون حقل الاسم فريدا',
+    'name_field_is_required' => 'حقل الاسم مطلوب',
+    'name_field_should_be_unique' => 'يجب ان يكون حقل الاسم فريدا',
 
-    'phone field is required' => 'حقل الهاتف مطلوب',
-    'phone format is invalid' => 'تنسيق حقل الهاتف غير صحيح',
-    'phone field should be unique' => 'يجب ان يكون حقل الهاتف فريدا',
+    'phone_field_is_required' => 'حقل الهاتف مطلوب',
+    'phone_format_is_invalid' => 'تنسيق حقل الهاتف غير صحيح',
+    'phone_field_should_be_unique' => 'يجب ان يكون حقل الهاتف فريدا',
 
-    'address field is required' => 'حقل العنوان مطلوب',
+    'address_field_is_required' => 'حقل العنوان مطلوب',
 
-    'manager field is required' => 'حقل المدير مطلوب',
+    'salary_field_is_required' => 'حقل المرتب مطلوب',
+    'salary_field_must_be_a_number' => 'حقل المرتب يجب ان يكون رقما',
 
-    'price field is required' => 'حقل السعر مطلوب',
-    'price must be a number'  => 'حقل السعر يجب ان يكون رقما',
+    'per_field_is_required' => 'حقل الفترة مطلوب',
 
-    'total quantity field is required' => 'حقل الكمية الاجمالية مطلوب',
-    'total quantity must be a number'  => 'حقل الكمية الاجمالية يجب ان يكون رقما',
+    'store_name_field_is_required' => 'حقل اسم المخزن مطلوب',
 
-    'used quantity field is required' => 'حقل الكمية المستخدمة مطلوب',
-    'used quantity must be a number'  => 'حقل الكمية المستخدمة يجب ان يكون رقما',
+    'worker_permission_field_is_required' => 'حقل صلاحيات العامل مطلوب',
 
-    'stored quantity field is required' => 'حقل الكمية المخزنة مطلوب',
-    'stored quantity must be a number'  => 'حقل الكمية المخزنة يجب ان يكون رقما',
+    'price_field_is_required' => 'حقل السعر مطلوب',
+    'price_must_be_a_number'  => 'حقل السعر يجب ان يكون رقما',
 
-    'store name field is required' => 'حقل اسم المخزن مطلوب',
-    'company name field is required' => 'حقل اسم الشركة مطلوب',
+    'total_quantity_field_is_required' => 'حقل الكمية الاجمالية مطلوب',
+    'total_quantity_must_be_a_number'  => 'حقل الكمية الاجمالية يجب ان يكون رقما',
 
-    'minimum quantity field is required' => 'حقل كمية الحد الادني مطلوب',
-    'minimum quantity must be a number' => 'حقل الحد الادني يجب ان يكون رقما',
+    'used_quantity_field_is_required' => 'حقل الكمية المستخدمة مطلوب',
+    'used_quantity_must_be_a_number'  => 'حقل الكمية المستخدمة يجب ان يكون رقما',
 
-    'photo must be an image' => 'يجب ان تكون الصورة صورة',
-    'photo may not be greater than 2.5 mb' => 'يجب الا يزيد حجم الصورة عن 2.5 ميغا بايت',
+    'stored_quantity_field_is_required' => 'حقل الكمية المخزنة مطلوب',
+    'stored_quantity_must_be_a_number'  => 'حقل الكمية المخزنة يجب ان يكون رقما',
 
-    'quantity field is required' => 'حقل الكمية مطلوب',
-    'quantity field must be a array' => 'حقل الكمية يجب ان يكون مصفوفة',
+    'minimum_used_field_is_required' => 'حقل كمية الحد الادني مطلوب',
+    'minimum_used_must_be_a_number'  => 'حقل كمية الحد الادني يجب ان يكون رقما',
 
-    'once price field is required' => 'حقل سعر الواحدة مطلوب',
-    'once price field must be a array' => 'حقل الكمية يجب ان يكون مصفوفة',
+    'company_name_field_is_required' => 'حقل اسم الشركة مطلوب',
 
-    'total price field is required' => 'حقل السعر الاجمالي مطلوب',
-    'total price field must be a number' => 'حقل السعر الاجمالي يجب ان يكون رقما',
+    'minimum_used_field_is_required' => 'حقل كمية الحد الادني المستخدمة مطلوب',
+    'minimum_used_must_be_a_number' => 'حقل كمية الحد الادني المستخدمة يجب ان يكون رقما',
+    'minimum_used_must_not_be_greater_than_used_quantity' => 'حقل كمية الحد الادني المستخدمة يجب الا يكون اكبر من الكمية المستخدمة',
 
-    'email field is required' => 'حقل البريد الالكتروني مطلوب',
-    'email field should be correct email' => 'حقل البريد الالكتروني يجب ان يكون بريدا صحيحا',
+    'minimum_stored_field_is_required' => 'حقل كمية الحد الادني المخزنة مطلوب',
+    'minimum_stored_must_be_a_number' => 'حقل كمية الحد الادني المخونة يجب ان يكون رقما',
+    'minimum_stored_must_not_be_greater_than_stored_quantity' => 'حقل كمية الحد الادني المخزنة يجب الا يكون اكبر من الكمية المخزنة',
 
-    'age field is required' => 'حقل السن مطلوب',
-    'age may not be greater than 2 characters' => 'يجب الا يزيد حقل السن عن رقمين',
+    'photo_must_be_an_image' => 'يجب ان تكون الصورة صورة',
+    'photo_may_not_be_greater_than_2.5_mb' => 'يجب الا يزيد حجم الصورة عن 2.5 ميغا بايت',
 
-    'salary field is required' => 'حقل المرتب مطلوب',
-    'salary may not be greater than 5 characters' => 'يجب الا يزيد حقل المرتب عن 5 ارقام',
+    'quantity_field_is_required' => 'حقل الكمية مطلوب',
+    'quantity_field_must_be_a_array' => 'حقل الكمية يجب ان يكون مصفوفة',
 
-    'per field is required' => 'حقل الفترة مطلوب',
+    'once price_field_is_required' => 'حقل سعر الواحدة مطلوب',
+    'once_price_field_must_be_a_array' => 'حقل الكمية يجب ان يكون مصفوفة',
 
-    'title field is required' => 'حقل العوان مطلوب',
-    'title field should be unique' => 'حقل العوان يجب ان يكون فريدا',
+    'total_price_field_is_required' => 'حقل السعر الاجمالي مطلوب',
+    'total_price_field_must_be_a_number' => 'حقل السعر الاجمالي يجب ان يكون رقما',
 
-    'details field is required' => 'حقل التفاصيل مطلوب',
-    'details may not be greater than 255 characters' => 'يجب الا يزيد حقل التفاصيل عن 255 حرفا',
+    'email_field_is_required' => 'حقل البريد الالكتروني مطلوب',
+    'email_field_should_be_correct_email' => 'حقل البريد الالكتروني يجب ان يكون بريدا صحيحا',
 
-    'pay date field is required' => 'حقل تاريخ السداد مطلوب',
-    'pay date must be a correct date' => 'حقل تاريخ السداد يجب ان تاريج صحيحا',
+    'age_field_is_required' => 'حقل السن مطلوب',
+    'age_field_must_be_a_number' => 'حقل السن يجب ان يكون رقما',
 
-    'remember date field is required' => 'حقل تاريخ التذكير مطلوب',
-    'remember date must be a correct date' => 'حقل تاريخ التذكير يجب ان يكون تاريخ صحيحا',
+    'national_id_field_is_required' => 'حقل الرقم القومي مطلوب',
+    'national_id_field_must_be_a_number' => 'حقل الرقم القومي يجب ان يكون رقما',
+
+    'title_field_is_required' => 'حقل العوان مطلوب',
+    'title_field_should_be_unique' => 'حقل العوان يجب ان يكون فريدا',
+
+    'details_field_is_required' => 'حقل التفاصيل مطلوب',
+    'details_may_not_be_greater_than_255_characters' => 'يجب الا يزيد حقل التفاصيل عن 255 حرفا',
+
+    'pay_date_field_is_required' => 'حقل تاريخ السداد مطلوب',
+    'pay_date_must_be_a_correct_date' => 'حقل تاريخ السداد يجب ان تاريج صحيحا',
+
+    'remember_date_field_is_required' => 'حقل تاريخ التذكير مطلوب',
+    'remember_date_must_be_a_correct_date' => 'حقل تاريخ التذكير يجب ان يكون تاريخ صحيحا',
     #=================================== end validation ===================================
 
     #=================================== start general ===================================
