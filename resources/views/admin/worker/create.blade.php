@@ -30,11 +30,12 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a
-                                        href="{{ route('dashboard') }}">@lang('translate.dashboard')</a>
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('dashboard') }}">
+                                        @lang('translate.dashboard')
+                                    </a>
                                 </li>
-                                <li class="breadcrumb-item active">@lang('translate.create_worker')
-                                </li>
+                                <li class="breadcrumb-item active">@lang('translate.create_worker')</li>
                             </ol>
                         </div>
                     </div>
@@ -62,7 +63,8 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form action="{{ route('workers.store') }}" method="POST" enctype="multipart/form-data">
+                                        <form action="{{ route('workers.store') }}" method="POST"
+                                            enctype="multipart/form-data">
                                             @csrf
 
                                             <div class="form-body">
@@ -75,7 +77,7 @@
                                                             <input type="text" value="{{ old('name') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_name_placeholder')"
-                                                                name="name">
+                                                                name="name" minlength="3" maxlength="25">
                                                             @error('name')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -87,7 +89,7 @@
                                                             <label>@lang('translate.worker_age')</label>
                                                             <input type="text" value="{{ old('age') }}" class="form-control"
                                                                 placeholder="@lang('translate.worker_age_placeholder')"
-                                                                name="age" maxlength="2">
+                                                                name="age" minlength="2" maxlength="2">
                                                             @error('age')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -98,12 +100,12 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label>@lang('translate.worker_address')</label>
-                                                            <input type="text" value="{{ old('address') }}"
+                                                            <label>@lang('translate.national_id')</label>
+                                                            <input type="text" value="{{ old('national_id') }}"
                                                                 class="form-control"
-                                                                placeholder="@lang('translate.worker_address_placeholder')"
-                                                                name="address">
-                                                            @error('address')
+                                                                placeholder="@lang('translate.national_id_placeholder')"
+                                                                name="national_id" minlength="14" maxlength="14">
+                                                            @error('national_id')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
                                                         </div>
@@ -117,6 +119,22 @@
                                                                 placeholder="@lang('translate.worker_phone_placeholder')"
                                                                 name="phone" maxlength="11">
                                                             @error('phone')
+                                                                <span class="text-danger">@lang('translate.'.$message)</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>@lang('translate.worker_address')</label>
+                                                            <input type="text" value="{{ old('address') }}"
+                                                                class="form-control"
+                                                                placeholder="@lang('translate.worker_address_placeholder')"
+                                                                name="address">
+                                                            @error('address')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
                                                         </div>
@@ -141,9 +159,9 @@
                                                         <div class="form-group">
                                                             <label>@lang('translate.worker_per')</label>
                                                             <select class="form-control" name="per">
-                                                                <option value="week">Week</option>
-                                                                <option value="month">Month</option>
-                                                                <option value="year">Year</option>
+                                                                <option value="1">Week</option>
+                                                                <option value="2">Month</option>
+                                                                <option value="3">Year</option>
                                                             </select>
                                                             @error('per')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
@@ -157,7 +175,7 @@
                                                         <div class="form-group">
                                                             <label>@lang('translate.store_name')</label>
                                                             <select class="form-control" name="store_id">
-                                                                <option value="0">none</option>
+                                                                <option value="0"></option>
                                                                 @foreach ($stores as $store)
                                                                     <option value="{{ $store->id }}">
                                                                         {{ $store->name }}
@@ -171,6 +189,22 @@
                                                     </div>
 
                                                     <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>@lang('translate.worker_permission')</label><select
+                                                                class="form-control" name="worker_permission">
+                                                                <option value="0"></option>
+                                                                <option value="1">@lang('translate.manager')</option>
+                                                                <option value="2">@lang('translate.worker')</option>
+                                                            </select>
+                                                            @error('worker_permission')
+                                                                <span class="text-danger">@lang('translate.'.$message)</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>@lang('translate.worker_photo')</label>
                                                             <label id="projectinput7" class="file center-block">
