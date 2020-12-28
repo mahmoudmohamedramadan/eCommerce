@@ -54,12 +54,14 @@
                                             <thead>
                                                 <tr>
                                                     <th>@lang('translate.worker_name')</th>
+                                                    <th>@lang('translate.national_id')</th>
                                                     <th>@lang('translate.worker_age')</th>
                                                     <th>@lang('translate.worker_phone')</th>
                                                     <th>@lang('translate.worker_address')</th>
                                                     <th>@lang('translate.worker_salary')</th>
                                                     <th>@lang('translate.worker_per')</th>
                                                     <th>@lang('translate.store_name')</th>
+                                                    <th>@lang('translate.worker_permission')</th>
                                                     <th>@lang('translate.worker_photo')</th>
                                                     <th>@lang('translate.measures')</th>
                                                 </tr>
@@ -68,20 +70,35 @@
                                                 @foreach ($workers as $worker)
                                                     <tr>
                                                         <td>{{ $worker->name }}</td>
+                                                        <td>{{ $worker->national_id }}</td>
                                                         <td>{{ $worker->age }}</td>
                                                         <td>{{ $worker->phone }}</td>
                                                         <td>{{ $worker->address }}</td>
                                                         <td>{{ $worker->salary }}</td>
-                                                        <td>{{ $worker->per }}</td>
                                                         <td>
-                                                            @if ($worker->store_id == 0)
-                                                                none
+                                                            @if ($worker->per == 1)
+                                                                Week
+                                                            @elseif($worker->per == 2)
+                                                                Month
                                                             @else
+                                                                Year
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if ($worker->store_id != 0)
                                                                 {{ $worker->store->name }}
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <img src="{{ asset('assets/images/worker/' . $worker->photo) }} ?? http://www.placehold.it/100/100"
+                                                            @if ($worker->worker_permission == 1)
+                                                                Manager
+                                                            @else
+                                                                Worker
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <img src="{{ asset('assets/images/worker/' . $worker->photo) }}
+                                                                        ?? http://www.placehold.it/100/100"
                                                                 alt="@lang('translate.worker_photo')" width="90"
                                                                 height="90">
                                                         </td>
