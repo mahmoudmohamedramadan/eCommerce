@@ -117,7 +117,7 @@
                                                             <input type="text" value="{{ old('phone') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_phone_placeholder')"
-                                                                name="phone" maxlength="11">
+                                                                name="phone" minlength="11" maxlength="11">
                                                             @error('phone')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -133,7 +133,7 @@
                                                             <input type="text" value="{{ old('address') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_address_placeholder')"
-                                                                name="address">
+                                                                name="address" minlength="5" maxlength="255">
                                                             @error('address')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -148,7 +148,7 @@
                                                             <input type="text" value="{{ old('salary') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_salary_placeholder')"
-                                                                name="salary" maxlength="5">
+                                                                name="salary" minlength="3" maxlength="5">
                                                             @error('salary')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
