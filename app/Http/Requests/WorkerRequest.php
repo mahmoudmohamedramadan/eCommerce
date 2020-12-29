@@ -26,9 +26,9 @@ class WorkerRequest extends FormRequest
         return [
             'name' => 'required|unique:workers,name,' . $this->id,
             'age' => 'required|numeric',
-            'national_id' => 'required|numeric',
+            'national_id' => 'required|numeric|unique:workers,national_id,' . $this->id,
             'address' => 'required',
-            'phone' => 'required_without:id|regex:/[0-9]{11}/|unique:workers,phone,' . $this->id,
+            'phone' => 'required|regex:/[0-9]{11}/|unique:workers,phone,' . $this->id,
             'salary' => 'required|numeric',
             'per' => 'required',
             'store_id' => 'required',
@@ -51,12 +51,12 @@ class WorkerRequest extends FormRequest
             'age.required' => 'age_field_is_required',
             'age.numeric' => 'age_must_be_a_number',
 
-            'national_id.required' => 'national_id_field_is_required',
+            'national_id.required_without' => 'national_id_field_is_required',
             'national_id.numeric' => 'national_id_field_must_be_a_number',
 
             'address.required' => 'address_field_is_required',
 
-            'phone.required_without' => 'phone_field_is_required',
+            'phone.required' => 'phone_field_is_required',
             'phone.regex' => 'phone_format_is_invalid',
             'phone.unique' => 'phone_field_should_be_unique',
 
