@@ -80,7 +80,7 @@
                                                             <input type="text" value="{{ $worker->name ?? old('name') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_name_placeholder')"
-                                                                name="name">
+                                                                name="name" minlength="3" maxlength="25">
                                                             @error('name')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -93,7 +93,7 @@
                                                             <input type="text" value="{{ $worker->age ?? old('age') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_age_placeholder')"
-                                                                name="age" maxlength="2">
+                                                                name="age" minlength="2" maxlength="2">
                                                             @error('age')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -104,13 +104,13 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label>@lang('translate.worker_address')</label>
+                                                            <label>@lang('translate.national_id')</label>
                                                             <input type="text"
-                                                                value="{{ $worker->address ?? old('address') }}"
+                                                                value="{{ $worker->national_id ?? old('national_id') }}"
                                                                 class="form-control"
-                                                                placeholder="@lang('translate.worker_address_placeholder')"
-                                                                name="address">
-                                                            @error('address')
+                                                                placeholder="@lang('translate.national_id_placeholder')"
+                                                                name="national_id" minlength="14" maxlength="14">
+                                                            @error('national_id')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
                                                         </div>
@@ -122,8 +122,24 @@
                                                             <input type="text" value="{{ $worker->phone ?? old('phone') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_phone_placeholder')"
-                                                                name="phone" maxlength="11">
+                                                                name="phone" minlength="11" maxlength="11">
                                                             @error('phone')
+                                                                <span class="text-danger">@lang('translate.'.$message)</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>@lang('translate.worker_address')</label>
+                                                            <input type="text"
+                                                                value="{{ $worker->address ?? old('address') }}"
+                                                                class="form-control"
+                                                                placeholder="@lang('translate.worker_address_placeholder')"
+                                                                name="address" minlength="5" maxlength="255">
+                                                            @error('address')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
                                                         </div>
@@ -138,7 +154,7 @@
                                                                 value="{{ $worker->salary ?? old('salary') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_salary_placeholder')"
-                                                                name="salary" maxlength="5">
+                                                                name="salary" minlength="3" maxlength="5">
                                                             @error('salary')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
