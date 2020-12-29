@@ -65,7 +65,9 @@
                                                         <td>{{ $store->address }}</td>
                                                         <td>
                                                             @include('admin.includes.formMeasures', ['editRouting' =>
-                                                            'stores.edit', 'destroyRouting' => 'stores.destroy',
+                                                            'stores.edit', 'destroyRouting' =>
+                                                            'stores.destroy','showWorkers' => 'stores.workers.index',
+                                                            'showProducts' => 'stores.products.index',
                                                             'idValue' => $store->id])
                                                         </td>
                                                     </tr>
