@@ -90,17 +90,23 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            @if ($worker->worker_permission == 1)
-                                                                Manager
+                                                            @if ($worker->worker_permission == 0)
+                                                            @elseif ($worker->worker_permission == 1)
+                                                            Manager
                                                             @else
                                                                 Worker
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <img src="{{ asset('assets/images/worker/' . $worker->photo) }}
-                                                                        ?? http://www.placehold.it/100/100"
-                                                                alt="@lang('translate.worker_photo')" width="90"
-                                                                height="90">
+                                                            @if ($worker->photo)
+                                                                <img src="{{ asset('assets/images/worker/' . $worker->photo) }}"
+                                                                    alt="@lang('translate.worker_photo')" width="90"
+                                                                    height="90">
+                                                            @else
+                                                                <img src="http://www.placehold.it/100/100"
+                                                                    alt="@lang('translate.worker_photo')" width="90"
+                                                                    height="90">
+                                                            @endif
                                                         </td>
                                                         <td>
                                                             @include('admin.includes.formMeasures', ['editRouting' =>
