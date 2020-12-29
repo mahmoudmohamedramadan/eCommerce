@@ -216,9 +216,15 @@
                                                                 <div class="text-danger">@lang('translate.'.$message)</div>
                                                             @enderror
                                                             <div class="row-12 mt-2">
-                                                                <img src="{{ asset('assets/images/worker/' . $worker->photo) }} ?? http://www.placehold.it/100/100"
-                                                                    alt="@lang('translate.worker_photo')" id="photo"
-                                                                    width="100" height="100">
+                                                                @if ($worker->photo)
+                                                                    <img src="{{ asset('assets/images/worker/' . $worker->photo) }}"
+                                                                        alt="@lang('translate.worker_photo')" id="photo"
+                                                                        width="100" height="100">
+                                                                @else
+                                                                    <img src="http://www.placehold.it/100/100"
+                                                                        alt="@lang('translate.worker_photo')" id="photo"
+                                                                        width="100" height="100">
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
