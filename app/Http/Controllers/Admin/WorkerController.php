@@ -63,7 +63,6 @@ class WorkerController extends Controller
             session()->flash('success', __('translate.saved_success'));
             return redirect()->route('workers.create');
         } catch (\Exception $ex) {
-            return $ex;
             DB::rollBack();
             session()->flash('error', __('translate.saved_error'));
             return redirect()->route('workers.create');
