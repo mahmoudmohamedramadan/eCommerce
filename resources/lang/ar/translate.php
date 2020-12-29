@@ -213,6 +213,8 @@ return [
     'save' => 'حفظ',
     'print' => 'طباعة',
     'edit' => 'تعديل',
+    'show_workers' => 'عرض العمال',
+    'show_products' => 'عرض المنتجات',
     'delete' => 'حذف',
     'cancel' => 'الغاء',
     'measures' => 'الاجراءات',
