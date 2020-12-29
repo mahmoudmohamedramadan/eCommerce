@@ -58,15 +58,17 @@ class AdminController extends Controller
      */
     public function pushNotifications()
     {
-        $UnNotifiedProducts = Product::unnotifiedProducts()->get();
+        if (Product::unnotifiedProducts()->count() > 0) {
+            $UnNotifiedProducts = Product::unnotifiedProducts()->get();
 
-        foreach ($UnNotifiedProducts as $product) {
-            if ($product->used_quantity == $product->minimum_quantity) {
-                Admin::first()->notify(new ProductNotification(($product)));
+            foreach ($UnNotifiedProducts as $product) {
+                if ($product->used_quantity == $product->minimum_quantity) {
+                    Admin::first()->notify(new ProductNotification(($product)));
 
-                $product->update([
-                    'notified' => true
-                ]);
+                    $product->update([
+                        'notified' => true
+                    ]);
+                }
             }
         }
 
