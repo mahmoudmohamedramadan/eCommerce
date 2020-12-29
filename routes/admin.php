@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProductsOfStoreController;
+use App\Http\Controllers\Admin\WorkersOfStoreController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\WorkerController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\WorkerController;
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\StoreController;
-use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\DebtController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,10 +30,14 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     Route::get('admin/getNotifications', [AdminController::class, 'pushNotifications'])->name('pushNotifications');
     //read all debt notifications
     Route::get('admin/readAllNotifications', [DebtController::class, 'readAllNotifications'])->name('readAllNotifications');
+    //store routes
+    Route::resource('stores', StoreController::class)->except('show');
+    //workers of store routes
+    Route::resource('stores.workers', WorkersOfStoreController::class)->only('index');
+    //products of store routes
+    Route::resource('stores.products', ProductsOfStoreController::class)->only('index');
     //worker routes
     Route::resource('workers', WorkerController::class)->except('show');
-    //category routes
-    Route::resource('categories', CategoryController::class)->except('show');
     //company routes
     Route::resource('companies', CompanyController::class)->except('show');
     //product routes
@@ -41,8 +46,6 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     Route::get('products/{product}/{notification_id}', [ProductController::class, 'show'])->name('products.show');
     //get modal validation
     Route::post('products/create/modal_value', [ProductController::class, 'getModalValue'])->name('getModalValue');
-    //store routes
-    Route::resource('stores', StoreController::class)->except('show');
     //sale routes
     Route::resource('sales', SaleController::class)->except('show');
     //get sale's product values
