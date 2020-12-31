@@ -13,10 +13,10 @@
                      var oncePriceValue = parseFloat($(`.once-price-${currentRowId}`).val());
                      totalPriceValue += quantityValue * oncePriceValue;
                      $('input[name=total_price]').val(totalPriceValue);
-                     $('#submit').prop('disabled', false);
+                     $('button[type=submit]').prop('disabled', false);
                      $(`.quantity-error-${currentRowId}`).attr('hidden', true);
                  } else {
-                     $('#submit').prop('disabled', true);
+                     $('button[type=submit]').prop('disabled', true);
                      $(`.quantity-error-${currentRowId}`).attr('hidden', false);
                  }
              }
@@ -44,12 +44,12 @@
                      if (!data.success) {
                          $('.sale-field-error').attr('hidden', false);
                          $('.sale-field-error').text(data.message);
-                         $('#submit').prop('disabled', true);
+                         $('button[type=submit]').prop('disabled', true);
                          setInterval(() => {
                              $('.sale-field-error').attr('hidden', true);
                          }, 10000);
                      } else {
-                         $('#submit').prop('disabled', false);
+                         $('button[type=submit]').prop('disabled', false);
                      }
                  },
                  error: function(data) {
@@ -98,7 +98,7 @@
                  cache: false,
                  data: formData,
                  success: function() {
-                     window.location.href = 'http://commerce.project/en/sales/create';
+                     window.location.href = 'http://commerce.project/{{ app()->getLocale() }}/sales/create';
                  },
                  error: function(data) {
                      console.log(data);
@@ -202,7 +202,7 @@
                                                          onclick="history.back();">
                                                          <i class="ft-x"></i> @lang('translate.cancel')
                                                      </button>
-                                                     <button type="submit" class="btn btn-primary" id="submit" @if (count($products) < 1) disabled @endif>
+                                                     <button type="submit" class="btn btn-primary" @if (count($products) < 1) disabled @endif>
                                                          <i class="la la-check-square-o"></i> @lang('translate.save')
                                                      </button>
                                                  </div>
