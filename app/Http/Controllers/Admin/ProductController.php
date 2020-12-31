@@ -52,11 +52,12 @@ class ProductController extends Controller
                 'name' => $request->name,
                 'price' => $request->price,
                 'store_id' => session()->get('store_id'),
-                'minimum_stored' => session()->get('minimum_stored'),
                 'company_id' => $request->company_id,
                 'total_quantity' => $request->total_quantity,
                 'used_quantity' => $request->used_quantity,
                 'stored_quantity' => $request->stored_quantity,
+                'minimum_used' => $request->minimum_used,
+                'minimum_stored' => session()->get('minimum_stored'),
                 'photo' => $photoName
             ]);
             DB::commit();
@@ -64,6 +65,7 @@ class ProductController extends Controller
             session()->flash('success', __('translate.saved_success'));
             return redirect()->route('products.create');
         } catch (\Exception $ex) {
+            return $ex;
             DB::rollBack();
             session()->flash('error', __('translate.saved_error'));
             return redirect()->route('products.create');
@@ -125,10 +127,11 @@ class ProductController extends Controller
                 'name' => $request->name,
                 'price' => $request->price,
                 'store_id' => session()->get('store_id'),
-                'minimum_stored' => session()->get('minimum_stored'),
                 'company_id' => $request->company_id,
                 'total_quantity' => $request->total_quantity,
                 'used_quantity' => $request->used_quantity,
+                'minimum_used' => $request->minimum_used,
+                'minimum_stored' => session()->get('minimum_stored'),
                 'stored_quantity' => $request->stored_quantity,
             ]);
             DB::commit();
