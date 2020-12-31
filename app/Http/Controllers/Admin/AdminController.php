@@ -50,7 +50,6 @@ class AdminController extends Controller
         }
     }
 
-
     /**
      *
      * Push notification into database
@@ -62,7 +61,7 @@ class AdminController extends Controller
             $UnNotifiedProducts = Product::unnotifiedProducts()->get();
 
             foreach ($UnNotifiedProducts as $product) {
-                if ($product->used_quantity == $product->minimum_quantity) {
+                if ($product->used_quantity == $product->minimum_used or $product->stored_quantity == $product->minimum_stored) {
                     Admin::first()->notify(new ProductNotification(($product)));
 
                     $product->update([
