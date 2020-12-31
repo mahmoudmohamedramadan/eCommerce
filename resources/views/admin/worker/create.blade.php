@@ -19,6 +19,22 @@
             readURL(this);
         });
 
+        $('#store_id').change(function() {
+            if ($(this).val() != 0 && $('#worker_permission').val() == 0) {
+                $('button[type=submit]').attr('disabled', true);
+            } else {
+                $('button[type=submit]').attr('disabled', false);
+            }
+        });
+
+        $('#worker_permission').change(function() {
+            if ($(this).val() != 0 && $('#store_id').val() == 0) {
+                $('button[type=submit]').attr('disabled', true);
+            } else {
+                $('button[type=submit]').attr('disabled', false);
+            }
+        });
+
     </script>
 @endpush
 
@@ -174,7 +190,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>@lang('translate.store_name')</label>
-                                                            <select class="form-control" name="store_id">
+                                                            <select class="form-control" name="store_id" id="store_id">
                                                                 <option value="0"></option>
                                                                 @foreach ($stores as $store)
                                                                     <option value="{{ $store->id }}">
@@ -191,7 +207,8 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>@lang('translate.worker_permission')</label><select
-                                                                class="form-control" name="worker_permission">
+                                                                class="form-control" name="worker_permission"
+                                                                id="worker_permission">
                                                                 <option value="0"></option>
                                                                 <option value="1">@lang('translate.manager')</option>
                                                                 <option value="2">@lang('translate.worker')</option>
