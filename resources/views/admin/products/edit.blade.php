@@ -6,10 +6,10 @@
         $('input[name=total_quantity]').keyup(function() {
             //check if total quantity is valid number
             if (parseFloat($(this).val()) > 0) {
-                $('#submit').prop('disabled', false);
+                $('button[type=submit]').prop('disabled', false);
                 $('#total_quantity_error').attr('hidden', true);
             } else {
-                $('#submit').prop('disabled', true);
+                $('button[type=submit]').prop('disabled', true);
                 $('#total_quantity_error').attr('hidden', false);
             }
         });
@@ -20,11 +20,11 @@
             const storedValue = parseFloat(totalInputValue) - parseFloat($(this).val());
 
             if ($(this).val() == '' || !$.isNumeric($(this).val())) {
-                $('#submit').prop('disabled', true);
+                $('button[type=submit]').prop('disabled', true);
                 $('#used-quantity-error').attr('hidden', false);
             } else if (storedValue > 0) {
                 $('input[name=stored_quantity]').val(storedValue);
-                $('#submit').prop('disabled', false);
+                $('button[type=submit]').prop('disabled', false);
                 $('#stored_quantity_error').attr('hidden', true);
                 $('#used_quantity_error').attr('hidden', true);
                 $('#storeModal').modal('toggle');
@@ -32,7 +32,7 @@
                 $('input[name=stored_quantity]').val(storedValue);
                 $('#store_field').empty();
             } else if (storedValue < 0) {
-                $('#submit').prop('disabled', true);
+                $('button[type=submit]').prop('disabled', true);
                 $('#stored_quantity_error').attr('hidden', false);
                 $('#used_quantity_error').attr('hidden', false);
                 $('#store_field').empty();
@@ -41,16 +41,16 @@
 
         $('#storeModal').on('hidden.bs.modal', function() {
             const storedValue = parseFloat($('input[name=stored_quantity]').val());
-            const minmumValue = $('input[name=minimum_quantity]').val();
+            const minmumValue = $('input[name=minimum_stored]').val();
 
             if ($('#store-id option:selected').text() == '') {
-                $('#submit').attr('disabled', true);
+                $('button[type=submit]').attr('disabled', true);
             } else if (isNaN(minmumValue)) {
-                $('#submit').attr('disabled', true);
+                $('button[type=submit]').attr('disabled', true);
             } else if (storedValue - minmumValue <= 0) {
-                $('#submit').attr('disabled', true);
+                $('button[type=submit]').attr('disabled', true);
             } else {
-                $('#submit').attr('disabled', false);
+                $('button[type=submit]').attr('disabled', false);
             }
         });
 
@@ -205,6 +205,22 @@
                                                     </div>
 
                                                     <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>@lang('translate.minimum_used')</label>
+                                                            <input type="text"
+                                                                value="{{ $product->minimum_used ?? old('minimum_used') }}"
+                                                                class="form-control"
+                                                                placeholder="@lang('translate.minimum_used_placeholder')"
+                                                                name="minimum_used" maxlength="6">
+                                                            @error('minimum_used')
+                                                                <span class="text-danger">@lang('translate.'.$message)</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
                                                         <div class="form-group" id="company_field">
                                                             <label for="Select2">@lang('translate.company_name')</label>
                                                             <select class="form-control" id="Select2" name="company_id">
@@ -221,10 +237,8 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>@lang('translate.product_photo')</label>
                                                             <label id="projectinput7" class="file center-block">
@@ -235,9 +249,15 @@
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
                                                             <div class="row-12 mt-2">
-                                                                <img src="{{ asset('assets/images/product/' . $product->photo) }} ?? http://www.placehold.it/100/100"
-                                                                    alt="@lang('translate.product_photo')" id="photo"
-                                                                    width="100" height="100">
+                                                                @if ($product->photo)
+                                                                    <img src="{{ asset('assets/images/product/' . $product->photo) }}"
+                                                                        alt="@lang('translate.product_photo')" id="photo"
+                                                                        width="100" height="100">
+                                                                @else
+                                                                    <img src="{{ asset('http://www.placehold.it/100/100') }}"
+                                                                        alt="@lang('translate.product_photo')" id="photo"
+                                                                        width="100" height="100">
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -248,7 +268,7 @@
                                                         onclick="history.back();">
                                                         <i class="ft-x"></i> @lang('translate.cancel')
                                                     </button>
-                                                    <button type="submit" class="btn btn-primary" id="submit">
+                                                    <button type="submit" class="btn btn-primary">
                                                         <i class="la la-check-square-o"></i> @lang('translate.edit')
                                                     </button>
                                                 </div>
