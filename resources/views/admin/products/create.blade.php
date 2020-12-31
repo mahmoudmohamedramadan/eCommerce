@@ -6,10 +6,10 @@
          $('input[name=total_quantity]').keyup(function() {
              //check if total quantity is valid number
              if (parseFloat($(this).val()) > 0) {
-                 $('#submit').prop('disabled', false);
+                 $('button[type=submit]').prop('disabled', false);
                  $('#total-quantity-error').attr('hidden', true);
              } else {
-                 $('#submit').prop('disabled', true);
+                 $('button[type=submit]').prop('disabled', true);
                  $('#total-quantity-error').attr('hidden', false);
              }
          });
@@ -20,13 +20,13 @@
              const storedValue = parseFloat(totalInputValue) - parseFloat($(this).val());
 
              if ($(this).val() == '' || !$.isNumeric($(this).val()) || storedValue < 0) {
-                 $('#submit').prop('disabled', true);
+                 $('button[type=submit]').prop('disabled', true);
                  $('#stored-quantity-error').attr('hidden', false);
                  $('#used-quantity-error').attr('hidden', false);
                  $('#store-field').empty();
              } else if (storedValue > 0) {
                  $('input[name=stored_quantity]').val(storedValue);
-                 $('#submit').prop('disabled', false);
+                 $('button[type=submit]').prop('disabled', false);
                  $('#stored-quantity-error').attr('hidden', true);
                  $('#used-quantity-error').attr('hidden', true);
                  $('#storeModal').modal('toggle');
@@ -40,16 +40,16 @@
 
          $('#storeModal').on('hidden.bs.modal', function() {
              const storedValue = parseFloat($('input[name=stored_quantity]').val());
-             const minmumValue = parseFloat($('input[name=minimum_quantity]').val());
+             const minmumValue = parseFloat($('input[name=minimum_stored]').val());
 
              if ($('#store-id option:selected').text() == '') {
-                 $('#submit').attr('disabled', true);
+                 $('button[type=submit]').attr('disabled', true);
              } else if (isNaN(minmumValue)) {
-                 $('#submit').attr('disabled', true);
+                 $('button[type=submit]').attr('disabled', true);
              } else if (storedValue - minmumValue <= 0) {
-                 $('#submit').attr('disabled', true);
+                 $('button[type=submit]').attr('disabled', true);
              } else {
-                 $('#submit').attr('disabled', false);
+                 $('button[type=submit]').attr('disabled', false);
              }
          });
 
@@ -249,7 +249,7 @@
                                                          onclick="history.back();">
                                                          <i class="ft-x"></i> @lang('translate.cancel')
                                                      </button>
-                                                     <button type="submit" class="btn btn-primary" id="submit">
+                                                     <button type="submit" class="btn btn-primary">
                                                          <i class="la la-check-square-o"></i> @lang('translate.save')
                                                      </button>
                                                  </div>
