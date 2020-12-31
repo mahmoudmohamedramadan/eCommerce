@@ -90,10 +90,9 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            @if ($worker->worker_permission == 0)
-                                                            @elseif ($worker->worker_permission == 1)
-                                                            Manager
-                                                            @else
+                                                            @if ($worker->worker_permission == 1)
+                                                                Manager
+                                                            @elseif ($worker->worker_permission == 2)
                                                                 Worker
                                                             @endif
                                                         </td>
