@@ -19,6 +19,22 @@
             readURL(this);
         });
 
+        $('#store_id').change(function() {
+            if ($(this).val() != 0 && $('#worker_permission').val() == 0) {
+                $('button[type=submit]').attr('disabled', true);
+            } else {
+                $('button[type=submit]').attr('disabled', false);
+            }
+        });
+
+        $('#worker_permission').change(function() {
+            if ($(this).val() != 0 && $('#store_id').val() == 0) {
+                $('button[type=submit]').attr('disabled', true);
+            } else {
+                $('button[type=submit]').attr('disabled', false);
+            }
+        });
+
     </script>
 @endpush
 
@@ -183,7 +199,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>@lang('translate.store_name')</label>
-                                                            <select class="form-control" name="store_id">
+                                                            <select class="form-control" name="store_id" id="store_id">
                                                                 <option value="0" @if ($worker->store_id == 0) selected
                                                                     @endif></option>
                                                                 @foreach ($stores as $store)
@@ -203,7 +219,8 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>@lang('translate.worker_permission')</label><select
-                                                                class="form-control" name="worker_permission">
+                                                                class="form-control" name="worker_permission"
+                                                                id="worker_permission">
                                                                 <option value="0" @if ($worker->worker_permission == 0) selected
                                                                     @endif></option>
                                                                 <option value="1" @if ($worker->worker_permission == 1) selected
