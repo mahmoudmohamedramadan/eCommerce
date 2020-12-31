@@ -213,6 +213,7 @@ return [
     'save' => 'حفظ',
     'print' => 'طباعة',
     'edit' => 'تعديل',
+    'move' => 'نقل',
     'show_workers' => 'عرض العمال',
     'show_products' => 'عرض المنتجات',
     'delete' => 'حذف',

@@ -216,6 +216,7 @@ return [
     'save' => 'Save',
     'print' => 'Print',
     'edit' => 'Edit',
+    'move' => 'Move',
     'show_workers' => 'Show Workers',
     'show_products' => 'Show Products',
     'delete' => 'Delete',
