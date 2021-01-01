@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     //category routes
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //category routes
-    Route::resource('admin', AdminController::class)->except(['index', 'create', 'store', 'show', 'destroy']);
+    Route::resource('admin', AdminController::class)->only(['edit', 'update']);
     //debt notifications
     Route::get('admin/getNotifications', [AdminController::class, 'pushNotifications'])->name('pushNotifications');
     //read all debt notifications
@@ -33,9 +33,12 @@ Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' 
     //store routes
     Route::resource('stores', StoreController::class)->except('show');
     //workers of store routes
-    Route::resource('stores.workers', WorkersOfStoreController::class)->only('index');
+    Route::resource('stores.workers', WorkersOfStoreController::class)->except(['create', 'store', 'edit']);
     //products of store routes
-    Route::resource('stores.products', ProductsOfStoreController::class)->only('index');
+    Route::resource('stores.products', ProductsOfStoreController::class)->except(['create', 'store', 'edit']);
+    //check quantity of product
+    Route::get('stores/products/check-product-quantity', [ProductsOfStoreController::class, 'checkQuantity'])
+        ->name('stores.products.checkQuantity');
     //worker routes
     Route::resource('workers', WorkerController::class)->except('show');
     //company routes
