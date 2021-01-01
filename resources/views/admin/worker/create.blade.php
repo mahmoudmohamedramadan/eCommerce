@@ -149,7 +149,7 @@
                                                             <input type="text" value="{{ old('address') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_address_placeholder')"
-                                                                name="address" minlength="5" maxlength="255">
+                                                                name="address" minlength="3" maxlength="225">
                                                             @error('address')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -164,7 +164,7 @@
                                                             <input type="text" value="{{ old('salary') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_salary_placeholder')"
-                                                                name="salary" minlength="3" maxlength="5">
+                                                                name="salary" minlength="2" maxlength="5">
                                                             @error('salary')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
