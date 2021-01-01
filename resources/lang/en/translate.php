@@ -81,14 +81,16 @@ return [
     'minimum_used' => 'Minimum Used',
     'minimum_stored' => 'Minimum Stored',
     'minimum_used_placeholder' => 'Enter Minimun Used Quantity',
+    'stored_quantity_placeholder' => 'Enter Stored Quantity',
     'minimum_stored_placeholder' => 'Enter Minimun Stored Quantity',
     'product_photo' => 'Product Photo',
-    //stored quantity error
+    //ajax stored quantity error
     'total_quantity_error' => 'invalid total quantity',
     'used_quantity_error' => 'invalid used quantity',
     'stored_quantity_error' => 'invalid stored quantity',
     'has_reached_its_minimum' => ' has reached its minimum',
     'add_product_first' => 'add one product at the least first',
+    'new_stored_quantity_must_be_less_than_or_equal_old_stored_quantity' => 'New stored quantity must be less than or equal old stored quantity',
     #=================================== end product ===================================
 
     #=================================== start sale ===================================
@@ -102,7 +104,7 @@ return [
     'quantity_placeholder' => 'Enter Qauntity Address',
     'once_price' => 'Once Price',
     'total_price' => 'Total Price',
-    //sale error
+    //ajax sale error
     'quantity_error' => 'invalid quantity',
     'total_price_error' => 'invalid total price',
     'maximum_quantity_of' => 'The maximum quantity of ',
@@ -123,6 +125,9 @@ return [
     #=================================== end debt ===================================
 
     #=================================== start validation ===================================
+    'email_field_is_required' => 'The email field is required',
+    'email_field_should_be_correct_email' => 'The email field should be correct email',
+
     'name_field_is_required' => 'The name field is required',
     'name_field_should_be_unique' => 'The name field should be unique',
 
@@ -178,9 +183,6 @@ return [
     'total_price_field_is_required' => 'The total price field is required',
     'total_price_field_must_be_a_number' => 'The total price field must be a number',
 
-    'email_field_is_required' => 'The email field is required',
-    'email_field_should_be_correct_email' => 'The email field should be correct email',
-
     'age_field_is_required' => 'The age field is required',
     'age_field_must_be_a_number' => 'The age price field must be a number',
 
@@ -221,6 +223,8 @@ return [
     'show_products' => 'Show Products',
     'delete' => 'Delete',
     'cancel' => 'Cancel',
+    'move_confirmation' => 'Move Confirmation',
+    'edit_confirmation' => 'Edit Confirmation',
     'measures' => 'Measures',
     'saved_success' => 'data saved successfully',
     'saved_error' => 'data was not saved successfully',

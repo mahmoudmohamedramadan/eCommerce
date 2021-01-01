@@ -79,14 +79,16 @@ return [
     'minimum_used' => 'الحد الادني للاستخدام',
     'minimum_stored' => 'الحد الادني للتخزين',
     'minimum_used_placeholder' => 'ادخل كمية الحد الادني لاستخدام',
+    'stored_quantity_placeholder' => 'ادخل الكمية المخزنة',
     'minimum_stored_placeholder' => 'ادخل كمية الحد الادني للتخزين',
     'product_photo' => 'صورة المنتج',
-    //stored quantity error
+    //ajax stored quantity error
     'total_quantity_error' => 'الكمية الاجمالية غير صحيحة',
     'used_quantity_error' => 'الكمية المستخدمة غير صحيحة',
     'stored_quantity_error' => 'الكمية المخزنة غير صحيحة',
     'has_reached_its_minimum' => ' وصل للحد الادني',
     'add_product_first' => 'قم باضافة منتج واحد علي الاقل اولا',
+    'new_stored_quantity_must_be_less_than_or_equal_old_stored_quantity' => 'الكمية المخزنة الجديدة يجب ان تكون اقل من او  تساوي الكمية المخزنة القديمة',
     #=================================== end product ===================================
 
     #=================================== start sale ===================================
@@ -100,7 +102,7 @@ return [
     'quantity_placeholder' => 'ادخل كمية المنتج',
     'once_price' => 'سعر الواحدة',
     'total_price' => 'السعر الاجمالي',
-    //sale error
+    //ajax sale error
     'quantity_error' => 'الكمية غير صحيحة',
     'total_price_error' => 'السعر الاجمالي غير صحيح',
     'maximum_quantity_of' => 'الحد الاقصي ل ',
@@ -121,6 +123,9 @@ return [
     #=================================== end debt ===================================
 
     #=================================== end validation ===================================
+    'email_field_is_required' => 'حقل البريد الالكتروني مطلوب',
+    'email_field_should_be_correct_email' => 'حقل البريد الالكتروني يجب ان يكون بريدا صحيحا',
+
     'name_field_is_required' => 'حقل الاسم مطلوب',
     'name_field_should_be_unique' => 'يجب ان يكون حقل الاسم فريدا',
 
@@ -151,14 +156,11 @@ return [
     'stored_quantity_field_is_required' => 'حقل الكمية المخزنة مطلوب',
     'stored_quantity_must_be_a_number'  => 'حقل الكمية المخزنة يجب ان يكون رقما',
 
-    'minimum_used_field_is_required' => 'حقل كمية الحد الادني مطلوب',
-    'minimum_used_must_be_a_number'  => 'حقل كمية الحد الادني يجب ان يكون رقما',
-
-    'company_name_field_is_required' => 'حقل اسم الشركة مطلوب',
-
     'minimum_used_field_is_required' => 'حقل كمية الحد الادني المستخدمة مطلوب',
     'minimum_used_must_be_a_number' => 'حقل كمية الحد الادني المستخدمة يجب ان يكون رقما',
     'minimum_used_must_not_be_greater_than_used_quantity' => 'حقل كمية الحد الادني المستخدمة يجب الا يكون اكبر من الكمية المستخدمة',
+
+    'company_name_field_is_required' => 'حقل اسم الشركة مطلوب',
 
     'minimum_stored_field_is_required' => 'حقل كمية الحد الادني المخزنة مطلوب',
     'minimum_stored_must_be_a_number' => 'حقل كمية الحد الادني المخونة يجب ان يكون رقما',
@@ -175,9 +177,6 @@ return [
 
     'total_price_field_is_required' => 'حقل السعر الاجمالي مطلوب',
     'total_price_field_must_be_a_number' => 'حقل السعر الاجمالي يجب ان يكون رقما',
-
-    'email_field_is_required' => 'حقل البريد الالكتروني مطلوب',
-    'email_field_should_be_correct_email' => 'حقل البريد الالكتروني يجب ان يكون بريدا صحيحا',
 
     'age_field_is_required' => 'حقل السن مطلوب',
     'age_field_must_be_a_number' => 'حقل السن يجب ان يكون رقما',
@@ -218,6 +217,8 @@ return [
     'show_products' => 'عرض المنتجات',
     'delete' => 'حذف',
     'cancel' => 'الغاء',
+    'move_confirmation' => 'تاكيد النقل',
+    'edit_confirmation' => 'تاكيد التعديل',
     'measures' => 'الاجراءات',
     'saved_success' => 'تم حفظ بيانات بنجاح',
     'saved_error' => 'لم يتم حفظ البيانات بنجاح',
