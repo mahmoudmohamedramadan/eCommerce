@@ -78,9 +78,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-
                                                 </div>
-
 
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -91,7 +89,7 @@
                                                                 value="{{ $store->address ?? old('address') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.store_address_placeholder')"
-                                                                name="address">
+                                                                name="address" minlength="3" maxlength="225">
                                                             @error('address')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
