@@ -154,7 +154,7 @@
                                                                 value="{{ $worker->address ?? old('address') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_address_placeholder')"
-                                                                name="address" minlength="5" maxlength="255">
+                                                                name="address" minlength="3" maxlength="225">
                                                             @error('address')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
