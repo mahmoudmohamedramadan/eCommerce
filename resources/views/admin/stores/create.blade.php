@@ -82,7 +82,7 @@
                                                             <input type="text" value="{{ old('address') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.store_address_placeholder')"
-                                                                name="address">
+                                                                name="address" minlength="3" maxlength="225">
                                                             @error('address')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
