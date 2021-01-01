@@ -24,7 +24,7 @@ class AdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:25',
+            'name' => 'required',
             'email' => 'required|email',
         ];
     }
@@ -38,7 +38,6 @@ class AdminRequest extends FormRequest
     {
         return [
             'name.required' => 'name_field_is_required',
-            'name.max' => 'name_may_not_be_greater_than_25_characters',
 
             'email.required' => 'email_field_is_required',
             'email.email' => 'email_field_should_be_correct_email',
