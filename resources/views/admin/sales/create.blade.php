@@ -117,8 +117,8 @@
                      <div class="row breadcrumbs-top">
                          <div class="breadcrumb-wrapper col-12">
                              <ol class="breadcrumb">
-                                 <li class="breadcrumb-item"><a
-                                         href="{{ route('dashboard') }}">@lang('translate.dashboard')</a>
+                                 <li class="breadcrumb-item">
+                                     <a href="{{ route('dashboard') }}">@lang('translate.dashboard')</a>
                                  </li>
                                  <li class="breadcrumb-item active">@lang('translate.create_sale')
                                  </li>
@@ -159,8 +159,8 @@
 
                                              <div class="form-body">
                                                  <h4 class="form-section"><i
-                                                         class="ft-home"></i>@lang('translate.sale_data')</h4>
-
+                                                         class="ft-home"></i>@lang('translate.sale_data')
+                                                </h4>
                                                  <div id="new-product">
                                                      @if (count($products) > 0)
                                                          @include('admin.sales.getCreateSalesField',
