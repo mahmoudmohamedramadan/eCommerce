@@ -36,10 +36,22 @@ class ProductsOfStoreController extends Controller
     {
         try {
             DB::beginTransaction();
-            $product->update([
-                'minimum_used' => floatval($product->total_quantity) - floatval(request()->get('minimum_used')),
-                'minimum_stored' => request()->get('minimum_stored')
-            ]);
+            if (request()->filled('stored_quantity') and request()->filled('minimum_stored')) {
+                $product->update([
+                    'used_quantity' => floatval($product->used_quantity) + floatval(request()->get('stored_quantity')),
+                    'stored_quantity' => floatval($product->stored_quantity) - floatval(request()->get('stored_quantity')),
+                    'minimum_stored' => request()->get('minimum_stored')
+                ]);
+            } else if (request()->filled('stored_quantity')) {
+                $product->update([
+                    'used_quantity' => floatval($product->used_quantity) + floatval(request()->get('stored_quantity')),
+                    'stored_quantity' => floatval($product->stored_quantity) - floatval(request()->get('stored_quantity'))
+                ]);
+            } else if (request()->filled('minimum_stored')) {
+                $product->update([
+                    'minimum_stored' => request()->get('minimum_stored')
+                ]);
+            }
             DB::commit();
 
             session()->flash('success', __('translate.updated_success'));
@@ -88,6 +100,7 @@ class ProductsOfStoreController extends Controller
                     'error_stored_msg' => __('translate.stored_quantity_field_is_required')
                 ]);
             }
+
             if (!is_numeric(request()->get('new_stored_quantity'))) {
                 return response()->json([
                     'success' => false,
@@ -103,6 +116,18 @@ class ProductsOfStoreController extends Controller
                     return response()->json([
                         'success' => false,
                         'error_stored_msg' => __('translate.new_stored_quantity_must_be_less_than_or_equal_old_stored_quantity')
+                    ]);
+                }
+            }
+
+            if (request()->filled('new_minimum_stored')) {
+                $newStoredQuantityValue = floatval(request()->get('new_stored_quantity'));
+                $newMinimumStoredQuantityValue = floatval(request()->get('new_minimum_stored'));
+
+                if ($newStoredQuantityValue < $newMinimumStoredQuantityValue) {
+                    return response()->json([
+                        'success' => false,
+                        'error_stored_msg' => __('translate.new_minimum_stored_quantity_must_be_less_than_or_equal_new_stored_quantity')
                     ]);
                 }
             }
