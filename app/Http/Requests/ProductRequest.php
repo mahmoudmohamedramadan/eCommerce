@@ -24,7 +24,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required_without:id|max:25|unique:products,name,' . $this->id,
+            'name' => 'required|unique:products,name,' . $this->id,
             'price' => 'required|numeric',
             'company_id' => 'required',
             'total_quantity' => 'required|numeric',
@@ -43,8 +43,7 @@ class ProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required_without' => 'name_field_is_required',
-            'name.max' => 'name_may_not_be_greater_than_25_characters',
+            'name.required' => 'name_field_is_required',
             'name.unique' => 'name_field_should_be_unique',
 
             'price.required' => 'price_field_is_required',
