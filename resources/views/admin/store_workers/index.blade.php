@@ -86,7 +86,7 @@
                                                         <td>
                                                             <button type="button"
                                                                 class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1"
-                                                                data-bs-toggle="modal" data-bs-target="#workerModal"
+                                                                data-toggle="modal" data-target="#workerModal"
                                                                 onclick="document.getElementById('formModal').action = `{{ route('stores.workers.update', ['store' => $store_id, 'worker' => $worker->id]) }}`">
                                                                 @lang('translate.move')
                                                             </button>
@@ -122,7 +122,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalLabel">@lang('translate.move_confirmation')</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <form action="" method="POST" id="formModal">
                         @csrf
@@ -134,6 +136,7 @@
                                     <div class="form-group">
                                         <label for="Select2">@lang('translate.store_name')</label>
                                         <select class="form-control" name="store_id">
+                                            <option value="0"></option>
                                             @foreach ($stores as $store)
                                                 <option value="{{ $store->id }}" @if ($store->id == $store_id) disabled
                                             @endif>
@@ -146,7 +149,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-warning mr-1" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-warning mr-1" data-dismiss="modal">
                                 <i class="ft-x"></i> @lang('translate.cancel')
                             </button>
                             <button type="submit" class="btn btn-primary">
