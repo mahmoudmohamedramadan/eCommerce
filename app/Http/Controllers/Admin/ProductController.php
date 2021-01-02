@@ -178,19 +178,19 @@ class ProductController extends Controller
         if (!request()->get('store_id')) {
             return response()->json([
                 'success' => false,
-                'error_store_msg' => __('translate.store name field is required')
+                'error_store_msg' => __('translate.store_name_field_is_required')
             ]);
         }
         if (!request()->get('minimum_stored')) {
             return response()->json([
                 'success' => false,
-                'error_min_msg' => __('translate.minimum quantity field is required')
+                'error_min_msg' => __('translate.minimum_stored_field_is_required')
             ]);
         }
         if (!is_numeric(request()->get('minimum_stored'))) {
             return response()->json([
                 'success' => false,
-                'error_min_msg' => __('translate.minimum quantity must be a number')
+                'error_min_msg' => __('translate.minimum_stored_must_be_a_number')
             ]);
         }
 
