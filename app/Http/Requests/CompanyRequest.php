@@ -24,8 +24,8 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required_without:id|max:25|unique:companies,name,' . $this->id,
-            'phone' => 'required_without:id|regex:/[0-9]{11}/|unique:companies,phone,' . $this->id,
+            'name' => 'required|unique:companies,name,' . $this->id,
+            'phone' => 'required|regex:/[0-9]{11}/|unique:companies,phone,' . $this->id,
             'address' => 'required',
             'manager' => 'required',
         ];
@@ -39,16 +39,16 @@ class CompanyRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required_without' => 'name_field_is_required',
-            'name.max' => 'name_may_not_be_greater_than_25_characters',
+            'name.required' => 'name_field_is_required',
             'name.unique' => 'name_field_should_be_unique',
 
-            'phone.required_without' => 'phone_field_is_required',
+            'phone.required' => 'phone_field_is_required',
             'phone.regex' => 'phone_format_is_invalid',
             'phone.unique' => 'phone_field_should_be_unique',
 
             'address.required' => 'address_field_is_required',
-            'manager.required' => 'manager_field_is_required',
+
+            'manager.required' => 'company_manager_field_is_required',
         ];
     }
 }
