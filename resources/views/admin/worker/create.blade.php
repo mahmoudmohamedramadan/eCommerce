@@ -164,7 +164,7 @@
                                                             <input type="text" value="{{ old('salary') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_salary_placeholder')"
-                                                                name="salary" minlength="2" maxlength="5">
+                                                                name="salary" minlength="2" maxlength="6">
                                                             @error('salary')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror

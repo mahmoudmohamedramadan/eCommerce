@@ -170,7 +170,7 @@
                                                                 value="{{ $worker->salary ?? old('salary') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.worker_salary_placeholder')"
-                                                                name="salary" minlength="3" maxlength="5">
+                                                                name="salary" minlength="3" maxlength="6">
                                                             @error('salary')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
