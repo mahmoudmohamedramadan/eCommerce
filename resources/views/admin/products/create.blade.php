@@ -1,4 +1,4 @@
- @extends('layouts.admin')
+@extends('layouts.admin')
  <title>@lang('translate.create_product') | eCommerce</title>
 
  @push('script')
@@ -119,7 +119,8 @@
 
                                              <div class="form-body">
                                                  <h4 class="form-section"><i
-                                                         class="ft-home"></i>@lang('translate.product_data')</h4>
+                                                         class="ft-home"></i>@lang('translate.product_data')
+                                                 </h4>
                                                  <div class="row">
                                                      <div class="col-md-6">
                                                          <div class="form-group">
@@ -127,7 +128,7 @@
                                                              <input type="text" value="{{ old('name') }}"
                                                                  class="form-control"
                                                                  placeholder="@lang('translate.Product_name_placeholder')"
-                                                                 name="name">
+                                                                 name="name" minlength="3" maxlength="25">
                                                              @error('name')
                                                                  <span class="text-danger">@lang('translate.'.$message)</span>
                                                              @enderror
@@ -140,7 +141,7 @@
                                                              <input type="text" value="{{ old('price') }}"
                                                                  class="form-control"
                                                                  placeholder="@lang('translate.product_price_placeholder')"
-                                                                 name="price" maxlength="6">
+                                                                 name="price" minlength="2" maxlength="6">
                                                              @error('price')
                                                                  <span class="text-danger">@lang('translate.'.$message)</span>
                                                              @enderror
@@ -155,7 +156,7 @@
                                                              <input type="text" value="{{ old('total_quantity') }}"
                                                                  class="form-control"
                                                                  placeholder="@lang('translate.total_quantity_placeholder')"
-                                                                 name="total_quantity" maxlength="6">
+                                                                 name="total_quantity" minlength="1" maxlength="6">
                                                              <span class="text-danger" id="total-quantity-error"
                                                                  hidden>@lang('translate.total_quantity_error')</span>
                                                              @error('total_quantity')
@@ -170,7 +171,7 @@
                                                              <input type="text" value="{{ old('used_quantity') }}"
                                                                  class="form-control"
                                                                  placeholder="@lang('translate.used_quantity_placeholder')"
-                                                                 name="used_quantity" maxlength="6">
+                                                                 name="used_quantity" minlength="2" maxlength="6">
                                                              <span class="text-danger" id="used-quantity-error"
                                                                  hidden>@lang('translate.used_quantity_error')</span>
                                                              @error('used_quantity')
@@ -200,7 +201,7 @@
                                                              <input type="text" value="{{ old('minimum_used') }}"
                                                                  class="form-control"
                                                                  placeholder="@lang('translate.minimum_used_placeholder')"
-                                                                 name="minimum_used" maxlength="6">
+                                                                 name="minimum_used" minlength="2" maxlength="6">
                                                              @error('minimum_used')
                                                                  <span class="text-danger">@lang('translate.'.$message)</span>
                                                              @enderror

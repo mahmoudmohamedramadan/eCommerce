@@ -113,7 +113,8 @@
                                 @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        @include('admin.products.getStoreModal', ['stores' => $stores])
+                                        @include('admin.products.getStoreModal', ['product' => $product,'stores' =>
+                                        $stores])
                                         <form action="{{ route('products.update', $product->id) }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
@@ -121,12 +122,8 @@
 
                                             <div class="form-body">
                                                 <h4 class="form-section"><i
-                                                        class="ft-home"></i>@lang('translate.product_data')</h4>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <input type="hidden" name="id" value="{{ $product->id }}">
-                                                    </div>
-                                                </div>
+                                                        class="ft-home"></i>@lang('translate.product_data')
+                                                </h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -134,7 +131,7 @@
                                                             <input type="text" value="{{ $product->name ?? old('name') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.Product_name_placeholder')"
-                                                                name="name">
+                                                                name="name" minlength="3" maxlength="25">
                                                             @error('name')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -147,7 +144,7 @@
                                                             <input type="text" value="{{ $product->price ?? old('price') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.product_price_placeholder')"
-                                                                name="price" maxlength="6">
+                                                                name="price" minlength="2" maxlength="6">
                                                             @error('price')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -163,7 +160,7 @@
                                                                 value="{{ $product->total_quantity ?? old('total_quantity') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.total_quantity_placeholder')"
-                                                                name="total_quantity" maxlength="6">
+                                                                name="total_quantity" minlength="2" maxlength="6">
                                                             <span class="text-danger" id="total_quantity_error"
                                                                 hidden>@lang('translate.total_quantity_error')</span>
                                                             @error('total_quantity')
@@ -179,7 +176,7 @@
                                                                 value="{{ $product->used_quantity ?? old('used_quantity') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.used_quantity_placeholder')"
-                                                                name="used_quantity" maxlength="6">
+                                                                name="used_quantity" minlength="2" maxlength="6">
                                                             <span class="text-danger" id="used_quantity_error"
                                                                 hidden>@lang('translate.used_quantity_error')</span>
                                                             @error('used_quantity')
@@ -211,7 +208,7 @@
                                                                 value="{{ $product->minimum_used ?? old('minimum_used') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.minimum_used_placeholder')"
-                                                                name="minimum_used" maxlength="6">
+                                                                name="minimum_used" minlength="2" maxlength="6">
                                                             @error('minimum_used')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
