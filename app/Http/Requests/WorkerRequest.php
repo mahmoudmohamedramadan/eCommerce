@@ -51,8 +51,9 @@ class WorkerRequest extends FormRequest
             'age.required' => 'age_field_is_required',
             'age.numeric' => 'age_must_be_a_number',
 
-            'national_id.required_without' => 'national_id_field_is_required',
+            'national_id.required' => 'national_id_field_is_required',
             'national_id.numeric' => 'national_id_field_must_be_a_number',
+            'national_id.unique' => 'national_id_field_should_be_unique',
 
             'address.required' => 'address_field_is_required',
 
