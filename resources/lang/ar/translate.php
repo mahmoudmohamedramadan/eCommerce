@@ -20,6 +20,9 @@ return [
     'store_phone' => 'هاتف المخزن',
     'store_phone_placeholder' => 'ادخل هاتف المخزن',
     'store_address' => 'عنوان المخزن',
+    //ajax products store error
+    'new_stored_quantity_must_be_less_than_or_equal_old_stored_quantity' => 'الكمية المخزنة الجديدة يجب ان تكون اقل من او  تساوي الكمية المخزنة القديمة',
+    'new_minimum_stored_quantity_must_be_less_than_or_equal_new_stored_quantity' => 'الحد الادني للكمية المخزنة الجديدة يجب ان يكون اقل من او يساوي الكمية المخزنة الجديدة',
     #=================================== end store ===================================
 
     #=================================== start worker ===================================
@@ -86,9 +89,10 @@ return [
     'total_quantity_error' => 'الكمية الاجمالية غير صحيحة',
     'used_quantity_error' => 'الكمية المستخدمة غير صحيحة',
     'stored_quantity_error' => 'الكمية المخزنة غير صحيحة',
+    'minimum_stored_field_is_required' => 'حقل الحد الادني المخزنة مطلوب',
+    'minimum_stored_must_be_a_number' => 'حقل الحد الادني المخزنة يجب ان يكون رقما',
     'has_reached_its_minimum' => ' وصل للحد الادني',
     'add_product_first' => 'قم باضافة منتج واحد علي الاقل اولا',
-    'new_stored_quantity_must_be_less_than_or_equal_old_stored_quantity' => 'الكمية المخزنة الجديدة يجب ان تكون اقل من او  تساوي الكمية المخزنة القديمة',
     #=================================== end product ===================================
 
     #=================================== start sale ===================================
@@ -135,6 +139,10 @@ return [
 
     'address_field_is_required' => 'حقل العنوان مطلوب',
 
+    'national_id_field_is_required' => 'حقل الرقم القومي مطلوب',
+    'national_id_field_must_be_a_number' => 'حقل الرقم القومي يجب ان يكون رقما',
+    'national_id_field_should_be_unique' => 'حقل الرقم القومي يجب ان يكون فريدا',
+
     'salary_field_is_required' => 'حقل المرتب مطلوب',
     'salary_field_must_be_a_number' => 'حقل المرتب يجب ان يكون رقما',
 
@@ -143,6 +151,8 @@ return [
     'store_name_field_is_required' => 'حقل اسم المخزن مطلوب',
 
     'worker_permission_field_is_required' => 'حقل صلاحيات العامل مطلوب',
+
+    'company_manager_field_is_required' => 'حقل مدير الشركة مطلوب',
 
     'price_field_is_required' => 'حقل السعر مطلوب',
     'price_must_be_a_number'  => 'حقل السعر يجب ان يكون رقما',
@@ -162,9 +172,7 @@ return [
 
     'company_name_field_is_required' => 'حقل اسم الشركة مطلوب',
 
-    'minimum_stored_field_is_required' => 'حقل كمية الحد الادني المخزنة مطلوب',
-    'minimum_stored_must_be_a_number' => 'حقل كمية الحد الادني المخونة يجب ان يكون رقما',
-    'minimum_stored_must_not_be_greater_than_stored_quantity' => 'حقل كمية الحد الادني المخزنة يجب الا يكون اكبر من الكمية المخزنة',
+    'minimum_stored_must_not_be_greater_than_stored_quantity' => 'حقل الحد الادني المخزنة يجب الا يكون اكبر من الكمية المخزنة',
 
     'photo_must_be_an_image' => 'يجب ان تكون الصورة صورة',
     'photo_may_not_be_greater_than_2.5_mb' => 'يجب الا يزيد حجم الصورة عن 2.5 ميغا بايت',
@@ -181,9 +189,6 @@ return [
     'age_field_is_required' => 'حقل السن مطلوب',
     'age_field_must_be_a_number' => 'حقل السن يجب ان يكون رقما',
 
-    'national_id_field_is_required' => 'حقل الرقم القومي مطلوب',
-    'national_id_field_must_be_a_number' => 'حقل الرقم القومي يجب ان يكون رقما',
-
     'title_field_is_required' => 'حقل العوان مطلوب',
     'title_field_should_be_unique' => 'حقل العوان يجب ان يكون فريدا',
 
@@ -199,35 +204,34 @@ return [
 
     #=================================== start general ===================================
     'dashboard' => 'لوحة التحكم',
-    'edit_profile' => 'تعديل الملف الشخصي',
-    'profile_data' => 'بيانات الملف الشخصي',
-    'logout' => 'تسجيل خروج',
     'admin_panel' => 'لوحة الادارة',
+    'main' =>  'الرئيسية',
+    'profile_data' => 'بيانات الملف الشخصي',
+    'edit_profile' => 'تعديل الملف الشخصي',
+    'logout' => 'تسجيل خروج',
     'languages' => 'اللغات',
     'welcome' => 'مرحبا',
     'notifications' => 'الاشعارات',
     'read_notifications' => 'قراءة جميع الاشعارات',
     'messages' => 'الرسائل',
     'read_messages' => 'قراءة جميع الرسائل',
+    'measures' => 'الاجراءات',
     'save' => 'حفظ',
-    'print' => 'طباعة',
     'edit' => 'تعديل',
     'move' => 'نقل',
     'show_workers' => 'عرض العمال',
-    'show_products' => 'عرض المنتجات',
     'delete' => 'حذف',
     'cancel' => 'الغاء',
+    'show_all' => 'عرض الكل',
+    'show_products' => 'عرض المنتجات',
     'move_confirmation' => 'تاكيد النقل',
     'edit_confirmation' => 'تاكيد التعديل',
-    'measures' => 'الاجراءات',
     'saved_success' => 'تم حفظ بيانات بنجاح',
     'saved_error' => 'لم يتم حفظ البيانات بنجاح',
     'updated_success' => 'تم تعديل البيانات بنجاح',
     'updated_error' => 'لم يتم تعديل البيانات بنجاح',
     'deleted_success' => 'تم حذف البيانات بنجاح',
     'deleted_error' => 'لم يتم حذف البيانات بنجاح',
-    'show_all' => 'عرض الكل',
-    'main' =>  'الرئيسية',
     #=================================== end general ===================================
 
 ];

@@ -2,7 +2,6 @@
 
 return [
 
-
     #=================================== start profile ===================================
     'user_name' => 'Username',
     'user_name_placeholder' => 'Enter Username',
@@ -22,6 +21,9 @@ return [
     'store_phone_placeholder' => 'Enter Store Phone',
     'store_address' => 'Store Address',
     'store_address_placeholder' => 'Enter Store Address',
+    //ajax ptoducts of store error
+    'new_stored_quantity_must_be_less_than_or_equal_old_stored_quantity' => 'The new stored quantity must be less than or equal old stored quantity',
+    'new_minimum_stored_quantity_must_be_less_than_or_equal_new_stored_quantity' => 'The new minimum stored quantity must be less than or equal new stored quantity',
     #=================================== end store ===================================
 
     #=================================== start worker ===================================
@@ -88,9 +90,10 @@ return [
     'total_quantity_error' => 'invalid total quantity',
     'used_quantity_error' => 'invalid used quantity',
     'stored_quantity_error' => 'invalid stored quantity',
+    'minimum_stored_field_is_required' => 'The minimum stored field is required',
+    'minimum_stored_must_be_a_number' => 'The minimum stored must be a number',
     'has_reached_its_minimum' => ' has reached its minimum',
     'add_product_first' => 'add one product at the least first',
-    'new_stored_quantity_must_be_less_than_or_equal_old_stored_quantity' => 'New stored quantity must be less than or equal old stored quantity',
     #=================================== end product ===================================
 
     #=================================== start sale ===================================
@@ -137,6 +140,10 @@ return [
 
     'address_field_is_required' => 'The address field is required',
 
+    'national_id_field_is_required' => 'The national id field is required',
+    'national_id_field_must_be_a_number' => 'The national id field must be a number',
+    'national_id_field_should_be_unique' => 'The national id field should be unique',
+
     'salary_field_is_required' => 'The salary field is required',
     'salary_field_must_be_a_number' => 'The salary field must be a number',
 
@@ -145,6 +152,8 @@ return [
     'store_name_field_is_required' => 'The store name field is required',
 
     'worker_permission_field_is_required' => 'The worker permission field is required',
+
+    'company_manager_field_is_required' => 'The company manager field is required',
 
     'price_field_is_required' => 'The price field is required',
     'price_must_be_a_number' => 'The price must be a number',
@@ -159,16 +168,11 @@ return [
     'stored_quantity_must_be_a_number'  => 'The stored quantity must be a number',
 
     'minimum_used_field_is_required' => 'The minimum used quantity field is required',
-    'minimum_used_must_be_a_number'  => 'The minimum used quantity must be a number',
-
-    'company_name_field_is_required' => 'The company name field is required',
-
-    'minimum_used_field_is_required' => 'The minimum used quantity field is required',
     'minimum_used_must_be_a_number' => 'The minimum used quantity must be a number',
     'minimum_used_must_not_be_greater_than_used_quantity' => 'The minimum used quantity must not be greater than used quantity',
 
-    'minimum_stored_field_is_required' => 'The minimum stored quantity field is required',
-    'minimum_stored_must_be_a_number' => 'The minimum stored quantity must be a number',
+    'company_name_field_is_required' => 'The company name field is required',
+
     'minimum_stored_must_not_be_greater_than_stored_quantity' => 'The minimum stored quantity must not be greater than stored quantity',
 
     'photo_must_be_an_image' => 'The photo must be an image',
@@ -186,9 +190,6 @@ return [
     'age_field_is_required' => 'The age field is required',
     'age_field_must_be_a_number' => 'The age price field must be a number',
 
-    'national_id_field_is_required' => 'The national id field is required',
-    'national_id_field_must_be_a_number' => 'The national id field must be a number',
-
     'title_field_is_required' => 'The title field is required',
     'title_field_should_be_unique' => 'The title field should be unique',
 
@@ -203,38 +204,35 @@ return [
     #=================================== end validation ===================================
 
     #=================================== start general ===================================
-    // general
     'dashboard' => 'Dasboard',
-    'edit_profile' => 'Edit Profile',
-    'profile_data' => 'Profile Data',
-    'logout' => 'Logout',
     'admin_panel' => 'Admin Panel',
+    'main' => 'Main',
+    'profile_data' => 'Profile Data',
+    'edit_profile' => 'Edit Profile',
+    'logout' => 'Logout',
     'languages' => 'Languages',
     'welcome' => 'Welcome',
     'notifications' => 'Notifications',
     'read_notifications' => 'Read all notifications',
     'messages' => 'Messages',
     'read_messages' => 'Read all messages',
+    'measures' => 'Measures',
     'save' => 'Save',
-    'print' => 'Print',
     'edit' => 'Edit',
     'move' => 'Move',
-    'show_workers' => 'Show Workers',
-    'show_products' => 'Show Products',
     'delete' => 'Delete',
     'cancel' => 'Cancel',
+    'show_all' => 'Show All',
+    'show_workers' => 'Show Workers',
+    'show_products' => 'Show Products',
     'move_confirmation' => 'Move Confirmation',
     'edit_confirmation' => 'Edit Confirmation',
-    'measures' => 'Measures',
     'saved_success' => 'data saved successfully',
     'saved_error' => 'data was not saved successfully',
     'updated_success' => 'data updated successfully',
     'updated_error' => 'data was not updated successfully',
     'deleted_success' => 'data deleted successfully',
     'deleted_error' => 'data was not deleted successfully',
-
-    'show_all' => 'Show All',
-    'main' => 'Main',
     #=================================== end general ===================================
 
 ];
