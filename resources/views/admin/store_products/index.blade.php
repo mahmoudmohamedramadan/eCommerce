@@ -84,8 +84,8 @@
                                                         <td>
                                                             <button type="button"
                                                                 class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1"
-                                                                data-bs-toggle="modal" data-bs-target="#productModal"
-                                                                onclick="document.getElementById('formModal').action = `{{ route('stores.products.update', ['store' => $store_id, 'product' => $product->id]) }}`;document.getElementsByName('stored_quantity')[0].setAttribute('old-stored-quantity', {{ $product->stored_quantity }});">
+                                                                data-toggle="modal" data-target="#productModal"
+                                                                onclick="document.getElementById('formModal').action = `{{ route('stores.products.update', ['store' => $store_id, 'product' => $product->id]) }}`;document.getElementsByName('stored_quantity')[0].setAttribute('old-stored-quantity', {{ $product->stored_quantity }})">
                                                                 @lang('translate.edit')
                                                             </button>
                                                             <form
@@ -115,12 +115,14 @@
     </div>
 
     <div class="row">
-        <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">@lang('translate.edit_confirmation')</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title" id="ModalLabel">@lang('translate.edit_confirmation')</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <form action="" method="POST" id="formModal">
                         @csrf
@@ -145,14 +147,14 @@
                                         <label>@lang('translate.minimum_stored')</label>
                                         <input type="text" value="" class="form-control"
                                             placeholder="@lang('translate.minimum_stored_placeholder')"
-                                            name="minimum_stored" minlength="1" maxlength="6">
+                                            name="minimum_stored" minlength="1" maxlength="6" disabled>
                                         <span class="minimum-stored-error-msg text-danger"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-warning mr-1" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-warning mr-1" data-dismiss="modal">
                                 <i class="ft-x"></i> @lang('translate.cancel')
                             </button>
                             <button type="submit" class="btn btn-primary">
@@ -169,6 +171,12 @@
 @push('script')
     <script>
         $('input[name=stored_quantity]').keyup(function() {
+            if ($(this).val() == '') {
+                $('input[name=minimum_stored]').attr('disabled', true);
+            } else {
+                $('input[name=minimum_stored]').attr('disabled', false);
+            }
+
             $.ajax({
                 type: 'get',
                 url: `{{ route('stores.products.checkQuantity') }}`,
@@ -183,6 +191,30 @@
                         $('button[type=submit]').attr('disabled', true);
                     } else {
                         $('.stored-quantity-error-msg').empty();
+                        $('button[type=submit]').attr('disabled', false);
+                    }
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+
+        $('input[name=minimum_stored]').keyup(function() {
+            $.ajax({
+                type: 'get',
+                url: `{{ route('stores.products.checkQuantity') }}`,
+                dataType: 'json',
+                data: {
+                    'new_stored_quantity': $('input[name=stored_quantity]').val(),
+                    'new_minimum_stored': $(this).val()
+                },
+                success: function(data) {
+                    if (!data.success) {
+                        $('.minimum-stored-error-msg').empty().html(data.error_stored_msg);
+                        $('button[type=submit]').attr('disabled', true);
+                    } else {
+                        $('.minimum-stored-error-msg').empty();
                         $('button[type=submit]').attr('disabled', false);
                     }
                 },
