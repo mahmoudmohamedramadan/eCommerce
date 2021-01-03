@@ -173,9 +173,9 @@ class SaleController extends Controller
         $saleProductQuantity = request()->get('quantity');
 
         $productTotalQuantity = Product::where('name', $productName)
-            ->get('total_quantity');
+            ->get('used_quantity');
 
-        if (floatval($saleProductQuantity) < floatval($productTotalQuantity[0]['total_quantity'])) {
+        if (floatval($saleProductQuantity) < floatval($productTotalQuantity[0]['used_quantity'])) {
             return response()->json([
                 'success' => true
             ]);
@@ -183,7 +183,7 @@ class SaleController extends Controller
 
         return response()->json([
             'success' => false,
-            'message' => __('translate.maximum_quantity_of') . $productName . __('translate.is') . $productTotalQuantity[0]['total_quantity']
+            'message' => __('translate.maximum_quantity_of') . $productName . __('translate.is') . $productTotalQuantity[0]['used_quantity']
         ]);
     }
 }
