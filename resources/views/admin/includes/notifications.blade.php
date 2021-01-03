@@ -1,5 +1,5 @@
 @foreach ($notifications as $notification)
-    <div class="media">
+    <div class="media" style="margin-bottom: 5px;background-color:@if($notification->read()) #FFF @else rgba(233, 229, 229, 0.836) @endif">
         <div class="media-left align-self-center">
             <i class="ft-plus-square icon-bg-circle bg-cyan"></i>
         </div>
