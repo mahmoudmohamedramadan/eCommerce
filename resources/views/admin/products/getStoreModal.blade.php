@@ -63,7 +63,7 @@
                         <label>@lang('translate.minimum_stored')</label>
                         <input type="text" value="{{ $product->minimum_stored ?? session()->get('minimum_stored') }}"
                             class="form-control" placeholder="@lang('translate.minimum_stored_placeholder')"
-                            name="minimum_stored" minlength="2" maxlength="6">
+                            name="minimum_stored" minlength="1" maxlength="6">
                         <span class="text-danger" id="error-min-msg"></span>
                     </div>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">
