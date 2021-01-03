@@ -125,6 +125,11 @@
                                                         class="ft-home"></i>@lang('translate.product_data')
                                                 </h4>
                                                 <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>@lang('translate.product_name')</label>
@@ -144,7 +149,7 @@
                                                             <input type="text" value="{{ $product->price ?? old('price') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.product_price_placeholder')"
-                                                                name="price" minlength="2" maxlength="6">
+                                                                name="price" minlength="1" maxlength="6">
                                                             @error('price')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
