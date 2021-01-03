@@ -141,7 +141,7 @@
                                                              <input type="text" value="{{ old('price') }}"
                                                                  class="form-control"
                                                                  placeholder="@lang('translate.product_price_placeholder')"
-                                                                 name="price" minlength="2" maxlength="6">
+                                                                 name="price" minlength="1" maxlength="6">
                                                              @error('price')
                                                                  <span class="text-danger">@lang('translate.'.$message)</span>
                                                              @enderror
