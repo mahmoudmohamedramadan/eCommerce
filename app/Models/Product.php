@@ -36,6 +36,7 @@ class Product extends Model
     public function scopeUnnotifiedProducts($query)
     {
         return $query->where('notified', 0)
-            ->select('id', 'name', 'used_quantity', 'minimum_used', 'minimum_stored');
+            ->whereNotNull('minimum_stored')
+            ->select('id', 'name', 'used_quantity', 'stored_quantity', 'minimum_used', 'minimum_stored');
     }
 }
