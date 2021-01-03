@@ -24,10 +24,15 @@ trait SaleTrait
             $product = Product::where('name', $value)->get();
             if (isset($product)) {
                 $saleQuantity = $request->input('quantity')[$index];
-                Product::where('name', $value)->update([
-                    'total_quantity' => floatval($product[0]['total_quantity']) - floatval($saleQuantity),
-                    'used_quantity' => floatval($product[0]['used_quantity']) - floatval($saleQuantity)
-                ]);
+                if ($request->routeIs('sales.store')) {
+                    Product::where('name', $value)->update([
+                        'used_quantity' => floatval($product[0]['used_quantity']) - floatval($saleQuantity)
+                    ]);
+                } else {
+                    Product::where('name', $value)->update([
+                        'used_quantity' => floatval($product[0]['total_quantity']) - floatval($product[0]['stored_quantity']) - floatval($saleQuantity)
+                    ]);
+                }
             }
 
             if (count($request->input('product_name')) - 1 != $index) $productName .=  $value . "\n";
