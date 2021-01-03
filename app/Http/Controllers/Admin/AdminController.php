@@ -57,11 +57,11 @@ class AdminController extends Controller
      */
     public function pushNotifications()
     {
-        if (Product::unnotifiedProducts()->count() > 0) {
+        if (Product::unnotifiedProducts()->get()->count() > 0) {
             $UnNotifiedProducts = Product::unnotifiedProducts()->get();
 
             foreach ($UnNotifiedProducts as $product) {
-                if ($product->used_quantity == $product->minimum_used or $product->stored_quantity == $product->minimum_stored) {
+                if ($product->used_quantity <= $product->minimum_used or $product->stored_quantity <= $product->minimum_stored) {
                     Admin::first()->notify(new ProductNotification(($product)));
 
                     $product->update([
@@ -83,7 +83,8 @@ class AdminController extends Controller
             }
         }
 
-        $notifications = Admin::first()->unreadNotifications;
+        $notifications = Admin::first()->notifications;
+        $unReadNotifications = Admin::first()->unReadNotifications;
 
         if (isset($notifications)) {
             $noificationView = view('admin.includes.notifications', ['notifications' => $notifications])
@@ -91,7 +92,7 @@ class AdminController extends Controller
 
             return response()->json([
                 'success' => true,
-                'notifications_count' => count($notifications),
+                'notifications_count' => count($unReadNotifications),
                 'notifications' => $noificationView
             ]);
         }
