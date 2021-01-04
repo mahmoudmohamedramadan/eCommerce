@@ -30,6 +30,8 @@
         $('#worker_permission').change(function() {
             if ($(this).val() != 0 && $('#store_id').val() == 0) {
                 $('button[type=submit]').attr('disabled', true);
+            } else if ($(this).val() == 0 && $('#store_id').val() != 0) {
+                $('button[type=submit]').attr('disabled', true);
             } else {
                 $('button[type=submit]').attr('disabled', false);
             }
