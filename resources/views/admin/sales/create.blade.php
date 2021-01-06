@@ -98,7 +98,7 @@
                  cache: false,
                  data: formData,
                  success: function() {
-                     window.location.href = 'http://commerce.project/{{ app()->getLocale() }}/sales/create';
+                     window.location.reload(true);
                  },
                  error: function(data) {
                      console.log(data);
