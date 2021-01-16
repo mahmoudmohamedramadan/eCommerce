@@ -23,7 +23,7 @@ Route::middleware('auth:admin')
 
 Route::group(['middleware' => ['auth:admin', 'localeSessionRedirect'], 'prefix' => LaravelLocalization::setLocale()], function () {
     //category routes
-    Route::get('main', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     //category routes
     Route::resource('admin', AdminController::class)->only(['edit', 'update']);
     //debt notifications
