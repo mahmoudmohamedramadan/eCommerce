@@ -5509,7 +5509,7 @@
                 "fideloper/proxy": "^4.4.0",
                 "friendsofphp/php-cs-fixer": "^2.16.4",
                 "fruitcake/laravel-cors": "^2.0.1",
-                "laravel/framework": "^8.22.1",
+                "laravel/framework": "^8.0",
                 "laravel/tinker": "^2.4.1",
                 "nunomaduro/larastan": "^0.6.2",
                 "nunomaduro/mock-final-classes": "^1.0",
