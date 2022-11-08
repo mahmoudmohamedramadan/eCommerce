@@ -17,8 +17,10 @@ class Product extends Model
         'total_quantity',
         'used_quantity',
         'stored_quantity',
-        'minimum_quantity',
+        'minimum_used',
+        'minimum_stored',
         'photo',
+        'notified',
     ];
 
     public function store()
@@ -29,5 +31,12 @@ class Product extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function scopeUnnotifiedProducts($query)
+    {
+        return $query->where('notified', 0)
+            ->whereNotNull('minimum_stored')
+            ->select('id', 'name', 'used_quantity', 'stored_quantity', 'minimum_used', 'minimum_stored');
     }
 }

@@ -32,9 +32,10 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => 'email field is required',
-            'email.email' => 'email field should be correct email',
-            'password.required.' => 'password field is required'
+            'email.required' => 'The email field is required',
+            'email.email' => 'The email field should be correct email',
+
+            'password.required.' => 'The password field is required'
         ];
     }
 

@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Models\Company;
 use Illuminate\Support\Facades\DB;
+use App\Models\Company;
 use App\Models\Product;
+use App\Models\Admin;
 use App\Models\Store;
 
 class ProductController extends Controller
@@ -51,11 +52,12 @@ class ProductController extends Controller
                 'name' => $request->name,
                 'price' => $request->price,
                 'store_id' => session()->get('store_id'),
-                'minimum_quantity' => session()->get('minimum_quantity'),
                 'company_id' => $request->company_id,
                 'total_quantity' => $request->total_quantity,
                 'used_quantity' => $request->used_quantity,
                 'stored_quantity' => $request->stored_quantity,
+                'minimum_used' => $request->minimum_used,
+                'minimum_stored' => session()->get('minimum_stored'),
                 'photo' => $photoName
             ]);
             DB::commit();
@@ -63,10 +65,28 @@ class ProductController extends Controller
             session()->flash('success', __('translate.saved_success'));
             return redirect()->route('products.create');
         } catch (\Exception $ex) {
+            return $ex;
             DB::rollBack();
             session()->flash('error', __('translate.saved_error'));
             return redirect()->route('products.create');
         }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Debt  $debt
+     * @param  string  $notification_id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Product $product, $notification_id)
+    {
+        $stores = Store::get();
+        $companies = Company::get();
+
+        Admin::first()->notifications->find($notification_id)->markAsRead();
+
+        return view('admin.products.edit', compact('product', 'stores', 'companies'));
     }
 
     /**
@@ -107,10 +127,11 @@ class ProductController extends Controller
                 'name' => $request->name,
                 'price' => $request->price,
                 'store_id' => session()->get('store_id'),
-                'minimum_quantity' => session()->get('minimum_quantity'),
                 'company_id' => $request->company_id,
                 'total_quantity' => $request->total_quantity,
                 'used_quantity' => $request->used_quantity,
+                'minimum_used' => $request->minimum_used,
+                'minimum_stored' => session()->get('minimum_stored'),
                 'stored_quantity' => $request->stored_quantity,
             ]);
             DB::commit();
@@ -132,7 +153,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-
         try {
             DB::beginTransaction();
             deletePhoto('photo', $product, 'assets/images/product/');
@@ -148,29 +168,34 @@ class ProductController extends Controller
         }
     }
 
+    /**
+     *
+     * Check values in the modal and return ajax respons
+     * @return \Illuminate\Http\Response
+     */
     public function getModalValue()
     {
         if (!request()->get('store_id')) {
             return response()->json([
                 'success' => false,
-                'error_store_msg' => __('translate.store name field is required')
+                'error_store_msg' => __('translate.store_name_field_is_required')
             ]);
         }
-        if (!request()->get('minimum_quantity')) {
+        if (!request()->get('minimum_stored')) {
             return response()->json([
                 'success' => false,
-                'error_min_msg' => __('translate.minimum quantity field is required')
+                'error_min_msg' => __('translate.minimum_stored_field_is_required')
             ]);
         }
-        if (!is_numeric(request()->get('minimum_quantity'))) {
+        if (!is_numeric(request()->get('minimum_stored'))) {
             return response()->json([
                 'success' => false,
-                'error_min_msg' => __('translate.minimum quantity must be a number')
+                'error_min_msg' => __('translate.minimum_stored_must_be_a_number')
             ]);
         }
 
         session()->flash('store_id', request()->get('store_id'));
-        session()->flash('minimum_quantity', request()->get('minimum_quantity'));
+        session()->flash('minimum_stored', request()->get('minimum_stored'));
         return response()->json([
             'success' => true
         ]);

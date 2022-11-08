@@ -1,4 +1,4 @@
- @extends('layouts.admin')
+@extends('layouts.admin')
  <title>@lang('translate.create_product') | eCommerce</title>
 
  @push('script')
@@ -6,10 +6,10 @@
          $('input[name=total_quantity]').keyup(function() {
              //check if total quantity is valid number
              if (parseFloat($(this).val()) > 0) {
-                 $('#submit').prop('disabled', false);
+                 $('button[type=submit]').prop('disabled', false);
                  $('#total-quantity-error').attr('hidden', true);
              } else {
-                 $('#submit').prop('disabled', true);
+                 $('button[type=submit]').prop('disabled', true);
                  $('#total-quantity-error').attr('hidden', false);
              }
          });
@@ -20,18 +20,18 @@
              const storedValue = parseFloat(totalInputValue) - parseFloat($(this).val());
 
              if ($(this).val() == '' || !$.isNumeric($(this).val()) || storedValue < 0) {
-                 $('#submit').prop('disabled', true);
+                 $('button[type=submit]').prop('disabled', true);
                  $('#stored-quantity-error').attr('hidden', false);
                  $('#used-quantity-error').attr('hidden', false);
                  $('#store-field').empty();
              } else if (storedValue > 0) {
                  $('input[name=stored_quantity]').val(storedValue);
-                 $('#submit').prop('disabled', false);
+                 $('button[type=submit]').prop('disabled', false);
                  $('#stored-quantity-error').attr('hidden', true);
                  $('#used-quantity-error').attr('hidden', true);
                  $('#storeModal').modal('toggle');
              } else if (storedValue == 0) {
-                  $('#stored-quantity-error').attr('hidden', true);
+                 $('#stored-quantity-error').attr('hidden', true);
                  $('#used-quantity-error').attr('hidden', true);
                  $('input[name=stored_quantity]').val(storedValue);
                  $('#store-field').empty();
@@ -40,16 +40,16 @@
 
          $('#storeModal').on('hidden.bs.modal', function() {
              const storedValue = parseFloat($('input[name=stored_quantity]').val());
-             const minmumValue = parseFloat($('input[name=minimum_quantity]').val());
+             const minmumValue = parseFloat($('input[name=minimum_stored]').val());
 
              if ($('#store-id option:selected').text() == '') {
-                 $('#submit').attr('disabled', true);
+                 $('button[type=submit]').attr('disabled', true);
              } else if (isNaN(minmumValue)) {
-                 $('#submit').attr('disabled', true);
+                 $('button[type=submit]').attr('disabled', true);
              } else if (storedValue - minmumValue <= 0) {
-                 $('#submit').attr('disabled', true);
+                 $('button[type=submit]').attr('disabled', true);
              } else {
-                 $('#submit').attr('disabled', false);
+                 $('button[type=submit]').attr('disabled', false);
              }
          });
 
@@ -119,7 +119,8 @@
 
                                              <div class="form-body">
                                                  <h4 class="form-section"><i
-                                                         class="ft-home"></i>@lang('translate.product_data')</h4>
+                                                         class="ft-home"></i>@lang('translate.product_data')
+                                                 </h4>
                                                  <div class="row">
                                                      <div class="col-md-6">
                                                          <div class="form-group">
@@ -127,7 +128,7 @@
                                                              <input type="text" value="{{ old('name') }}"
                                                                  class="form-control"
                                                                  placeholder="@lang('translate.Product_name_placeholder')"
-                                                                 name="name">
+                                                                 name="name" minlength="3" maxlength="25">
                                                              @error('name')
                                                                  <span class="text-danger">@lang('translate.'.$message)</span>
                                                              @enderror
@@ -140,7 +141,7 @@
                                                              <input type="text" value="{{ old('price') }}"
                                                                  class="form-control"
                                                                  placeholder="@lang('translate.product_price_placeholder')"
-                                                                 name="price" maxlength="6">
+                                                                 name="price" minlength="1" maxlength="6">
                                                              @error('price')
                                                                  <span class="text-danger">@lang('translate.'.$message)</span>
                                                              @enderror
@@ -155,7 +156,7 @@
                                                              <input type="text" value="{{ old('total_quantity') }}"
                                                                  class="form-control"
                                                                  placeholder="@lang('translate.total_quantity_placeholder')"
-                                                                 name="total_quantity" maxlength="6">
+                                                                 name="total_quantity" minlength="1" maxlength="6">
                                                              <span class="text-danger" id="total-quantity-error"
                                                                  hidden>@lang('translate.total_quantity_error')</span>
                                                              @error('total_quantity')
@@ -170,7 +171,7 @@
                                                              <input type="text" value="{{ old('used_quantity') }}"
                                                                  class="form-control"
                                                                  placeholder="@lang('translate.used_quantity_placeholder')"
-                                                                 name="used_quantity" maxlength="6">
+                                                                 name="used_quantity" minlength="2" maxlength="6">
                                                              <span class="text-danger" id="used-quantity-error"
                                                                  hidden>@lang('translate.used_quantity_error')</span>
                                                              @error('used_quantity')
@@ -195,7 +196,22 @@
                                                      </div>
 
                                                      <div class="col-md-6">
-                                                         <div class="form-group" id="company_field">
+                                                         <div class="form-group">
+                                                             <label>@lang('translate.minimum_used')</label>
+                                                             <input type="text" value="{{ old('minimum_used') }}"
+                                                                 class="form-control"
+                                                                 placeholder="@lang('translate.minimum_used_placeholder')"
+                                                                 name="minimum_used" minlength="2" maxlength="6">
+                                                             @error('minimum_used')
+                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
+                                                             @enderror
+                                                         </div>
+                                                     </div>
+                                                 </div>
+
+                                                 <div class="row">
+                                                     <div class="col-md-6">
+                                                         <div class="form-group">
                                                              <label for="Select2">@lang('translate.company_name')</label>
                                                              <select class="form-control" name="company_id">
                                                                  @foreach ($companies as $company)
@@ -209,10 +225,8 @@
                                                              @enderror
                                                          </div>
                                                      </div>
-                                                 </div>
 
-                                                 <div class="row">
-                                                     <div class="col-md-12">
+                                                     <div class="col-md-6">
                                                          <div class="form-group">
                                                              <label>@lang('translate.product_photo')</label>
                                                              <label id="projectinput7" class="file center-block">
@@ -236,7 +250,7 @@
                                                          onclick="history.back();">
                                                          <i class="ft-x"></i> @lang('translate.cancel')
                                                      </button>
-                                                     <button type="submit" class="btn btn-primary" id="submit">
+                                                     <button type="submit" class="btn btn-primary">
                                                          <i class="la la-check-square-o"></i> @lang('translate.save')
                                                      </button>
                                                  </div>

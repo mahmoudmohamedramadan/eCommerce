@@ -5,25 +5,57 @@
      <script>
          function getTotalPrice() {
              var totalPriceValue = 0;
-             var divRowCount = document.getElementsByClassName('row');
+             var divRowCount = document.getElementsByClassName('sale-fields');
              for (var i = 0; i <= divRowCount.length - 1; i++) {
-                 //check if row has id attribute, then give me this attribute
-                 if (divRowCount[i].hasAttribute('id')) {
-                     //get id attribute value
-                     var currentRowId = divRowCount[i].getAttribute('id');
-                     var quantityValue = parseFloat($(`.quantity-${currentRowId}`).val());
-                     if (quantityValue > 0 && !isNaN(quantityValue)) {
-                         var oncePriceValue = parseFloat($(`.once-price-${currentRowId}`).val());
-                         totalPriceValue += quantityValue * oncePriceValue;
-                         $('input[name=total_price]').val(totalPriceValue);
-                         $('#submit').prop('disabled', false);
-                         $(`.quantity-error-${currentRowId}`).attr('hidden', true);
-                     } else {
-                         $('#submit').prop('disabled', true);
-                         $(`.quantity-error-${currentRowId}`).attr('hidden', false);
-                     }
+                 var currentRowId = divRowCount[i].getAttribute('id');
+                 var quantityValue = parseFloat($(`.quantity-${currentRowId}`).val());
+                 if (quantityValue > 0 && !isNaN(quantityValue)) {
+                     var oncePriceValue = parseFloat($(`.once-price-${currentRowId}`).val());
+                     totalPriceValue += quantityValue * oncePriceValue;
+                     $('input[name=total_price]').val(totalPriceValue);
+                     $('button[type=submit]').prop('disabled', false);
+                     $(`.quantity-error-${currentRowId}`).attr('hidden', true);
+                 } else {
+                     $('button[type=submit]').prop('disabled', true);
+                     $(`.quantity-error-${currentRowId}`).attr('hidden', false);
                  }
              }
+         }
+
+         function checkProductQuanity(Id) {
+             var totalQuantity = 0;
+             var divRowCount = document.getElementsByClassName('sale-fields');
+             for (var i = 1; i <= divRowCount.length; i++) {
+                 if ($(`.product-name-${i} option:selected`).val() == $(`.product-name-${Id} option:selected`)
+                     .val()) {
+                     totalQuantity += parseFloat($(`.quantity-${i}`).val());
+                 }
+             }
+
+             $.ajax({
+                 type: 'get',
+                 url: '{{ route("checkProductQuantity") }}',
+                 dataType: 'json',
+                 data: {
+                     'product_name': $(`.product-name-${Id} option:selected`).val(),
+                     'quantity': totalQuantity,
+                 },
+                 success: function(data) {
+                     if (!data.success) {
+                         $('.sale-field-error').attr('hidden', false);
+                         $('.sale-field-error').text(data.message);
+                         $('button[type=submit]').prop('disabled', true);
+                         setInterval(() => {
+                             $('.sale-field-error').attr('hidden', true);
+                         }, 10000);
+                     } else {
+                         $('button[type=submit]').prop('disabled', false);
+                     }
+                 },
+                 error: function(data) {
+                     console.log(data);
+                 }
+             });
          }
 
          function changeOncePrice(selectTag, rowCount) {
@@ -66,7 +98,7 @@
                  cache: false,
                  data: formData,
                  success: function() {
-                     window.location.href = 'http://commerce.project/en/sales/create';
+                     window.location.reload(true);
                  },
                  error: function(data) {
                      console.log(data);
@@ -85,8 +117,8 @@
                      <div class="row breadcrumbs-top">
                          <div class="breadcrumb-wrapper col-12">
                              <ol class="breadcrumb">
-                                 <li class="breadcrumb-item"><a
-                                         href="{{ route('dashboard') }}">@lang('translate.dashboard')</a>
+                                 <li class="breadcrumb-item">
+                                     <a href="{{ route('dashboard') }}">@lang('translate.dashboard')</a>
                                  </li>
                                  <li class="breadcrumb-item active">@lang('translate.create_sale')
                                  </li>
@@ -115,6 +147,11 @@
                                  </div>
                                  @include('admin.includes.alerts.success')
                                  @include('admin.includes.alerts.errors')
+                                 <div class="row mr-3 ml-3">
+                                     <div class="col-md-12">
+                                         <div class="sale-field-error alert alert-danger text-center mb-3" hidden></div>
+                                     </div>
+                                 </div>
                                  <div class="card-content collapse show">
                                      <div class="card-body">
                                          <form action="{{ route('sales.store') }}" method="POST">
@@ -122,12 +159,18 @@
 
                                              <div class="form-body">
                                                  <h4 class="form-section"><i
-                                                         class="ft-home"></i>@lang('translate.sale_data')</h4>
-
+                                                         class="ft-home"></i>@lang('translate.sale_data')
+                                                </h4>
                                                  <div id="new-product">
                                                      @if (count($products) > 0)
                                                          @include('admin.sales.getCreateSalesField',
                                                          ['products' => $products, 'id' => 1])
+                                                     @else
+                                                         <div class="row mr-3 ml-3">
+                                                             <div class="col-md-12">
+                                                                 <div class="alert alert-danger text-center">@lang('translate.add_product_first')</div>
+                                                             </div>
+                                                         </div>
                                                      @endif
                                                  </div>
 
@@ -148,7 +191,7 @@
                                                      <div class="col-md-4">
                                                          <button type="button" class="btn btn-secondary"
                                                              style="margin-top: 25px;width:310px" id="add-product"
-                                                             buttonRoute="{{ route('getSalesField') }}">
+                                                             buttonRoute="{{ route('getSalesField') }}" @if (count($products) < 1) disabled @endif>
                                                              <i class="la la-cart-plus"></i> @lang('translate.add_product')
                                                          </button>
                                                      </div>
@@ -159,7 +202,7 @@
                                                          onclick="history.back();">
                                                          <i class="ft-x"></i> @lang('translate.cancel')
                                                      </button>
-                                                     <button type="submit" class="btn btn-primary" id="submit">
+                                                     <button type="submit" class="btn btn-primary" @if (count($products) < 1) disabled @endif>
                                                          <i class="la la-check-square-o"></i> @lang('translate.save')
                                                      </button>
                                                  </div>

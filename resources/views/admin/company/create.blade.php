@@ -54,7 +54,7 @@
                                                             <input type="text" value="{{ old('name') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.company_name_placeholder')"
-                                                                name="name">
+                                                                name="name" minlength="3" maxlength="25">
                                                             @error('name')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -67,7 +67,7 @@
                                                             <input type="text" value="{{ old('phone') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.company_phone_placeholder')"
-                                                                name="phone" maxlength="11">
+                                                                name="phone" minlength="11" maxlength="11">
                                                             @error('phone')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -82,7 +82,7 @@
                                                             <input type="text" value="{{ old('address') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.company_address_placeholder')"
-                                                                name="address">
+                                                                name="address" minlength="3" maxlength="225">
                                                             @error('address')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -95,7 +95,7 @@
                                                             <input type="text" value="{{ old('manager') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.company_manager_placeholder')"
-                                                                name="manager">
+                                                                name="manager" minlength="3" maxlength="25">
                                                             @error('manager')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror

@@ -11,13 +11,17 @@ class Store extends Model
 
     protected $fillable = [
         'name',
-        'address',
-        'manager',
         'phone',
+        'address',
     ];
 
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function workers()
+    {
+        return $this->hasMany(Worker::class);
     }
 }

@@ -54,7 +54,7 @@
                                                             <input type="text" value="{{ old('name') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.store_name_placeholder')"
-                                                                name="name">
+                                                                name="name" minlength="3" maxlength="25">
                                                             @error('name')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -67,7 +67,7 @@
                                                             <input type="text" value="{{ old('phone') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.store_phone_placeholder')"
-                                                                name="phone" maxlength="11">
+                                                                name="phone" minlength="11" maxlength="11">
                                                             @error('phone')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
@@ -76,42 +76,30 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>@lang('translate.store_address')</label>
                                                             <input type="text" value="{{ old('address') }}"
                                                                 class="form-control"
                                                                 placeholder="@lang('translate.store_address_placeholder')"
-                                                                name="address">
+                                                                name="address" minlength="3" maxlength="225">
                                                             @error('address')
                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
                                                             @enderror
                                                         </div>
                                                     </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label>@lang('translate.store_manager')</label>
-                                                            <input type="text" value="{{ old('manager') }}"
-                                                                class="form-control"
-                                                                placeholder="@lang('translate.store_manager_placeholder')"
-                                                                name="manager">
-                                                            @error('manager')
-                                                                <span class="text-danger">@lang('translate.'.$message)</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="form-actions">
-                                                    <button type="button" class="btn btn-warning mr-1"
-                                                        onclick="history.back();">
-                                                        <i class="ft-x"></i> @lang('translate.cancel')
-                                                    </button>
-                                                    <button type="submit" class="btn btn-primary">
-                                                        <i class="la la-check-square-o"></i> @lang('translate.save')
-                                                    </button>
-                                                </div>
+                                            <div class="form-actions">
+                                                <button type="button" class="btn btn-warning mr-1"
+                                                    onclick="history.back();">
+                                                    <i class="ft-x"></i> @lang('translate.cancel')
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="la la-check-square-o"></i> @lang('translate.save')
+                                                </button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

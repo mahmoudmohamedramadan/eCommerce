@@ -39,16 +39,16 @@ class SaleRequest extends FormRequest
     public function messages()
     {
         return [
-            'product_name.required' => 'name field is required',
+            'product_name.required' => 'name_field_is_required',
 
-            'quantity.required' => 'quantity field is required',
-            'quantity.array' => 'quantity field must be a array',
+            'quantity.required' => 'quantity_field_is_required',
+            'quantity.array' => 'quantity_field_must_be_a_array',
 
-            'once_price.required' => 'once price field is required',
-            'once_price.array' => 'once price field must be a array',
+            'once_price.required' => 'once_price_field_is_required',
+            'once_price.array' => 'once_price_field_must_be_a_array',
 
-            'total_price.required' => 'total price field is required',
-            'total_price.numeric' => 'total price field must be a number',
+            'total_price.required' => 'total_price_field_is_required',
+            'total_price.numeric' => 'total_price_field_must_be_a_number',
         ];
     }
 }

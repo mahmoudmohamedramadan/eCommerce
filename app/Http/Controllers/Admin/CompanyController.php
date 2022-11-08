@@ -43,7 +43,6 @@ class CompanyController extends Controller
     public function store(CompanyRequest $request)
     {
         try {
-            //dd($request->input());
             DB::beginTransaction();
             Company::create([
                 'name' => $request->name,

@@ -13,10 +13,12 @@
                 cache: false,
                 data: formDataValue,
                 success: function(data) {
-                    if (data.success == false) {
+                    if (!data.success) {
                         $('#error-store-msg').empty().html(data.error_store_msg);
                         $('#error-min-msg').empty().html(data.error_min_msg);
                     } else {
+                        $('#error-store-msg').empty();
+                        $('#error-min-msg').empty();
                         $('#storeModal').modal('toggle');
                     }
                 },
@@ -58,14 +60,11 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="form-group">
-                            <label>@lang('translate.minimum_quantity')</label>
-                            <input type="text"
-                                value="{{ $product->minimum_quantity ?? session()->get('minimum_quantity') }}"
-                                class="form-control" placeholder="@lang('translate.minimum_quantity_placeholder')"
-                                name="minimum_quantity">
-                            <span class="text-danger" id="error-min-msg"></span>
-                        </div>
+                        <label>@lang('translate.minimum_stored')</label>
+                        <input type="text" value="{{ $product->minimum_stored ?? session()->get('minimum_stored') }}"
+                            class="form-control" placeholder="@lang('translate.minimum_stored_placeholder')"
+                            name="minimum_stored" minlength="1" maxlength="6">
+                        <span class="text-danger" id="error-min-msg"></span>
                     </div>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">
                         <i class="ft-x"></i> @lang('translate.cancel')

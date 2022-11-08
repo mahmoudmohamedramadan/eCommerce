@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRequest;
 use Illuminate\Support\Facades\DB;
+use App\Models\Worker;
 use App\Models\Store;
 
 class StoreController extends Controller
@@ -28,7 +29,9 @@ class StoreController extends Controller
      */
     public function create()
     {
-        return view('admin.stores.create');
+        $workers = Worker::get();
+
+        return view('admin.stores.create', compact('workers'));
     }
 
     /**
@@ -45,7 +48,6 @@ class StoreController extends Controller
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'address' => $request->address,
-                'manager' => $request->manager,
             ]);
             DB::commit();
 
@@ -84,7 +86,6 @@ class StoreController extends Controller
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'address' => $request->address,
-                'manager' => $request->manager,
             ]);
             DB::commit();
 

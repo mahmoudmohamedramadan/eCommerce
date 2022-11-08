@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class Admin extends Authenticatable
 
 {
-    use HasFactory,Notifiable;
+    use HasFactory, Notifiable;
 
     protected $table = 'admins';
 
@@ -34,5 +34,4 @@ class Admin extends Authenticatable
         'password',
         'remember_token',
     ];
-
 }

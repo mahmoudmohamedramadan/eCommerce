@@ -60,6 +60,8 @@
                                                     <th>@lang('translate.total_quantity')</th>
                                                     <th>@lang('translate.used_quantity')</th>
                                                     <th>@lang('translate.stored_quantity')</th>
+                                                    <th>@lang('translate.minimum_used')</th>
+                                                    <th>@lang('translate.minimum_stored')</th>
                                                     <th>@lang('translate.product_photo')</th>
                                                     <th>@lang('translate.measures')</th>
                                                 </tr>
@@ -78,6 +80,8 @@
                                                         <td>{{ $product->total_quantity }}</td>
                                                         <td>{{ $product->used_quantity }}</td>
                                                         <td>{{ $product->stored_quantity }}</td>
+                                                        <td>{{ $product->minimum_used }}</td>
+                                                        <td>{{ $product->minimum_stored }}</td>
                                                         <td>
                                                             @if ($product->photo)
                                                                 <img src="{{ asset('assets/images/product/' . $product->photo) }}"

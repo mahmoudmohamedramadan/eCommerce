@@ -5,7 +5,7 @@
     <script>
         function getTotalPrice() {
             var totalPriceValue = 0;
-            var divRowCount = document.getElementsByClassName('row');
+            var divRowCount = document.getElementsByClassName('sale-fields');
             for (var i = 0; i <= divRowCount.length - 1; i++) {
                 //check if row has id attribute, then give me this attribute
                 if (divRowCount[i].hasAttribute('id')) {
@@ -16,10 +16,10 @@
                         var oncePriceValue = parseFloat($(`.once-price-${currentRowId}`).val());
                         totalPriceValue += quantityValue * oncePriceValue;
                         $('input[name=total_price]').val(totalPriceValue);
-                        $('#submit').prop('disabled', false);
+                        $('button[type=submit]').prop('disabled', false);
                         $(`.quantity-error-${currentRowId}`).attr('hidden', true);
                     } else {
-                        $('#submit').prop('disabled', true);
+                        $('button[type=submit]').prop('disabled', true);
                         $(`.quantity-error-${currentRowId}`).attr('hidden', false);
                     }
                 }
@@ -28,6 +28,7 @@
 
         function changeOncePrice(selectTag, rowCount) {
             var product_price = $('option:selected', selectTag).attr('product-price');
+            console.log(product_price);
             $(`.once-price-${rowCount}`).val(product_price);
             getTotalPrice();
         }
@@ -67,7 +68,7 @@
                 data: formData,
                 success: function(data) {
                     if (data) {
-                        window.location.href = 'http://commerce.project/en/sales';
+                        window.location.href = 'http://commerce.project/{{ app()->getLocale() }}/sales';
                     }
                 },
                 error: function(data) {
@@ -162,7 +163,7 @@
                                                         onclick="history.back();">
                                                         <i class="ft-x"></i> @lang('translate.cancel')
                                                     </button>
-                                                    <button type="submit" class="btn btn-primary" id="submit">
+                                                    <button type="submit" class="btn btn-primary">
                                                         <i class="la la-check-square-o"></i> @lang('translate.edit')
                                                     </button>
                                                 </div>

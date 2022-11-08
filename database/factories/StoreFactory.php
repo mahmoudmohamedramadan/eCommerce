@@ -23,9 +23,8 @@ class StoreFactory extends Factory
     {
         return [
             'name' => $this->faker->company                   ,
-            'address' => $this->faker->address,
-            'manager' => $this->faker->name,
             'phone' => $this->faker->e164PhoneNumber,
+            'address' => $this->faker->address,
         ];
     }
 }

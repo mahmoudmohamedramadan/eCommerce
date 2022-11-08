@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SaleRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
+use App\Traits\SaleTrait;
 use App\Models\Product;
 use App\Models\Sale;
 
 class SaleController extends Controller
 {
+    use SaleTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -43,29 +46,13 @@ class SaleController extends Controller
      */
     public function store(SaleRequest $request)
     {
-        $product_name = '';
-        $quantity = '';
-        $once_price = '';
+        $saleDataArray = $this->getSaleData($request);
 
-        foreach ($request->input('product_name') as $index => $value) {
-            if (count($request->input('product_name')) - 1 != $index) $product_name .=  $value . "\n";
-            else $product_name .=  $value;
-        }
-
-        foreach ($request->input('quantity') as $index => $value) {
-            if (count($request->input('quantity')) - 1 != $index) $quantity .=  $value . "\n";
-            else $quantity .=  $value;
-        }
-
-        foreach ($request->input('once_price') as $index => $value) {
-            if (count($request->input('once_price')) - 1 != $index) $once_price .=  $value . "\n";
-            else $once_price .=  $value;
-        }
         try {
             $saleData = [
-                'product_name' => $product_name,
-                'quantity' => $quantity,
-                'once_price' => $once_price,
+                'product_name' => $saleDataArray[0],
+                'quantity' => $saleDataArray[1],
+                'once_price' => $saleDataArray[2],
                 'total_price' => $request->total_price,
             ];
 
@@ -73,10 +60,10 @@ class SaleController extends Controller
             Sale::create($saleData);
             DB::commit();
 
-            $pdf = App::make('dompdf.wrapper');
-            $pdf->loadView('admin.sales.pdf', ['saleData' => $saleData]);
             session()->flash('success', __('translate.saved_success'));
-            return $pdf->download('sale_' . $saleData['product_name'] . '.pdf');
+            return response()->json([
+                'success' => true
+            ]);
         } catch (\Exception $ex) {
             DB::rollBack();
             session()->flash('error', __('translate.saved_error'));
@@ -108,31 +95,14 @@ class SaleController extends Controller
      */
     public function update(SaleRequest $request, Sale $sale)
     {
-        $product_name = '';
-        $quantity = '';
-        $once_price = '';
-
-        foreach ($request->input('product_name') as $index => $value) {
-            if (count($request->input('product_name')) - 1 != $index) $product_name .=  $value . "\n";
-            else $product_name .=  $value;
-        }
-
-        foreach ($request->input('quantity') as $index => $value) {
-            if (count($request->input('quantity')) - 1 != $index) $quantity .=  $value . "\n";
-            else $quantity .=  $value;
-        }
-
-        foreach ($request->input('once_price') as $index => $value) {
-            if (count($request->input('once_price')) - 1 != $index) $once_price .=  $value . "\n";
-            else $once_price .=  $value;
-        }
+        $saleDataArray = $this->getSaleData($request);
 
         try {
             DB::beginTransaction();
             $sale->update([
-                'product_name' => $product_name,
-                'quantity' => $quantity,
-                'once_price' => $once_price,
+                'product_name' => $saleDataArray[0],
+                'quantity' => $saleDataArray[1],
+                'once_price' => $saleDataArray[2],
                 'total_price' => $request->total_price,
             ]);
             DB::commit();
@@ -175,6 +145,7 @@ class SaleController extends Controller
     /**
      *
      * Get sale's products fields
+     * @return \Illuminate\Http\Response
      */
     public function getSalesField()
     {
@@ -189,6 +160,30 @@ class SaleController extends Controller
         return response()->json([
             'success' => true,
             'salesFieldsView' => $salesFieldsView
+        ]);
+    }
+
+    /**
+     *
+     * Check quantity of product
+     */
+    public function checkProductQuantity()
+    {
+        $productName = request()->get('product_name');
+        $saleProductQuantity = request()->get('quantity');
+
+        $productTotalQuantity = Product::where('name', $productName)
+            ->get('used_quantity');
+
+        if (floatval($saleProductQuantity) < floatval($productTotalQuantity[0]['used_quantity'])) {
+            return response()->json([
+                'success' => true
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => __('translate.maximum_quantity_of') . $productName . __('translate.is') . $productTotalQuantity[0]['used_quantity']
         ]);
     }
 }

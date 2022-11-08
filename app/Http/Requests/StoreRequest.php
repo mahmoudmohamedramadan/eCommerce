@@ -24,10 +24,9 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required_without:id|max:25|unique:stores,name,' . $this->id,
-            'phone' => 'required_without:id|regex:/[0-9]{11}/|unique:stores,phone,' . $this->id,
+            'name' => 'required|unique:stores,name,' . $this->id,
+            'phone' => 'required|regex:/[0-9]{11}/|unique:stores,phone,' . $this->id,
             'address' => 'required',
-            'manager' => 'required',
         ];
     }
 
@@ -39,16 +38,14 @@ class StoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required_without' => 'name field is required',
-            'name.max' => 'name may not be greater than 25 characters',
-            'name.unique' => 'name field should be unique',
+            'name.required' => 'name_field_is_required',
+            'name.unique' => 'name_field_should_be_unique',
 
-            'phone.required_without' => 'phone field is required',
-            'phone.regex' => 'phone format is invalid',
-            'phone.unique' => 'phone field should be unique',
-            
-            'address.required' => 'address field is required',
-            'manager.required' => 'manager field is required',
+            'phone.required' => 'phone_field_is_required',
+            'phone.regex' => 'phone_format_is_invalid',
+            'phone.unique' => 'phone_field_should_be_unique',
+
+            'address.required' => 'address_field_is_required',
         ];
     }
 }

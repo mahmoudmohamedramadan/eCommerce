@@ -1,8 +1,9 @@
-<div class="row" id="{{ $id }}">
+<div class="sale-fields row" id="{{ $id }}">
     <div class="col-md-3">
         <div class="form-group">
             <label>@lang('translate.product_name')</label>
-            <select class="form-control" name="product_name[]" onchange="changeOncePrice(this, {{ $id }})">
+            <select class="product-name-{{ $id }} form-control" name="product_name[]"
+                onchange="changeOncePrice(this, {{ $id }})">
                 @foreach ($products as $product)
                     <option value="{{ $product->name }}" product-price="{{ $product->price }}">
                         {{ $product->name }}
@@ -19,8 +20,8 @@
         <div class="form-group">
             <label>@lang('translate.quantity')</label>
             <input type="text" value="{{ old('quantity') }}" class="quantity-{{ $id }} form-control"
-                placeholder="@lang('translate.quantity_placeholder')" name="quantity[]" maxlength="4"
-                onkeyup="getTotalPrice({{ $id }})">
+                placeholder="@lang('translate.quantity_placeholder')" name="quantity[]" minlength="2" maxlength="6"
+                onkeyup="getTotalPrice()" onchange="checkProductQuanity({{ $id }})">
             <span class="quantity-error-{{ $id }} text-danger" hidden>@lang('translate.quantity_error')</span>
             @error('quantity')
                 <span class="text-danger">@lang('translate.'.$message)</span>

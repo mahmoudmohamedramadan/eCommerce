@@ -43,6 +43,41 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                type: 'get',
+                url: `{{ route('pushNotifications') }}`,
+                dataType: 'json',
+                success: function(data) {
+                    $('.scrollable-container').empty().html(data.notifications);
+                    $('#notifications_count').empty().html(data.notifications_count);
+                    $('#notifications_count_new').empty().html(`${data.notifications_count} New`);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+
+            $('#read-all-notifications').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'get',
+                    url: $(this).attr('href'),
+                    dataType: 'json',
+                    success: function(data) {
+                        $('.scrollable-container').empty();
+                        $('#notifications_count').empty().html(0);
+                        $('#notifications_count_new').empty().html('0 New');
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            })
+        });
+
+    </script>
     @stack('script')
 </body>
 
