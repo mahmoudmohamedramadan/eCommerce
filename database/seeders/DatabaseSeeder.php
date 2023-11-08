@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\{Admin, Store};
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Store::factory(10)->create();
+        Admin::factory(1)->create();
+
+        Store::factory(10)->create();
     }
 }
