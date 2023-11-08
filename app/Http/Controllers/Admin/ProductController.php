@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use Illuminate\Support\Facades\DB;
-use App\Models\Company;
-use App\Models\Product;
-use App\Models\Admin;
-use App\Models\Store;
+use App\Models\{Company, Product, Admin, Store};
 
 class ProductController extends Controller
 {
@@ -47,7 +44,7 @@ class ProductController extends Controller
     {
         try {
             DB::beginTransaction();
-            $photoName = savePhoto('photo', $request->photo, 'assets/images/product');
+            $photoName = savePhoto('photo', $request->photo, Product::$assetsPath);
             Product::create([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -114,9 +111,9 @@ class ProductController extends Controller
     {
         try {
             DB::beginTransaction();
-            if (deletePhoto('photo', $product, 'assets/images/product/') or $request->photo) {
+            if (deletePhoto('photo', $product, Product::$assetsPath) or $request->photo) {
                 //save photo after delete old one
-                $photoName = savePhoto('photo', $request->photo, 'assets/images/product');
+                $photoName = savePhoto('photo', $request->photo, Product::$assetsPath);
                 //update photo name in DB
                 $product->update([
                     'photo' => $photoName
@@ -155,7 +152,7 @@ class ProductController extends Controller
     {
         try {
             DB::beginTransaction();
-            deletePhoto('photo', $product, 'assets/images/product/');
+            deletePhoto('photo', $product, Product::$assetsPath);
             $product->delete();
             DB::commit();
 

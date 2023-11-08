@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\{Worker, Store};
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WorkerRequest;
-use Illuminate\Support\Facades\DB;
-use App\Models\Worker;
-use App\Models\Store;
 
 class WorkerController extends Controller
 {
@@ -44,7 +43,7 @@ class WorkerController extends Controller
     {
         try {
             DB::beginTransaction();
-            $photoName = savePhoto('photo', $request->photo, 'assets/images/worker');
+            $photoName = savePhoto('photo', $request->photo, Worker::$assetsPath);
 
             Worker::create([
                 'name' => $request->name,
@@ -93,9 +92,9 @@ class WorkerController extends Controller
     {
         try {
             DB::beginTransaction();
-            if (deletePhoto('photo', $worker, 'assets/images/worker/') or $request->photo) {
+            if (deletePhoto('photo', $worker, Worker::$assetsPath) or $request->photo) {
                 //save photo after delete old one
-                $photoName = savePhoto('photo', $request->photo, 'assets/images/worker');
+                $photoName = savePhoto('photo', $request->photo, Worker::$assetsPath);
                 //update photo name in DB
                 $worker->update([
                     'photo' => $photoName
@@ -134,7 +133,7 @@ class WorkerController extends Controller
     {
         try {
             DB::beginTransaction();
-            deletePhoto('photo', $worker, 'assets/images/worker/');
+            deletePhoto('photo', $worker, Worker::$assetsPath);
             $worker->delete();
             DB::commit();
 

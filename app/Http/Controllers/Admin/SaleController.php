@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Traits\SaleTrait;
+use App\Models\{Product, Sale};
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaleRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
-use App\Traits\SaleTrait;
-use App\Models\Product;
-use App\Models\Sale;
 
 class SaleController extends Controller
 {

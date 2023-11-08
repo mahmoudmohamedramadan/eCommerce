@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\{Product, Store};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\Models\Product;
-use App\Models\Store;
 
 class ProductsOfStoreController extends Controller
 {

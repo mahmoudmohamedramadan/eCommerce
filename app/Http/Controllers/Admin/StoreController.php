@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\{Worker, Store};
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRequest;
 use Illuminate\Support\Facades\DB;
-use App\Models\Worker;
-use App\Models\Store;
 
 class StoreController extends Controller
 {

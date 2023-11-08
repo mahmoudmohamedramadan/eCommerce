@@ -28,6 +28,13 @@ class Product extends Model
         'notified',
     ];
 
+    /**
+     * The path of the uploaded assets.
+     *
+     * @var string
+     */
+    public static $assetsPath = 'storage/images/products/';
+
     public function store()
     {
         return $this->belongsTo(Store::class);

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\{Admin, Debt};
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DebtRequest;
 use Illuminate\Support\Facades\DB;
-use App\Models\Admin;
-use App\Models\Debt;
 
 class DebtController extends Controller
 {

@@ -27,6 +27,13 @@ class Worker extends Model
         'photo',
     ];
 
+    /**
+     * The path of the uploaded assets.
+     *
+     * @var string
+     */
+    public static $assetsPath = 'storage/images/workers/';
+
     public function store()
     {
         return $this->belongsTo(Store::class);
