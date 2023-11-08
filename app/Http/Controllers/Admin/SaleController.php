@@ -143,8 +143,8 @@ class SaleController extends Controller
     }
 
     /**
+     * Get sale's products field.
      *
-     * Get sale's products fields
      * @return \Illuminate\Http\Response
      */
     public function getSalesField()
@@ -164,8 +164,7 @@ class SaleController extends Controller
     }
 
     /**
-     *
-     * Check quantity of product
+     * Check quantity of product.
      */
     public function checkProductQuantity()
     {

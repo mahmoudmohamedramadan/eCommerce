@@ -1,8 +1,8 @@
 <?php
 
 /**
+ *  Save photo if the request has photo.
  *
- *  Save photo if request has photo
  *  @param string $key
  *  @param object $photo
  *  @param string $path
@@ -18,8 +18,8 @@ function savePhoto($key, $photo, $path)
 }
 
 /**
+ *  Delete photo if the request and model has a photo.
  *
- *  Delete photo if request and model has a photo.
  *  @param string $key
  *  @param object $photo
  *  @param object $model

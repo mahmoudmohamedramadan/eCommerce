@@ -6,9 +6,7 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
-            <div id="crypto-stats-3" class="row">
-
-            </div>
+            <div id="crypto-stats-3" class="row"></div>
         </div>
     </div>
 </div>

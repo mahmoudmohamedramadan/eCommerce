@@ -87,8 +87,8 @@ class ProductsOfStoreController extends Controller
     }
 
     /**
+     * Check values in the modal and return ajax responses.
      *
-     * Check values in the modal and return ajax respons
      * @return \Illuminate\Http\Response
      */
     public function checkQuantity()
