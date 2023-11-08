@@ -254,7 +254,7 @@
                                                         @enderror
                                                         <div class="row-12 mt-2">
                                                             @if ($product->photo)
-                                                            <img src="{{ asset('assets/images/product/' . $product->photo) }}"
+                                                            <img src="{{ asset('storage/images/products/' . $product->photo) }}"
                                                                 alt="@lang('translate.product_photo')" id="photo"
                                                                 width="100" height="100">
                                                             @else
@@ -266,7 +266,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                     onclick="history.back();">
@@ -286,5 +285,4 @@
         </div>
     </div>
 </div>
-
 @endsection

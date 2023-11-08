@@ -99,7 +99,7 @@
                                                 </td>
                                                 <td>
                                                     @if ($worker->photo)
-                                                    <img src="{{ asset('assets/images/worker/' . $worker->photo) }}"
+                                                    <img src="{{ asset('storage/images/workers/' . $worker->photo) }}"
                                                         alt="@lang('translate.worker_photo')" width="90" height="90">
                                                     @else
                                                     <img src="http://www.placehold.it/100/100"

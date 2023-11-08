@@ -255,7 +255,7 @@
                                                         @enderror
                                                         <div class="row-12 mt-2">
                                                             @if ($worker->photo)
-                                                            <img src="{{ asset('assets/images/worker/' . $worker->photo) }}"
+                                                            <img src="{{ asset('storage/images/workers/' . $worker->photo) }}"
                                                                 alt="@lang('translate.worker_photo')" id="photo"
                                                                 width="100" height="100">
                                                             @else
@@ -287,5 +287,4 @@
         </div>
     </div>
 </div>
-
 @endsection

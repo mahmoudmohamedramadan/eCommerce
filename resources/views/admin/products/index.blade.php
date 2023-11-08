@@ -85,7 +85,7 @@
                                                 <td>{{ $product->minimum_stored }}</td>
                                                 <td>
                                                     @if ($product->photo)
-                                                    <img src="{{ asset('assets/images/product/' . $product->photo) }}"
+                                                    <img src="{{ asset('storage/images/products/' . $product->photo) }}"
                                                         alt="@lang('translate.product_photo')" width="90" height="90">
                                                     @else
                                                     <img src="http://www.placehold.it/100/100"
