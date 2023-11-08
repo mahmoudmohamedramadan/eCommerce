@@ -9,6 +9,11 @@ class Sale extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'product_name',
         'quantity',
