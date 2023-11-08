@@ -8,8 +8,8 @@
 
             <li class="nav-item"><a href=""><i class="la la-cubes"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.stores')</span>
-                    <span
-                        class="badge badge badge-danger badge-pill float-right mr-2">{{ \App\Models\Store::count() }}</span>
+                    <span class="badge badge badge-danger badge-pill float-right mr-2">{{ \App\Models\Store::count()
+                        }}</span>
                 </a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('stores.create') }}" data-i18n="nav.dash.crypto"><i
@@ -23,8 +23,8 @@
 
             <li class="nav-item"><a href=""><i class="la la-user"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.workers')</span>
-                    <span
-                        class="badge badge badge-warning badge-pill float-right mr-2">{{ \App\Models\Worker::count() }}</span>
+                    <span class="badge badge badge-warning badge-pill float-right mr-2">{{ \App\Models\Worker::count()
+                        }}</span>
                 </a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('workers.create') }}" data-i18n="nav.dash.crypto"><i
@@ -38,8 +38,8 @@
 
             <li class="nav-item"><a href=""><i class="la la-building"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.companies')</span>
-                    <span
-                        class="badge badge badge-success badge-pill float-right mr-2">{{ \App\Models\Company::count() }}</span>
+                    <span class="badge badge badge-success badge-pill float-right mr-2">{{ \App\Models\Company::count()
+                        }}</span>
                 </a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('companies.create') }}" data-i18n="nav.dash.crypto"><i
@@ -53,8 +53,8 @@
 
             <li class="nav-item"><a href=""><i class="la la-cart-plus"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.products')</span>
-                    <span
-                        class="badge badge badge-danger badge-pill float-right mr-2">{{ \App\Models\Product::count() }}</span>
+                    <span class="badge badge badge-danger badge-pill float-right mr-2">{{ \App\Models\Product::count()
+                        }}</span>
                 </a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('products.create') }}" data-i18n="nav.dash.crypto"><i
@@ -68,8 +68,8 @@
 
             <li class="nav-item"><a href=""><i class="la la-truck"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.sales')</span>
-                    <span
-                        class="badge badge badge-warning badge-pill float-right mr-2">{{ \App\Models\Sale::count() }}</span>
+                    <span class="badge badge badge-warning badge-pill float-right mr-2">{{ \App\Models\Sale::count()
+                        }}</span>
                 </a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('sales.create') }}" data-i18n="nav.dash.crypto"><i
@@ -83,8 +83,8 @@
 
             <li class="nav-item"><a href=""><i class="la la-folder"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">@lang('translate.debts')</span>
-                    <span
-                        class="badge badge badge-success badge-pill float-right mr-2">{{ \App\Models\Debt::count() }}</span>
+                    <span class="badge badge badge-success badge-pill float-right mr-2">{{ \App\Models\Debt::count()
+                        }}</span>
                 </a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('debts.create') }}" data-i18n="nav.dash.crypto"><i

@@ -6,10 +6,9 @@ use App\Models\Product;
 
 trait SaleTrait
 {
-
     /**
+     * Get sale data from request then push them into array.
      *
-     * Get sale data from request then push them into array
      * @param \Illuminate\Http\Request  $request
      * @return array
      */

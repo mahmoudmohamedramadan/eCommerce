@@ -29,7 +29,7 @@ class AdminRequest extends FormRequest
         ];
     }
 
-     /**
+    /**
      * Get custom messages for validator errors.
      *
      * @return array

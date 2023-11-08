@@ -48,11 +48,11 @@
                         <label>@lang('translate.store_id')</label>
                         <select class="form-control" name="store_id" id="store-id">
                             @foreach ($stores as $store)
-                                <option value="{{ $store->id }}" @if (isset($product))
-                                    @if ($product->store_id == $store->id)selected
-                                    @endif
-                            @endif>
-                            {{ $store->name }}
+                            <option value="{{ $store->id }}" @if (isset($product)) @if ($product->store_id ==
+                                $store->id)selected
+                                @endif
+                                @endif>
+                                {{ $store->name }}
                             </option>
                             @endforeach
                         </select>

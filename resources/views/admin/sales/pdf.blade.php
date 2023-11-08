@@ -55,7 +55,6 @@
         padding: 2px 8px;
         border-radius: 5px;
     }
-
 </style>
 
 <table class="steelBlueCols" style="width: 100%">
@@ -71,17 +70,17 @@
         <tr>
             <td>
                 @foreach (explode("\n", $saleData['product_name']) as $name)
-                    <div>{{ $name }}</div>
+                <div>{{ $name }}</div>
                 @endforeach
             </td>
             <td>
                 @foreach (explode("\n", $saleData['quantity']) as $quantity)
-                    <div>{{ $quantity }}</div>
+                <div>{{ $quantity }}</div>
                 @endforeach
             </td>
             <td>
                 @foreach (explode("\n", $saleData['once_price']) as $once_price)
-                    <div>{{ $once_price }}</div>
+                <div>{{ $once_price }}</div>
                 @endforeach
             </td>
             <td>{{ $saleData['total_price'] }}</td>

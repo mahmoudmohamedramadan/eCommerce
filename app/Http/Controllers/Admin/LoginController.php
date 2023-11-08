@@ -17,23 +17,24 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $validatior = Validator::make(
-            $request->only('email','password'),
+            $request->only('email', 'password'),
             $request->rules(),
             $request->messages()
         );
 
-        if($validatior->fails()) {
+        if ($validatior->fails()) {
             return redirect()->back()->withErrors($request->all());
         }
 
         $rememberMe = $request->has('remember_me') ? true : false;
         $authenticate = auth()->guard('admin')->attempt(
-                $request->only('email','password')
-            ,$rememberMe);
-        if($authenticate) {
+            $request->only('email', 'password'),
+            $rememberMe
+        );
+        if ($authenticate) {
             return redirect()->route('dashboard');
         }
-        session()->flash('error','username or password is invalid');
+        session()->flash('error', 'username or password is invalid');
         return redirect()->back();
     }
 

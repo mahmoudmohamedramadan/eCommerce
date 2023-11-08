@@ -1,9 +1,10 @@
- @extends('layouts.admin')
- <title>@lang('translate.create_sale') | eCommerce</title>
+@extends('layouts.admin')
 
- @push('script')
-     <script>
-         function getTotalPrice() {
+@section('title', __('translate.create_sale'))
+
+@push('script')
+<script>
+    function getTotalPrice() {
              var totalPriceValue = 0;
              var divRowCount = document.getElementsByClassName('sale-fields');
              for (var i = 0; i <= divRowCount.length - 1; i++) {
@@ -106,115 +107,117 @@
              });
          });
 
-     </script>
- @endpush
+</script>
+@endpush
 
- @section('content')
-     <div class="app-content content">
-         <div class="content-wrapper">
-             <div class="content-header row">
-                 <div class="content-header-left col-md-6 col-12 mb-2">
-                     <div class="row breadcrumbs-top">
-                         <div class="breadcrumb-wrapper col-12">
-                             <ol class="breadcrumb">
-                                 <li class="breadcrumb-item">
-                                     <a href="{{ route('dashboard') }}">@lang('translate.dashboard')</a>
-                                 </li>
-                                 <li class="breadcrumb-item active">@lang('translate.create_sale')
-                                 </li>
-                             </ol>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-             <div class="content-body">
-                 <section id="basic-form-layouts">
-                     <div class="row match-height">
-                         <div class="col-md-12">
-                             <div class="card">
-                                 <div class="card-header">
-                                     <h4 class="card-title" id="basic-layout-form">@lang('translate.create_sale')
-                                     </h4>
-                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                     <div class="heading-elements">
-                                         <ul class="list-inline mb-0">
-                                             <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                                             <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                             <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                             <li><a data-action="close"><i class="ft-x"></i></a></li>
-                                         </ul>
-                                     </div>
-                                 </div>
-                                 @include('admin.includes.alerts.success')
-                                 @include('admin.includes.alerts.errors')
-                                 <div class="row mr-3 ml-3">
-                                     <div class="col-md-12">
-                                         <div class="sale-field-error alert alert-danger text-center mb-3" hidden></div>
-                                     </div>
-                                 </div>
-                                 <div class="card-content collapse show">
-                                     <div class="card-body">
-                                         <form action="{{ route('sales.store') }}" method="POST">
-                                             @csrf
+@section('content')
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('dashboard') }}">@lang('translate.dashboard')</a>
+                            </li>
+                            <li class="breadcrumb-item active">@lang('translate.create_sale')
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <section id="basic-form-layouts">
+                <div class="row match-height">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title" id="basic-layout-form">@lang('translate.create_sale')
+                                </h4>
+                                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @include('admin.includes.alerts.success')
+                            @include('admin.includes.alerts.errors')
+                            <div class="row mr-3 ml-3">
+                                <div class="col-md-12">
+                                    <div class="sale-field-error alert alert-danger text-center mb-3" hidden></div>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <form action="{{ route('sales.store') }}" method="POST">
+                                        @csrf
 
-                                             <div class="form-body">
-                                                 <h4 class="form-section"><i
-                                                         class="ft-home"></i>@lang('translate.sale_data')
-                                                </h4>
-                                                 <div id="new-product">
-                                                     @if (count($products) > 0)
-                                                         @include('admin.sales.getCreateSalesField',
-                                                         ['products' => $products, 'id' => 1])
-                                                     @else
-                                                         <div class="row mr-3 ml-3">
-                                                             <div class="col-md-12">
-                                                                 <div class="alert alert-danger text-center">@lang('translate.add_product_first')</div>
-                                                             </div>
-                                                         </div>
-                                                     @endif
-                                                 </div>
+                                        <div class="form-body">
+                                            <h4 class="form-section"><i class="ft-home"></i>@lang('translate.sale_data')
+                                            </h4>
+                                            <div id="new-product">
+                                                @if (count($products) > 0)
+                                                @include('admin.sales.getCreateSalesField',
+                                                ['products' => $products, 'id' => 1])
+                                                @else
+                                                <div class="row mr-3 ml-3">
+                                                    <div class="col-md-12">
+                                                        <div class="alert alert-danger text-center">
+                                                            @lang('translate.add_product_first')</div>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                            </div>
 
-                                                 <div class="row">
-                                                     <div class="col-md-8">
-                                                         <div class="form-group">
-                                                             <label>@lang('translate.total_price')</label>
-                                                             <input type="text" value="{{ old('total_price') }}"
-                                                                 class="form-control" name="total_price" readonly>
-                                                             <span class="text-danger" id="total-price-error"
-                                                                 hidden>@lang('translate.total_price_error')</span>
-                                                             @error('total_price')
-                                                                 <span class="text-danger">@lang('translate.'.$message)</span>
-                                                             @enderror
-                                                         </div>
-                                                     </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label>@lang('translate.total_price')</label>
+                                                        <input type="text" value="{{ old('total_price') }}"
+                                                            class="form-control" name="total_price" readonly>
+                                                        <span class="text-danger" id="total-price-error"
+                                                            hidden>@lang('translate.total_price_error')</span>
+                                                        @error('total_price')
+                                                        <span class="text-danger">@lang('translate.'.$message)</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
 
-                                                     <div class="col-md-4">
-                                                         <button type="button" class="btn btn-secondary"
-                                                             style="margin-top: 25px;width:310px" id="add-product"
-                                                             buttonRoute="{{ route('getSalesField') }}" @if (count($products) < 1) disabled @endif>
-                                                             <i class="la la-cart-plus"></i> @lang('translate.add_product')
-                                                         </button>
-                                                     </div>
-                                                 </div>
+                                                <div class="col-md-4">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        style="margin-top: 25px;width:310px" id="add-product"
+                                                        buttonRoute="{{ route('getSalesField') }}" @if (count($products)
+                                                        < 1) disabled @endif>
+                                                        <i class="la la-cart-plus"></i> @lang('translate.add_product')
+                                                    </button>
+                                                </div>
+                                            </div>
 
-                                                 <div class="form-actions">
-                                                     <button type="button" class="btn btn-warning mr-1"
-                                                         onclick="history.back();">
-                                                         <i class="ft-x"></i> @lang('translate.cancel')
-                                                     </button>
-                                                     <button type="submit" class="btn btn-primary" @if (count($products) < 1) disabled @endif>
-                                                         <i class="la la-check-square-o"></i> @lang('translate.save')
-                                                     </button>
-                                                 </div>
-                                         </form>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </section>
-             </div>
-         </div>
-     </div>
+                                            <div class="form-actions">
+                                                <button type="button" class="btn btn-warning mr-1"
+                                                    onclick="history.back();">
+                                                    <i class="ft-x"></i> @lang('translate.cancel')
+                                                </button>
+                                                <button type="submit" class="btn btn-primary" @if (count($products) < 1)
+                                                    disabled @endif>
+                                                    <i class="la la-check-square-o"></i> @lang('translate.save')
+                                                </button>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
 
- @endsection
+@endsection

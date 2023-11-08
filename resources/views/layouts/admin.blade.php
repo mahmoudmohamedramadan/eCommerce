@@ -9,9 +9,8 @@
         content="Modern admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
     <meta name="keywords"
         content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
-    <meta name="author" content="PIXINVENT">
-    <title>@yield('title','Dashboard | eCommerce')</title>
-
+    <meta name="author" content="Mahmoud Ramadan">
+    <title>@yield('title','Dashboard') || {{ env("APP_NAME") }}</title>
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css-rtl/vendors.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css-rtl/core/menu/vertical-menu.css') }}">
@@ -24,7 +23,6 @@
         body {
             font-family: 'Cairo', sans-serif;
         }
-
     </style>
 </head>
 
