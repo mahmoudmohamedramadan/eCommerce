@@ -6,26 +6,20 @@
 
 ## 🚀 Getting Started
 
-First, after you've cloned this project run the next command
+First, after you've cloned this project, you will need to install the dependencies:
 
 ```SHELL
 composer install
 ```
 
-In addition, you will need to migrate your database, so run the next command
+In addition, migrate your database:
 
 ```SHELL
 php artisan migrate
 ```
 
-Moreover, to link the storage for uploading avatars you'll need to run the next command
+Moreover, link the storage for uploading avatars:
 
 ```SHELL
 php artisan storage:link
-```
-
-FINALLY, run the next command...enjoy 😋
-
-```SHELL
-php artisan serve
 ```
